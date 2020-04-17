@@ -434,6 +434,11 @@ body #site-footer {
     margin: 10px;
 }
 
+.paging-navigation a.disabled{
+    pointer-events: none;
+    opacity: 0.4;
+}
+
 .paging-navigation a:hover {
     color: #0D87D0;
 }

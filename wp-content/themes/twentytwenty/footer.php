@@ -66,7 +66,6 @@
 			sl.find('.dot-1').removeClass('active');
 			sl.find('.dot-2').removeClass('active');
 			sl.find('.dot-3').removeClass('active');
-			console.log(p)
 			if(p <  sl.width() ){
 				sl.find('.dot-1').addClass('active');
 

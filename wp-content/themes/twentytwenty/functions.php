@@ -832,13 +832,14 @@ function create_shortcode_posts($args , $content) {
 				break;
 				case 'min-read': 
 				case 'time': 
-					$html .= '<p class="min-read">Min read: '. get_field('min-read').'</p>'; 
+					$html .= '<p class="min-read">'. get_field('min-read').' min read</p>'; 
 				break;
 				case 'content': 
 					$html .= '<div class="content">'.get_the_excerpt().'</div>'; 
 				break;
 				case 'category': 
-					$html .= '<div class="category">'.$cateName.'</div>'; 
+					$tag = get_field('tag')? get_field('tag') : 'Execution';
+					$html .= '<div class="category">'.$tag.'</div>'; 
 				break;
 				case 'author': 
 					$html .= '<div class="author">'.get_avatar( get_the_author_meta( 'ID' )).'<span>'.get_the_author_meta('display_name').'</span></div>'; 
