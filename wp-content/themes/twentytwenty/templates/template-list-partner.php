@@ -87,6 +87,7 @@ get_header();
 	<div class="section-inner">
 	<h3>Top partner</h3>
 </div>
+<div class="partner-list-wrap">
 <div class="partner-list">
 	<?php 
 	$users = get_users( 'ordery=date&limit=10&role=author' );
@@ -103,6 +104,7 @@ get_header();
 		<?php
 	}
 ?>
+</div>
 </div>
 </div>
 

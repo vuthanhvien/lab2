@@ -781,6 +781,7 @@ function create_shortcode_posts($args , $content) {
 	$className = $args['classname'];
 	$parentclassname = $args['parentclassname'];
 	$authorId = $args['author'];
+	$isSlider = $args['isslider'];
 	$fields = explode(',', $fieldString);
 	$query = array(  
         'post_type' => $post_type ? $post_type : array('news', 'library', 'podcast', 'event', 'job'),
@@ -816,7 +817,6 @@ function create_shortcode_posts($args , $content) {
 			$featured_img_url = get_the_post_thumbnail() ? get_the_post_thumbnail() :  '<img src="'.$first_img.'">' ;
 
 
-
 			$html .= '<div class="post '.$className.'" >';
 
 			foreach ($fields as &$value) {
@@ -831,6 +831,7 @@ function create_shortcode_posts($args , $content) {
 					$html .= '<a  href="'.get_the_permalink().'"><h5 class="title">'. get_the_title().'</h5></a>'; 
 				break;
 				case 'min-read': 
+				case 'time': 
 					$html .= '<p class="min-read">Min read: '. get_field('min-read').'</p>'; 
 				break;
 				case 'content': 
@@ -846,7 +847,7 @@ function create_shortcode_posts($args , $content) {
 					$html .= '<div class="content">'.get_the_date().'</div>'; 
 				break;
 				default:
-					// $html .= '<div class="index">'.$value.'</div>'; 
+					$html .= '<div class="class-'.$value.'">'.get_field($value).'</div>'; 
 					break;
 				}
 			}
@@ -856,9 +857,13 @@ function create_shortcode_posts($args , $content) {
 		endwhile;
 		endif;
 		wp_reset_postdata();
-	if($parentclassname){
-		return '<div class="'.$parentclassname.'">'.$html.'</div>';
+		if($parentclassname){
+			$html =  '<div class="'.$parentclassname.'">'.$html.'</div>';
+		}
+	if($isSlider){
+		$html = '<div class="slider-post">'.$html.'</div>';
 	}
+	
 
 	return $html;
 }
@@ -867,14 +872,14 @@ add_shortcode( 'posts', 'create_shortcode_posts' );
 
 function create_shortcode_signup($args , $content) {
 
-	$posts =  do_shortcode('[posts fields="img" limit="3"]');
+	$posts =  do_shortcode('[posts fields="img,title" limit="3"]');
 
 	$html  = '<div class="main-banner" style="background-image: url(/assets/night.jpg)">';
 	$html  .= '<div class="section-inner">';
-	$html  .= '<div class="main-banner-left sliders">'.$posts.'</div>';
+	$html  .= '<div class="main-banner-left sliders-signup">'.$posts.'</div>';
 	$html  .= '<div class="main-banner-right">
 		<div class="form">
-			<h3>Get a Daily dose of digitalMinds Emailed to You Every Morning</h3>
+			<h3>Get a Daily dose of digital strategy lab Emailed to You Every Morning</h3>
 			<div>
 			<form action="/signup/" method="get">
 			<input name="name" placeholder="Your name" />
