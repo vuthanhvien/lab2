@@ -15,6 +15,18 @@ get_header();
 <div class="section-inner">
 	<?php
 	$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+
+	$type = $post->post_name;
+	if($type == 'partner'){
+		$allinsider = get_users( 'ordery=date&limit=1000&role=author&meta_key=is_partner' );
+	}
+	if($type == 'insiders'){
+		$allinsider = get_users( 'ordery=date&limit=1000&role=author&meta_key=is_insider' );
+	}
+	$authors = Array();
+	foreach($allinsider as $insider){
+		array_push($authors,$insider->ID);
+	}
  
 	$query = new WP_Query( 
 		array(
@@ -24,11 +36,15 @@ get_header();
 			'nopaging'		=> false,
 			'posts_per_page'=> 15,
 			'post_type'		=> array('news', 'library', 'podcast', 'event', 'job'),
-			'orderby'		=> 'date'
+			'orderby'		=> 'date',
+			'author__in'		=> $authors
+			 
 		)
 	);
 
 	echo $post->post_content;
+	echo '<br />';
+	echo '<br />';
 
 	if ($query->have_posts()) {
 		echo '<div class="list-post">';
@@ -39,7 +55,7 @@ get_header();
   			$first_img = $matches [1] [0];
 			$img = get_the_post_thumbnail() ? get_the_post_thumbnail() :  '<img src="'.$first_img.'">' ;
 			
-
+			$categoryName = get_field('tag') ? get_field('tag') : 'Execution';
 			$item = '';
 			$item .= '<div class="post">';
 			$item .= '<div class="img">'.$img.'</div>';
@@ -105,7 +121,12 @@ get_header();
 <div class="partner-list-wrap">
 <div class="partner-list">
 	<?php 
-	$users = get_users( 'ordery=date&limit=10&role=author' );
+	if($type == 'partner'){
+		$users = get_users( 'ordery=date&limit=10&role=author&meta_key=is_partner' );
+	}
+	if($type == 'insiders'){
+		$users = get_users( 'ordery=date&limit=10&role=author&meta_key=is_insider' );
+	}
 
 	foreach($users as $user_id){
 		$first_name =  get_user_meta(  $user_id->ID, 'first_name', true );

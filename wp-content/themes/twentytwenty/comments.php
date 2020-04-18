@@ -17,6 +17,50 @@ if ( post_password_required() ) {
 	return;
 }
 
+?>
+
+
+<h4 class="comment-reply-title">
+			<?php
+			if ( ! have_comments() ) {
+				_e( 'Leave a comment', 'twentytwenty' );
+			} else {
+				echo  $comments_number .' comments';
+			}
+
+			?>
+			</h4><!-- .comments-title -->
+
+			<?php
+
+
+if ( comments_open() || pings_open() ) {
+
+	comment_form(
+		array(
+			'class_form'         => 'section-inner thin max-percentage',
+			'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
+			'title_reply_after'  => '</h2>',
+		)
+	);
+
+} elseif ( is_single() ) {
+
+	if ( $comments ) {
+		echo '<hr class="styled-separator is-style-wide" aria-hidden="true" />';
+	}
+
+	?>
+
+	<div class="comment-respond" id="respond">
+
+		<p class="comments-closed"><?php _e( 'Comments are closed.', 'twentytwenty' ); ?></p>
+
+	</div><!-- #respond -->
+
+	<?php
+}
+
 if ( $comments ) {
 	?>
 
@@ -26,34 +70,7 @@ if ( $comments ) {
 		$comments_number = absint( get_comments_number() );
 		?>
 
-		<div class="comments-header section-inner small max-percentage">
-
-			<h2 class="comment-reply-title">
-			<?php
-			if ( ! have_comments() ) {
-				_e( 'Leave a comment', 'twentytwenty' );
-			} elseif ( '1' === $comments_number ) {
-				/* translators: %s: post title */
-				printf( _x( 'One reply on &ldquo;%s&rdquo;', 'comments title', 'twentytwenty' ), esc_html( get_the_title() ) );
-			} else {
-				echo sprintf(
-					/* translators: 1: number of comments, 2: post title */
-					_nx(
-						'%1$s reply on &ldquo;%2$s&rdquo;',
-						'%1$s replies on &ldquo;%2$s&rdquo;',
-						$comments_number,
-						'comments title',
-						'twentytwenty'
-					),
-					number_format_i18n( $comments_number ),
-					esc_html( get_the_title() )
-				);
-			}
-
-			?>
-			</h2><!-- .comments-title -->
-
-		</div><!-- .comments-header -->
+	  
 
 		<div class="comments-inner section-inner thin max-percentage">
 
@@ -96,37 +113,6 @@ if ( $comments ) {
 		</div><!-- .comments-inner -->
 
 	</div><!-- comments -->
-
-	<?php
-}
-
-if ( comments_open() || pings_open() ) {
-
-	if ( $comments ) {
-		echo '<hr class="styled-separator is-style-wide" aria-hidden="true" />';
-	}
-
-	comment_form(
-		array(
-			'class_form'         => 'section-inner thin max-percentage',
-			'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
-			'title_reply_after'  => '</h2>',
-		)
-	);
-
-} elseif ( is_single() ) {
-
-	if ( $comments ) {
-		echo '<hr class="styled-separator is-style-wide" aria-hidden="true" />';
-	}
-
-	?>
-
-	<div class="comment-respond" id="respond">
-
-		<p class="comments-closed"><?php _e( 'Comments are closed.', 'twentytwenty' ); ?></p>
-
-	</div><!-- #respond -->
 
 	<?php
 }

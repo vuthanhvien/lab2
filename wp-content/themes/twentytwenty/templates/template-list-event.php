@@ -96,9 +96,9 @@ $queryFirst = new WP_Query(
 			$item .= $img;
 
 			$item .= '<div class="blur"></div>';
-			$item .= '<div class=""><img class="partner-img" src="/assets/partner-logo.png" /></div>';
+			$item .= '<div class="partner-img"><img src="'.get_field('partner_logo').'" /></div>';
 			$item .= '<div class="post-event-content">';
-			$item .= '<h2 class="partner">INFLUNCER</h2>'; 
+			$item .= '<h2 class="partner">'.get_field('partner_name').'</h2>'; 
 			$item .= '<a href="'.get_the_permalink().'"><h3 class="title">'.get_the_title().'</h3></a>';
 			$item .= '</div>';
 			$item .= '</div>';

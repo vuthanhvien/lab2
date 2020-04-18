@@ -118,21 +118,33 @@
 	
 
 		jQuery('.partner-list-wrap').on('click', '.dot-1', function() {
-			this.addClass('active')
 			var sl = $(this).parent().parent();
 			sl.find('.partner-list').animate( { scrollLeft: 0 }, 100);
-			console.log(sl);
+			console.log(sl.find('.partner-list'));
 		});
 		jQuery('.partner-list-wrap').on('click', '.dot-2', function() {
 			var sl = $(this).parent().parent();
 			sl.find('.partner-list').animate( { scrollLeft: sl.width() }, 100);
+			console.log(sl.find('.partner-list'));
 		});
 		jQuery('.partner-list-wrap').on('click', '.dot-3', function() {
 			var sl = $(this).parent().parent();
 			sl.find('.partner-list').animate( { scrollLeft: 2 * sl.width() }, 100);
+			console.log(sl.find('.partner-list'));
 		});
 
-
+		jQuery('.post-count-comment').on('click',  function(){
+			jQuery('.post-comment-out').show();
+		})
+		jQuery('#view-comment').on('click',  function(){
+			jQuery('.post-comment-out').show();
+		})
+		jQuery('.post-comment-out').on('click',  function(e){
+			jQuery('.post-comment-out').hide();
+		})
+		$(".post-comment-out .post-comment").click(function(e) {
+			e.stopPropagation();
+	});
 	</script>
 	<style>
 	.slider-post{

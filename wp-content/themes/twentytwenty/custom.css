@@ -1058,6 +1058,15 @@ body #site-footer {
 
 }
 
+.post-tag{
+    background: #0D87D0;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-left: 30px;
+}
+
 .post-content {
     display: inline-block;
     width: calc(100% - 135px);
@@ -1083,9 +1092,18 @@ body #site-footer {
     font-weight: bold;
 
 }
-
+.post-text .wpulike{
+    display: none;
+}
+.post-action .wpulike{
+    display: inline-block;
+    border-radius: 5px;
+    background: #ccc;
+    vertical-align: top;
+    height: 65px;
+}
 .post-header .icon {
-    margin-left: 50px;
+    margin-left: 30px;
     margin-right: 10px;
 }
 
@@ -1120,7 +1138,7 @@ body #site-footer {
 }
 
 .post-text button.btn {
-    height: 50px;
+    height: 65px;
     background-color: #ccc;
     border-radius: 4px;
     min-width: 50px;
@@ -1155,14 +1173,17 @@ body #site-footer {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: #ccc;
-    z-index: 10;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
 }
 
 .post-comment-out .post-comment {
+    overflow: auto;
     background: white;
-    width: 700px;
+    max-width: 900px;
+    width: 100%;
     right: 0;
+    height: 100vh;
     position: absolute;
 }
 
@@ -1223,6 +1244,9 @@ body #site-footer {
     background: white;
     margin-top: 150px;
     padding-top: 70px;
+}
+.post-detail .wpulike.wpulike-heart >div {
+    box-shadow: none;
 }
 
 .post-relate-outer h3 {
@@ -1799,7 +1823,7 @@ body #site-footer {
     margin-bottom: 10px;
 
 }
-
+.tag-list a.active,
 .tag-list a:hover {
     background: #0D87D0;
 }
@@ -1812,7 +1836,7 @@ header#site-header {
     /* position: fixed; */
     top: 0;
     width: 100%;
-    z-index: 10000;
+    z-index: 100;
 }
 
 #site-header .primary-menu .sub-menu {
@@ -1911,4 +1935,57 @@ header#site-header {
     .header-top a{
         margin-right: 10px;
     }
+}
+
+
+.partner-list-wrap{
+    text-align: center;
+}
+.partner-list-wrap .partner-list{
+    display: inline-block;
+}
+
+
+.post-comment .comment-reply-title{
+    display: none;
+}
+
+.post-comment .comment-meta{
+    display: flex;
+    min-height: 60px;
+    margin-bottom: 0;
+}
+.comment-metadata{
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.post-comment .avatar{
+    border-radius: 60px;
+}
+
+.post-comment .comment-content p{
+    font-weight: bold;
+    font-size: 16px;
+    color: #241E1F;
+    font-family:'Montserrat', sans-serif;
+}
+.post-comment .comment-body{
+    border-bottom: 1px solid #f4f4f4;
+    padding-bottom: 50px;
+}
+.post-comment .comment-footer-meta{
+    margin-top: -31px;
+    margin-left: 120px;
+}
+
+.post-comment .comment-reply a{
+    background: transparent;
+    color: rgb(175, 175, 175);
+    font-weight: bold;
+    text-transform: none;
+}
+
+.post-comment .wpulike{
+    display: none;
 }

@@ -27,14 +27,17 @@ $isView = false;
 
 $isPremimum = get_field('is_premium');
 $isStandard = get_field('is_standard');
-if( $fields['date_end_premium'] < date('Y-m-d')  ){
+if( $fields['date_end_premium'] > date('Y-m-d')  ){
     $isView = true;
 }else{
-	if($fields['date_end_standard'] < date('Y-m-d') && !$isPremimum ){
+	if($fields['date_end_standard'] > date('Y-m-d') && !$isPremimum ){
 		$isView = true;
 	}
 }
 
+if(!$isPremimum && !$isPremimum){
+	$isView = true;
+}
 
 
 
@@ -78,12 +81,11 @@ if( $fields['date_end_premium'] < date('Y-m-d')  ){
 					<div class="post-author"><?php echo get_avatar( get_the_author_meta( 'ID' )) ?></div>
 					<span class="post-author-name"><? echo get_the_author_meta('display_name') ?></span>
 					<div class="post-space"></div>
-						<img class="icon" src="/assets/heart.png" />
-						<?php echo get_comments_number() ?>
-						<img  class="icon" src="/assets/share.png" />
-						<?php echo get_comments_number() ?>
-						<img  class="icon" src="/assets/chat.png" />
-						<?php echo get_comments_number() ?>
+					<?php echo do_shortcode('[wp_ulike for="post" id="'.get_the_ID().'" style="wpulike-heart"]'); ?>
+					<img  class="icon  post-count-comment" src="/assets/chat.png" />
+					<?php echo get_comments_number() ?>
+
+					<div class="post-tag"><?php echo get_field('tag') ? get_field('tag') : 'Execution' ?></div>
 						
 				</div>
 				<div class="post-video">
@@ -98,9 +100,7 @@ if( $fields['date_end_premium'] < date('Y-m-d')  ){
 
 					<hr>
 					<div class="post-action">
-					<button class="btn btn-seconday">
-						<img class="icon" src="/assets/heart.png" />
-					</button>
+						<?php echo do_shortcode('[wp_ulike for="post" id="'.get_the_ID().'" style="wpulike-heart"]'); ?>
 					<button class="btn btn-warning" id="view-comment">
 						<img class="icon" src="/assets/chat.png" />
 						<?php echo get_comments_number() ?> comments

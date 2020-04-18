@@ -14,8 +14,27 @@ get_header();
 <main id="site-content" role="main">
 <div class="section-inner">
 	<?php
-	$category = $post->post_name;
+	$post_type = $post->post_name;
 	echo $post->post_content;
+
+	if($post_type == 'library'){
+		$tag = $_GET['tag'];
+		$categories = get_categories();
+		?>
+		<h5 class="tag-list">
+			<?php
+			foreach($categories as $c) {
+				if($c->slug == $tag ){
+					$isActive = true;
+				}else{
+					$isActive = false;
+				}
+				echo '<a '.($isActive ? 'class="active"' : '' ).' href="http://dev.chienluocso.vn/library/?tag='.$c->slug.'">'.$c->name.'</a>';
+				?>
+			<?php }  ?>
+		</h5>
+		<?php
+	}
 	echo '<br />';
 	echo '<br />';
 	$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
@@ -27,8 +46,9 @@ get_header();
 			'post_status'   => 'publish',
 			'nopaging'		=> false,
 			'posts_per_page'=> 15,
-			'post_type'		=> $category,
-			'orderby'		=> 'date'
+			'post_type'		=> $post_type,
+			'orderby'		=> 'date',
+			'category_name' => $tag ? $tag : ''
 		)
 	);
 
@@ -42,7 +62,7 @@ get_header();
   			$first_img = $matches [1] [0];
 			$img = get_the_post_thumbnail() ? get_the_post_thumbnail() :  '<img src="'.$first_img.'">' ;
 			
-
+			$categoryName = get_field('tag') ? get_field('tag') : 'Execution';
 			$item = '';
 			$item .= '<div class="post">';
 			$item .= '<div class="img">'.$img.'</div>';
