@@ -16,6 +16,67 @@ if($user->exists()){
 }
 
 
+if($_POST['type']){
+    if($_POST['type'] == 'profile'){
+
+        $profile = $_POST;
+        unset($_POST);
+
+        $first_name = $profile['first_name'];
+        $last_name = $profile['last_name'];
+        $phone = $profile['phone'];
+
+        wp_update_user(array('ID' => $user->ID, 'first_name' => esc_attr($first_name )));
+        wp_update_user(array('ID' => $user->ID, 'last_name' => esc_attr($last_name )));
+        update_field('phone', $phone , 'user_'.$user->ID     );
+
+    }
+    if($_POST['type'] == 'password'){
+        $passdata = $_POST;
+        unset($_POST['type']);
+
+        $x = wp_check_password( $passdata['old_password'], $user->user_pass, $user->data->ID );
+        if($x)
+        {
+            if( !empty($passdata['new_password']) && !empty($passdata['confirm_password']))
+            {
+                if($passdata['new_password'] == $passdata['confirm_password'])
+                {
+                    $udata['ID'] = $user->data->ID;
+                    $udata['user_pass'] = $passdata['new_password'];
+                    $uid = wp_update_user( $udata );
+                    if($uid) 
+                    {
+                        $passupdatemsg = "The password has been updated successfully";
+                        $passupdatetype = 'successed';
+                        unset($passdata);
+                    } else {
+                        $passupdatemsg = "Sorry! Failed to update your account details.";
+                        $passupdatetype = 'errored';
+                    }
+                }
+                else
+                {
+                    $passupdatemsg = "Confirm password doesn't match with new password";
+                    $passupdatetype = 'errored';
+                }
+            }
+            else
+            {
+                $passupdatemsg = "Please enter new password and confirm password";
+                $passupdatetype = 'errored';
+            }
+        } 
+        else 
+        {
+            $passupdatemsg = "Old Password doesn't match the existing password";
+            $passupdatetype = 'errored';
+        }
+    }
+}
+
+$tab = $_GET['tab'] ?  $_GET['tab'] : 'profile';
+
 get_header();
 ?>
 
@@ -25,25 +86,26 @@ get_header();
     <h4>Manage your account</h4>
     <br />
 
-    <div class="profile-tab active">Profile</div>
-    <div class="profile-tab ">Subscription plan</div>
+    <a class="profile-tab <?php echo $tab =='profile' ? 'active' : '' ?>" href="/profile/?tab=profile" >Profile</a>
+    <a class="profile-tab <?php echo $tab =='plan' ? 'active' : '' ?> " href="/profile/?tab=plan">Subscription plan</a>
 
-   
+   <form action="/profile/" method="post">
+       <input name="type" value="profile" type="hidden"  />
     <div class="profile-item">
         <p>First name</p>
-        <input placeholder="First name" />
+        <input name="first_name" placeholder="First name" value="<?php echo $user->first_name ?>" />
     </div>
     <div class="profile-item">
         <p>Last name</p>
-        <input placeholder="Last name" />
+        <input name="last_name" placeholder="Last name"  value="<?php echo $user->last_name ?>" />
     </div>
     <div class="profile-item">
         <p>Email</p>
-        <input disabled placeholder="Email" />
+        <input disabled placeholder="Email" value="<?php echo $user->user_email ?>" />
     </div>
     <div class="profile-item">
         <p>Phone</p>
-        <input placeholder="Phone" />
+        <input name="phone"  placeholder="Phone"  value="<?php echo get_field('phone', 'user_'.$user->ID) ?>" />
     </div>
     <div style="text-align: right">
     <a href="/wp-login.php?action=logout">Logout</a>
@@ -55,27 +117,40 @@ get_header();
     
    
     </div>
+</form>
     <br />
+    <form action="/profile/" method="post">
+       <input name="type" value="password" type="hidden"  />
     <div class="profile-item">
-        <p>Old Password</p>
-        <input placeholder="Old  Password" />
+        <p>Old password</p>
+        <input name="old_password" type="password" required placeholder="Old  Password" />
     </div>
     <div class="profile-item">
-        <p>Password</p>
-        <input placeholder="Password" />
+        <p>New password</p>
+        <input name="new_password" type="password" minlength="8" required placeholder="Password" />
     </div>
     <div class="profile-item">
         <p>Password confirm</p>
-        <input placeholder="Password" />
+        <input name="confirm_password" type="password"  minlength="8" required placeholder="Password" />
     </div>
 
     <div style="text-align: right">
-    <button>Change password</button>
+    <?php
+        if($passupdatetype == 'success'){
+            echo '<span style="color: green">'.$passupdatemsg.'</span> ';
+        }
+        if($passupdatetype == 'errored'){
+            echo '<span style="color: red">'.$passupdatemsg.'</span> ';
+        }
+     ?>
+    &nbsp; &nbsp; &nbsp; &nbsp;
+    <button type="submit">Change password</button>
     </div>
     <br />
     <br />
     <br />
 
+</form>
     
 </div>
 </main><!-- #site-content -->

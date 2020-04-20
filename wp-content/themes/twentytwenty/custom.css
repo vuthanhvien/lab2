@@ -1996,7 +1996,7 @@ header#site-header {
 }
 
 .profile-tab{
-    padding: 5px 10px; 
+    padding: 10px 20px; 
     display: inline-block;
     border: 1px solid rgb(78, 76, 76);
     border-top: 2px solid rgb(78, 76, 76);
@@ -2005,6 +2005,7 @@ header#site-header {
     background: #d4d3d3;
     opacity: 0.7;
     margin-bottom: 50px;
+    color: #241E1F;
     
 }
 .profile-tab.active,
@@ -2026,11 +2027,13 @@ header#site-header {
     font-weight: bold;
     vertical-align: top;
 }
-.profile-item input{
+.profile-item input[type="password"],
+    .profile-item input{
     width:  calc(100% - 210px);
     border: 1px solid #282C33;
     padding: 15px;
     font-size: 16px;
+    display: inline-block;
 }
 .profile-item input:disabled{
     opacity: 0.5;
