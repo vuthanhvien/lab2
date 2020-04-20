@@ -34,23 +34,26 @@ get_header();
 			<?php }  ?>
 		</h5>
 		<?php
+	}else{
+		$tag = '';
 	}
 	echo '<br />';
 	echo '<br />';
 	$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
- 
-	$query = new WP_Query( 
-		array(
-			'paged'         => $paged, 
-			'order'         => 'desc',
-			'post_status'   => 'publish',
-			'nopaging'		=> false,
-			'posts_per_page'=> 15,
-			'post_type'		=> $post_type,
-			'orderby'		=> 'date',
-			'category_name' => $tag ? $tag : ''
-		)
+
+	$queryArr = array(
+		'paged'         => $paged, 
+		'order'         => 'desc',
+		'post_status'   => 'publish',
+		'nopaging'		=> false,
+		'posts_per_page'=> 15,
+		'post_type'		=> $post_type,
+		'orderby'		=> 'date',
 	);
+	if($tag){
+		$queryArr['category_name'] = $tag;
+	}
+	$query = new WP_Query( $queryArr );
 
 
 	if ($query->have_posts()) {
