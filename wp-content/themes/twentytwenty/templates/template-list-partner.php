@@ -12,22 +12,17 @@ get_header();
 ?>
 
 <main id="site-content" role="main">
+<div class="list-banner">
+	<div class="section-inner">
+		<?php 
+		echo $post->post_content;
+		?>
+	</div>
+</div>
 <div class="section-inner">
 	<?php
 	$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
-
 	$type = $post->post_name;
-	if($type == 'partner'){
-		$allinsider = get_users( 'ordery=date&limit=1000&role=author&meta_key=is_partner' );
-	}
-	if($type == 'insiders'){
-		$allinsider = get_users( 'ordery=date&limit=1000&role=author&meta_key=is_insider' );
-	}
-	$authors = Array();
-	foreach($allinsider as $insider){
-		array_push($authors,$insider->ID);
-	}
- 
 	$query = new WP_Query( 
 		array(
 			'paged'         => $paged, 
@@ -35,14 +30,13 @@ get_header();
 			'post_status'   => 'publish',
 			'nopaging'		=> false,
 			'posts_per_page'=> 15,
-			'post_type'		=> array('news', 'library', 'podcast', 'event', 'job'),
+			'post_type'		=> $type,
 			'orderby'		=> 'date',
-			'author__in'		=> $authors
+			// 'author__in'		=> $authors
 			 
 		)
 	);
-
-	echo $post->post_content;
+ 
 	echo '<br />';
 	echo '<br />';
 
@@ -116,7 +110,14 @@ get_header();
 
 <div class="top-partner">
 	<div class="section-inner">
-	<h3>Top partner</h3>
+	<?php 
+	if($type == 'partner'){
+		echo '<h3>Top partners</h3>';
+	}
+	if($type == 'insiders'){
+		echo '<h3>Top insiders</h3>';
+	}
+	?>
 </div>
 <div class="partner-list-wrap">
 <div class="partner-list">

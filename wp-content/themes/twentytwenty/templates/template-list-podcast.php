@@ -12,6 +12,13 @@ get_header();
 ?>
 
 <main id="site-content" role="main">
+<div class="list-banner">
+	<div class="section-inner">
+		<?php 
+		echo $post->post_content;
+		?>
+	</div>
+</div>
 <div class="section-inner">
 	<?php
 	$category = $post->post_name;
@@ -28,8 +35,7 @@ get_header();
 			'orderby'		=> 'date'
 		)
 	);
-
-	echo $post->post_content;
+ 
 	$i = 1;
 	if ($query->have_posts()) {
 		echo '<div class="list-podcast">';

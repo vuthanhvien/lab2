@@ -33,7 +33,7 @@ $description = get_user_meta($userId, 'description', true);
 				 <p><?php echo $description ?></p>
 			 </div>
 			 <div class="partner-action">
-				 <button class="btn">Follow</button>
+				 <!-- <button class="btn">Follow</button> -->
 
 				 <div>
 					 <a><i class="fa fa-facebook"></i></a>

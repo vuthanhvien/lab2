@@ -45,7 +45,6 @@ if(!$isPremimum && !$isPremimum){
 ?>
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
-		<?php if($isView){ ?>
 	<div class="post-detail">
 		<div class="post-banner">
 			<?php echo $img ?>
@@ -96,9 +95,13 @@ if(!$isPremimum && !$isPremimum){
 				} ?>
 				</div>
 				<div class="post-text">
-					<?php the_content(); ?>
+				<?php if($isView){  
+					
+					the_content(); 
 
-					<hr>
+					?>
+
+				<hr>
 					<div class="post-action">
 						<?php echo do_shortcode('[wp_ulike for="post" id="'.get_the_ID().'" style="wpulike-heart"]'); ?>
 					<button class="btn btn-warning" id="view-comment">
@@ -115,6 +118,22 @@ if(!$isPremimum && !$isPremimum){
 						<?php echo do_shortcode('[posts limit="4" fields="img,category,title" type="'.$post_type.'"]'); ?>
 					</div>
 					
+
+					<?php
+					
+				}else{
+					the_excerpt();
+					?>
+					<div style="background: #f4f4f4; border: 1px solid #ccc; padding: 20px">
+						<p>You don't have permission to read  this article, please login or subscice </p>
+						<a style="color: #0D87D0" class="btn" href="/login"><b>Go to login</b></a> or <a style="color: #0D87D0"  class="btn" href="/subscrice"><b>Go to subscrice</b></a>
+					</div>
+					<?php
+				 }?>
+
+					
+
+			
 
 				</div>
 			</div>
@@ -156,49 +175,13 @@ if(!$isPremimum && !$isPremimum){
 		?>
 		</div>
 		</div>
-
-	<?php }else{ ?>
-
-		<div class="post-detail">
-		<div class="post-banner">
-			<?php echo $img ?>
-		<div class="post-banner-content">
-			<h1><?php echo get_the_title() ?></h1>
-			<h3><?php echo get_the_date() ?></h3>
-		</div>
-		</div>
-		<div class="post-main">
-			<div class="post-sidebar">
-	</div>
-
-	<div class="post-content">
-				<div class="post-header">
-					<div class="post-author"><?php echo get_avatar( get_the_author_meta( 'ID' )) ?></div>
-					<span class="post-author-name"><? echo get_the_author_meta('display_name') ?></span>
-					<div class="post-space"></div>
-						<img class="icon" src="/assets/heart.png" />
-						<?php echo get_comments_number() ?>
-						<img  class="icon" src="/assets/share.png" />
-						<?php echo get_comments_number() ?>
-						<img  class="icon" src="/assets/chat.png" />
-						<?php echo get_comments_number() ?>
-						
-				</div>
-				<div class="post-text">
-
-				<?php the_excerpt(); ?>
-				<div style="background: #f4f4f4; border: 1px solid #ccc; padding: 20px">
-					<p>You don't have permission to read  this article, please login or subscice </p>
-					<a style="color: #0D87D0" class="btn" href="/login"><b>Go to login</b></a> or <a style="color: #0D87D0"  class="btn" href="/subscrice"><b>Go to subscrice</b></a>
-				</div>
-			</div>
+ 
 	</div>
 	</div>
 		<br />
 		<br />
 		<br />
 
-		<?php }	?>
 
 	
 

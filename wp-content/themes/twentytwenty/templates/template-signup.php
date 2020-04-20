@@ -12,7 +12,10 @@ if($user->exists()){
     wp_redirect('/profile');
 }
 
-
+if($_GET['user_name'] && $_GET['user_email']){
+    $username=$_GET['user_name'];
+    $useremail=$_GET['user_email'];
+}
 
 if (isset($_POST['user_registeration']))
 {

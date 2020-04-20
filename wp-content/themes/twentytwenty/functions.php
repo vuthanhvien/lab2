@@ -891,20 +891,40 @@ function create_shortcode_signup($args , $content) {
 	$html  = '<div class="main-banner" style="background-image: url(/assets/night.jpg)">';
 	$html  .= '<div class="section-inner">';
 	$html  .= '<div class="main-banner-left sliders-signup">'.$posts.'</div>';
+$user = wp_get_current_user();
+if(!$user->exists()){
+	$html  .= '<div class="main-banner-right">
+	<div class="form">
+		<h3>Get a Daily dose of digital strategy lab Emailed to You Every Morning</h3>
+		<div>
+		<form action="/signup/" method="get">
+		<input name="user_name" minlength="6" placeholder="Your name" required />
+		<input type="email" name="user_email" placeholder="Your email" required />
+		<button type="submit">SIGN UP</button>
+		</form>
+		</div>
+	</div>
+	</div>';
+
+}else{
 	$html  .= '<div class="main-banner-right">
 		<div class="form">
-			<h3>Get a Daily dose of digital strategy lab Emailed to You Every Morning</h3>
-			<div>
-			<form action="/signup/" method="get">
-			<input name="name" placeholder="Your name" />
-			<input name="email" placeholder="Your email" />
-			<button type="submit">SIGN UP</button>
-			</form>
-			</div>
+		<h3>Get a Daily dose of digital strategy lab Emailed to You Every Morning</h3>
+		<div>
+		<form action="/payment/" method="get">
+		<select name="type"" required />
+			<option value="standard" >Standard</option>
+			<option value="premium">Premium</option>
+		</select>
+		<button type="submit">SUBSCRICE</button>
+		</form>
 		</div>
-		</div>';
-	$html .= '</div>';
-	$html .= '</div>';
+	</div>
+</div>';
+}
+
+$html .= '</div>';
+$html .= '</div>';
 	return $html;
 }
 add_shortcode( 'signup', 'create_shortcode_signup' );

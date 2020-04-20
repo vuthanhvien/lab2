@@ -89,6 +89,8 @@ get_header();
     <a class="profile-tab <?php echo $tab =='profile' ? 'active' : '' ?>" href="/profile/?tab=profile" >Profile</a>
     <a class="profile-tab <?php echo $tab =='plan' ? 'active' : '' ?> " href="/profile/?tab=plan">Subscription plan</a>
 
+    <?php if($tab == 'profile') { ?>
+
    <form action="/profile/" method="post">
        <input name="type" value="profile" type="hidden"  />
     <div class="profile-item">
@@ -118,6 +120,8 @@ get_header();
    
     </div>
 </form>
+
+  
     <br />
     <form action="/profile/" method="post">
        <input name="type" value="password" type="hidden"  />
@@ -151,6 +155,58 @@ get_header();
     <br />
 
 </form>
+
+<?php } ?>
+    <?php  if($tab == 'plan') {
+        $date_end_standard  = get_field('date_end_standard', 'user_'.$user->ID);
+        $date_end_premium  = get_field('date_end_premium', 'user_'.$user->ID);
+        ?>
+        <?php if($date_end_standard) {  ?>
+        <div class="plan">
+            <p>Your plan: <b>Standard </b></p>
+            <p>Expire Date: <b><?php echo $date_end_standard ?></b> </p>
+        </div>
+        <?php } ?>
+        <?php if($date_end_premium) {  ?>
+        <div class="plan">
+            <p>Your plan: <b>Premium </b></p>
+            <p>Expire Date: <b><?php echo $date_end_premium ?></b> </p>
+        </div>
+        <?php } ?>
+
+        <?php if(!$date_end_premium  && !$date_end_standard ){
+                echo "<p>You don't have any plan, let subscrice</p>";
+            } ?>
+
+
+        <br/>
+        <br/>
+
+        <div style="text-align: right">
+        <?php if(!$date_end_premium && $date_end_standard) {  ?>
+            <a  href="/payment?type=premium" class="button" >Upgrade plan</a>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+
+            <a href="/payment?type=standard" class="button" >Renew plan</a>
+            <?php } ?>
+
+        <?php if($date_end_premium) {  ?>
+            <a href="/payment?type=premium" class="button" >Renew plan</a>
+            <?php } ?>
+
+            <?php if(!$date_end_premium  && !$date_end_standard ){
+                echo '<a href="/subscrice" class="button" >Subscrice</a>';
+
+            } ?>
+    </div>
+
+    <br/>
+    <br/>
+   
+    <?php } ?>
+
     
 </div>
 </main><!-- #site-content -->

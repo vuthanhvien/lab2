@@ -28,22 +28,22 @@
 
 		var $ = jQuery;
 
-		jQuery('.slider-post').append('<div class="dots"><div class="dot-1  active"/><div class="dot-2"/><div class="dot-3"/></div>');	
+		jQuery('.slider-post').append('<div class="dots"><div class="dot dot-1  active"/><div class="dot dot-2"/><div class="dot dot-3"/></div>');	
 		jQuery('.slider-post').append('<div class="next"><i class="fa fa-chevron-right" /></div>');	
-		jQuery('.slider-post').append('<div class="back"><i class="fa fa-chevron-left" /></div>'); 
+		// jQuery('.slider-post').append('<div class="back"><i class="fa fa-chevron-left" /></div>'); 
 
 
 		jQuery('.slider-post').on('click', '.next', function() {
 			var sl = $(this).parent();
-			sl.find('.post-slide').animate( { scrollLeft: '+='+sl.width() }, 100);
+			var el = sl.find('.post-slide');
+			if(el.scrollLeft() <= el[0].scrollWidth - sl.width()){
+				el.animate( { scrollLeft: '+='+ sl.width() }, 100);
+			}else{
+				el.animate( { scrollLeft: 0 }, 100);
+			}
 			setActive(sl);
 		});
 
-		jQuery('.slider-post').on('click', '.back', function() {
-			var sl = $(this).parent();
-			sl.find('.post-slide').animate( { scrollLeft: '-='+sl.width() }, 100);
-			setActive(sl);
-		});
 		jQuery('.slider-post').on('click', '.dot-1', function() {
 			var sl = $(this).parent().parent();
 			sl.find('.post-slide').animate( { scrollLeft: 0 }, 100);
@@ -63,25 +63,23 @@
 		function setActive(sl){
 			setTimeout(function(){
 				var p = sl.find('.post-slide').scrollLeft();
-			sl.find('.dot-1').removeClass('active');
-			sl.find('.dot-2').removeClass('active');
-			sl.find('.dot-3').removeClass('active');
-			if(p <  sl.width() ){
-				sl.find('.dot-1').addClass('active');
+				sl.find('.dot').removeClass('active');
+				if(p <  sl.width() - 100 ){
+					sl.find('.dot-1').addClass('active');
 
-			}else if(p >=  sl.width() -100 && p < 2 * sl.width() - 100){
-				sl.find('.dot-2').addClass('active');
+				}else if(p >=  sl.width() - 100 && p < 2 * sl.width() - 100){
+					console.log(p, sl.width())
+					sl.find('.dot-2').addClass('active');
 
-			} else{
-					sl.find('.dot-3').addClass('active');
-			}
+				} else{
+						sl.find('.dot-3').addClass('active');
+				}
 
 			}, 200)
 		
 		};
 
 		
-
 		jQuery('.sliders-signup').append('<div class="next"><i class="fa fa-chevron-right" /></div>');	
 
 
@@ -108,31 +106,39 @@
 		
 		};
 
-		// setInterval(() => {
-		// 	jQuery('.slider-post .next').click();
-		// 	jQuery('.sliders-signup .next').click();
-		// }, 3000);
+		if(jQuery('.partner-list').get()[0]){
 
-		
-		jQuery('.partner-list-wrap').append('<div class="dots"><div class="dot-1  active"/><div class="dot-2"/><div class="dot-3"/></div>');	
+		var p_width = jQuery('.partner-list').get()[0].scrollWidth;
+		var e_width = jQuery('.partner-list-wrap').width();
+		var html = '<div class="dots">'
+		for(var i = 1; i<= (p_width / e_width) + 1; i++ ){
+			var p = i;
+			console.log(html);
+			if(i == 1){
+				html += '<div  data-page="'+i+'" class="dot active dot-'+i+'"/>';
+
+			}else{
+				html += '<div data-page="'+i+'"  class="dot dot-'+i+'"/>';
+
+			}
+		}
+		 html += ' </div>'
+		jQuery('.partner-list-wrap').append(html);	
+
+			jQuery('.partner-list-wrap').on('click', '.dot', function() {
+
+				var  p = jQuery(this).data('page')
+					jQuery('.partner-list-wrap .dot').removeClass('active');
+					var sl = $(this).parent().parent();
+					sl.find('.partner-list').animate( { scrollLeft: (p - 1) *  sl.width() }, 100);
+					jQuery(this).addClass('active')
+					console.log('p_' + p);
+				});
+
+		 
+			}
 	
-
-		jQuery('.partner-list-wrap').on('click', '.dot-1', function() {
-			var sl = $(this).parent().parent();
-			sl.find('.partner-list').animate( { scrollLeft: 0 }, 100);
-			console.log(sl.find('.partner-list'));
-		});
-		jQuery('.partner-list-wrap').on('click', '.dot-2', function() {
-			var sl = $(this).parent().parent();
-			sl.find('.partner-list').animate( { scrollLeft: sl.width() }, 100);
-			console.log(sl.find('.partner-list'));
-		});
-		jQuery('.partner-list-wrap').on('click', '.dot-3', function() {
-			var sl = $(this).parent().parent();
-			sl.find('.partner-list').animate( { scrollLeft: 2 * sl.width() }, 100);
-			console.log(sl.find('.partner-list'));
-		});
-
+ 
 		jQuery('.post-count-comment').on('click',  function(){
 			jQuery('.post-comment-out').show();
 		})
@@ -145,6 +151,13 @@
 		$(".post-comment-out .post-comment").click(function(e) {
 			e.stopPropagation();
 	});
+
+	var pathName = window.location.pathname;
+	pathName = pathName.split('/');
+	console.log(pathName);
+	if(pathName && pathName[1]){
+		var current = pathName[1];
+	}
 	</script>
 	<style>
 	.slider-post{
@@ -181,9 +194,7 @@
 		  .dots {
 			text-align:center;
 		}
-		  .dots .dot-1,
-		  .dots .dot-2,
-		  .dots .dot-3{
+		.dots .dot{
 			height: 8px;
 			width: 8px;
 			margin: 5px;
@@ -193,9 +204,7 @@
 			margin-top: 30px;
 			cursor: pointer;
 		}
-		 .dots .dot-1.active,
-		  .dots .dot-2.active,
-		 .dots .dot-3.active{
+		 .dots  .dot.active{
 			background: #555;
 		}
 	</style>

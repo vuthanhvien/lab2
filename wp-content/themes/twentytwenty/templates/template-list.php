@@ -12,31 +12,42 @@ get_header();
 ?>
 
 <main id="site-content" role="main">
+<div class="list-banner">
+	<div class="section-inner">
+		<?php
+		$post_type = $post->post_name;
+		echo $post->post_content;
+
+		if($post_type == 'library'){
+			$tag = $_GET['tag'];
+			$category_parent = get_category_by_slug( 'library' );
+			$categories = get_categories(array('child_of' => $category_parent->term_taxonomy_id));
+			?>
+			<h5 class="tag-list">
+				<?php
+				foreach($categories as $c) {
+					// var_dump($c);
+					if($c->slug == $tag ){
+						$isActive = true;
+					}else{
+						$isActive = false;
+					}
+					// if($c->category_parent == '1')
+					echo '<a '.($isActive ? 'class="active"' : '' ).' href="http://dev.chienluocso.vn/library/?tag='.$c->slug.'">'.$c->name.'</a>';
+					?>
+				<?php }  ?>
+			</h5>
+			<?php
+		}else{
+			$tag = '';
+		}
+		?>
+	</div>
+</div>
 <div class="section-inner">
 	<?php
-	$post_type = $post->post_name;
-	echo $post->post_content;
 
-	if($post_type == 'library'){
-		$tag = $_GET['tag'];
-		$categories = get_categories();
-		?>
-		<h5 class="tag-list">
-			<?php
-			foreach($categories as $c) {
-				if($c->slug == $tag ){
-					$isActive = true;
-				}else{
-					$isActive = false;
-				}
-				echo '<a '.($isActive ? 'class="active"' : '' ).' href="http://dev.chienluocso.vn/library/?tag='.$c->slug.'">'.$c->name.'</a>';
-				?>
-			<?php }  ?>
-		</h5>
-		<?php
-	}else{
-		$tag = '';
-	}
+	
 	echo '<br />';
 	echo '<br />';
 	$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;

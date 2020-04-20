@@ -1,5 +1,5 @@
 
-
+.button.btn,
 button.btn {
     height: 50px;
     background-color: #ccc;
@@ -9,6 +9,7 @@ button.btn {
     padding-left: 20px;
     padding-right: 20px;
     cursor: pointer;
+    background-color: white;
 }
 
 
@@ -69,11 +70,12 @@ a {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none!important;
 }
 
-a:hover {
-    text-decoration: underline;
+a .title:hover {
+    text-decoration: underline!important;
+    text-decoration-color: #241E1F;
 
 }
 
@@ -140,6 +142,7 @@ a:hover {
     position: relative;
 }
 
+#site-header li:hover:after ,
 #site-header li.current-menu-item:after {
     content: '';
     position: absolute;
@@ -463,6 +466,9 @@ body #site-footer {
     color: white;
 }
 
+.main-banner{
+    min-height: 600px;
+}
 .main-banner .sliders-signup {
     position: relative;
     height: 300px;
@@ -567,6 +573,7 @@ body #site-footer {
     appearance: none;
     -webkit-appearance: none;
     border-radius: 0;
+    padding: 0;
 }
 
 .main-banner-right .form button {
@@ -579,6 +586,12 @@ body #site-footer {
     font-weight: bold;
     color: white;
     text-align: center;
+    padding: 0;
+}
+.main-banner-right .form button:hover{
+    border:2px solid #F9A64B;
+    background: white;
+    color: #F9A64B;
 }
 
 #post-2 .section-list {
@@ -597,6 +610,11 @@ body #site-footer {
 #post-2 .section-list p {
     color: #393E46;
     font-size: 14px;
+}
+
+#post-2  h4:hover a{
+    text-decoration: underline!important;
+
 }
 
 #post-2 .section-list .news>p,
@@ -1838,10 +1856,13 @@ body #site-footer {
 }
 
 header#site-header {
-    /* position: fixed; */
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
+}
+#site-content{
+    margin-top: 140px;
 }
 
 #site-header .primary-menu .sub-menu {
@@ -1945,9 +1966,12 @@ header#site-header {
 
 .partner-list-wrap{
     text-align: center;
+    width: 100%;
 }
 .partner-list-wrap .partner-list{
-    display: inline-block;
+    /* width: 100%; */
+    display: block;
+    overflow: hidden;
 }
 
 
@@ -2049,4 +2073,15 @@ header#site-header {
 
 .fa {
     font-family: 'FontAwesome'!important;
+}
+
+.list-banner{
+    background: black;
+    padding: 50px 0 ;
+    text-align: center;
+}
+
+.list-banner h3,
+.list-banner p{
+    color: white;
 }
