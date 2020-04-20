@@ -2043,3 +2043,7 @@ header#site-header {
 *, *::after,*::before{
     box-sizing: border-box!important;
 }
+
+.fa {
+    font-family: 'FontAwesome'!important;
+}
