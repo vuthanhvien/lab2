@@ -22,25 +22,61 @@ get_header();
 <main id="site-content" role="main">
 <div class="section-inner" >
 <div class="profile">
-    <h4>Profile</h4>
-    <p>
+    <h4>Manage your account</h4>
+    <br />
+
+    <div class="profile-tab active">Profile</div>
+    <div class="profile-tab ">Subscription plan</div>
+
+   
+    <div class="profile-item">
+        <p>First name</p>
+        <input placeholder="First name" />
+    </div>
+    <div class="profile-item">
+        <p>Last name</p>
+        <input placeholder="Last name" />
+    </div>
+    <div class="profile-item">
+        <p>Email</p>
+        <input disabled placeholder="Email" />
+    </div>
+    <div class="profile-item">
+        <p>Phone</p>
+        <input placeholder="Phone" />
+    </div>
+    <div style="text-align: right">
     <a href="/wp-login.php?action=logout">Logout</a>
-</p>
-<pre>
-    <?php
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <button>Save change</button>
     
-    echo json_encode($user, JSON_PRETTY_PRINT);
-    $fields =  get_fields('user_'.$user->ID);
+   
+    </div>
+    <br />
+    <div class="profile-item">
+        <p>Old Password</p>
+        <input placeholder="Old  Password" />
+    </div>
+    <div class="profile-item">
+        <p>Password</p>
+        <input placeholder="Password" />
+    </div>
+    <div class="profile-item">
+        <p>Password confirm</p>
+        <input placeholder="Password" />
+    </div>
 
-    var_dump($fields);
-    ?>
-    </pre>
+    <div style="text-align: right">
+    <button>Change password</button>
+    </div>
+    <br />
+    <br />
+    <br />
 
-    <a href="/payment" >Payment</a>
-
-<p class="auth-redirect">
-
-</p>
+    
 </div>
 </main><!-- #site-content -->
 

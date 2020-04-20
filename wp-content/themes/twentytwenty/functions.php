@@ -780,17 +780,30 @@ function create_shortcode_posts($args , $content) {
 	$fieldString = $args['fields'];
 	$className = $args['classname'];
 	$parentclassname = $args['parentclassname'];
-	$authorId = $args['author'];
+	$author = $args['author'];
 	$isSlider = $args['isslider'];
 	$fields = explode(',', $fieldString);
+	$allinsider = array();
+	if($author == 'partner'){
+		$allinsider = get_users( 'orderby=date&limit=1000&role=author&meta_key=is_partner' );
+	}
+	if($author == 'insider'){
+		$allinsider = get_users( 'orderby=date&limit=1000&role=author&meta_key=is_insider' );
+	}
+	$authors = Array();
+	foreach($allinsider as $insider){
+		array_push($authors,$insider->ID);
+	}
+
 	$query = array(  
         'post_type' => $post_type ? $post_type : array('news', 'library', 'podcast', 'event', 'job'),
         'post_status' => 'publish',
 		'posts_per_page' => $limit ? $limit : 3,
-		'order'=> $order ? $order : 'DESC',
-		'offset'=>$offset ? $offset : 0,
-		'orderby'=> $orderby ? $orderby : 'date',
-		'author'=> $authorId,
+		'order'		=> $order ? $order : 'DESC',
+		'offset'	=>$offset ? $offset : 0,
+		'orderby'	=> $orderby ? $orderby : 'date',
+		'author__in' =>$authors
+
 	);
 	
 
