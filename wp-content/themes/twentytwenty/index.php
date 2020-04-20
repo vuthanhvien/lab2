@@ -22,12 +22,6 @@ get_header();
 	<?php
 
 	$currentUrl = $_SERVER['REQUEST_URI'];
-
-	$paths = explode( '/', $currentUrl);
-	if($paths[1] == 'partner' && $paths[2] != ''){
-		get_template_part( 'template-parts/content-partner' );
-	}
-
 	$archive_title    = '';
 	$archive_subtitle = '';
 

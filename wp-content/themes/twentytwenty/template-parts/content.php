@@ -39,12 +39,8 @@ if(!$isPremimum && !$isPremimum){
 	$isView = true;
 }
 
-
-
-
 ?>
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-
 	<div class="post-detail">
 		<div class="post-banner">
 			<?php echo $img ?>

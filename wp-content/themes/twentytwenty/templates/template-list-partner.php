@@ -134,7 +134,7 @@ get_header();
 		$last_name =  get_user_meta(  $user_id->ID, 'last_name', true );
 		$desc = get_user_meta(  $user_id->ID, 'description', true );
 		?>
-			<a href="/partner/<?php  echo $user_id->ID ?>" class="partner">
+			<a href="/user/<?php  echo $user_id->ID ?>" class="partner">
 				<?php echo get_avatar($user_id->ID) ?>
 				<p class="content"><?php echo $desc ?></p>
 				</a>

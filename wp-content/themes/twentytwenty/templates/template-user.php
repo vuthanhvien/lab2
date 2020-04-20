@@ -1,15 +1,12 @@
 <?php
 /**
- * The default template for displaying content
- *
- * Used for both singular and index.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * Template Name: User Template
+ * Template Post Type:  page
  *
  * @package WordPress
  * @subpackage Twenty_Twenty
- * @since 1.0.0
- */ 
+ * @since 1.0
+ */
 $currentUrl = $_SERVER['REQUEST_URI'];
 
 	$paths = explode( '/', $currentUrl);
@@ -18,8 +15,11 @@ $userId = 	$paths[2];
 $name = get_user_meta($userId, 'first_name', true).' '. get_user_meta($userId, 'last_name', true);
 $description = get_user_meta($userId, 'description', true);
 
+
+get_header();
 ?>
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+
+<main id="site-content" role="main">
 
 	<div class="partner-detail section-inner">
 	 	<div class="partner-profile">
@@ -51,4 +51,8 @@ $description = get_user_meta($userId, 'description', true);
 		 <div>
 	</div>
 
-</article><!-- .post -->
+</main><!-- .post -->
+
+<?php get_template_part( 'template-parts/footer-menus-widgets' ); ?>
+
+<?php get_footer(); ?>

@@ -111,9 +111,9 @@
 		var p_width = jQuery('.partner-list').get()[0].scrollWidth;
 		var e_width = jQuery('.partner-list-wrap').width();
 		var html = '<div class="dots">'
-		for(var i = 1; i<= (p_width / e_width) + 1; i++ ){
+		console.log(p_width , e_width)
+		for(var i = 1; i<=  Math.ceil(p_width / e_width)  ; i++ ){
 			var p = i;
-			console.log(html);
 			if(i == 1){
 				html += '<div  data-page="'+i+'" class="dot active dot-'+i+'"/>';
 
