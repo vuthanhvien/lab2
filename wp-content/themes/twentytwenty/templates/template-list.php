@@ -13,30 +13,77 @@ get_header();
 
 <main id="site-content" role="main">
 <div class="list-banner">
-	<div class="section-inner">
+	<div class="section-inner" style="max-width: 1400px">
 		<?php
 		$post_type = $post->post_name;
 		echo $post->post_content;
 
+		echo '<div class="line" ></div>';
+
 		if($post_type == 'library'){
 			$tag = $_GET['tag'];
-			$category_parent = get_category_by_slug( 'library' );
+			$category_parent = get_category_by_slug( 'strategy' );
 			$categories = get_categories(array('child_of' => $category_parent->term_taxonomy_id));
 			?>
-			<h5 class="tag-list">
+			<div  class="tag-list">
+				<h5 style="padding: 0"><a href="/library/">VIETNAM DIGITAL ECONOMY</a></h5>
+			</div>
+			<div  class="tag-list"><p class="category"><?php echo $category_parent->name ?> </p>
+			<h5 >
 				<?php
 				foreach($categories as $c) {
-					// var_dump($c);
 					if($c->slug == $tag ){
 						$isActive = true;
 					}else{
 						$isActive = false;
 					}
-					// if($c->category_parent == '1')
-					echo '<a '.($isActive ? 'class="active"' : '' ).' href="http://dev.chienluocso.vn/library/?tag='.$c->slug.'">'.$c->name.'</a>';
+					echo '<a '.($isActive ? 'class="active"' : '' ).' href="/library/?tag='.$c->slug.'">'.$c->name.'</a>';
 					?>
 				<?php }  ?>
 			</h5>
+				</div>
+			<?php
+
+				$category_parent = get_category_by_slug( 'execution' );
+				$categories = get_categories(array('child_of' => $category_parent->term_taxonomy_id));
+				?>
+				<?php echo '<div class="tag-list"><p class="category">'.$category_parent->name.'</p>' ?>
+				<h5 >
+					<?php
+					foreach($categories as $c) {
+						if($c->slug == $tag ){
+							$isActive = true;
+						}else{
+							$isActive = false;
+						}
+						echo '<a '.($isActive ? 'class="active"' : '' ).' href="/library/?tag='.$c->slug.'">'.$c->name.'</a>';
+						?>
+					<?php }  ?>
+				</h5>
+					</div>
+				<?php
+
+
+		}else if($post_type == 'news'){
+			$tag = $_GET['tag'];
+			$category_parent = get_category_by_slug( 'topic' );
+			$categories = get_categories(array('child_of' => $category_parent->term_taxonomy_id));
+
+			?>
+				<?php echo '<div class="tag-list">' ?>
+			<h5 style="padding-left: 0" >
+				<?php
+				foreach($categories as $c) {
+					if($c->slug == $tag ){
+						$isActive = true;
+					}else{
+						$isActive = false;
+					}
+					echo '<a '.($isActive ? 'class="active"' : '' ).' href="/news/?tag='.$c->slug.'">'.$c->name.'</a>';
+					?>
+				<?php }  ?>
+			</h5>
+				</div>
 			<?php
 		}else{
 			$tag = '';

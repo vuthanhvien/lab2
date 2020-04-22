@@ -9,20 +9,35 @@
  */
 
 get_header();
-?>
+	$type = $post->post_name;
+	$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+	?>
 
 <main id="site-content" role="main">
-<div class="list-banner">
+
+<?php  if($type  == 'insiders') { ?>
+	<div class="list-banner">
+	<div class="section-inner">
+		<?php 
+		echo $post->post_content;
+		echo '<div class="line" ></div>'
+		?>
+	</div>
+</div>
+<?php } ?>
+
+<?php  if($type  == 'partner') { ?>
 	<div class="section-inner">
 		<?php 
 		echo $post->post_content;
 		?>
-	</div>
 </div>
+<?php } ?>
+
+
+
 <div class="section-inner">
 	<?php
-	$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
-	$type = $post->post_name;
 	$query = new WP_Query( 
 		array(
 			'paged'         => $paged, 
@@ -133,16 +148,37 @@ get_header();
 		$first_name =  get_user_meta(  $user_id->ID, 'first_name', true );
 		$last_name =  get_user_meta(  $user_id->ID, 'last_name', true );
 		$desc = get_user_meta(  $user_id->ID, 'description', true );
+		$desc = implode(' ', array_slice(explode(' ', $desc), 0, 15));
 		?>
 			<a href="/user/<?php  echo $user_id->ID ?>" class="partner">
 				<?php echo get_avatar($user_id->ID) ?>
-				<p class="content"><?php echo $desc ?></p>
+				<p class="content"><?php echo $desc ?> [...]</p>
 				</a>
 		<?php
 	}
+
+	
 ?>
 </div>
 </div>
+<br />
+<br />
+<br />
+
+<?php 
+
+if($type == 'partner'){
+	echo '<div class="text-center">
+		<button id="become-partner" class="btn">Become a Partner &nbsp; <i class="fa fa-long-arrow-right" ></i> </button>
+	</div>';
+}
+if($type == 'insiders'){
+	echo '<div class="text-center">
+		<button id="become-insider" class="btn">Become an Insider &nbsp; <i class="fa fa-long-arrow-right" ></i> </button>
+	</div>';
+}
+
+?>
 </div>
 
 </main><!-- #site-content -->

@@ -888,14 +888,14 @@ function create_shortcode_signup($args , $content) {
 
 	$posts =  do_shortcode('[posts fields="img,title" limit="3"]');
 
-	$html  = '<div class="main-banner" style="background-image: url(/assets/night.jpg)">';
+	$html  = '<div class="main-banner" style="background-image: url(/assets/night.jpg)"><div class="blur"></div>';
 	$html  .= '<div class="section-inner">';
 	$html  .= '<div class="main-banner-left sliders-signup">'.$posts.'</div>';
 $user = wp_get_current_user();
 if(!$user->exists()){
 	$html  .= '<div class="main-banner-right">
 	<div class="form">
-		<h3>Get a Daily dose of digital strategy lab Emailed to You Every Morning</h3>
+		<h3>Get a Daily Newsletter from Digital Strategy Lab  </h3>
 		<div>
 		<form action="/signup/" method="get">
 		<input name="user_name" minlength="6" placeholder="Your name" required />
@@ -909,7 +909,7 @@ if(!$user->exists()){
 }else{
 	$html  .= '<div class="main-banner-right">
 		<div class="form">
-		<h3>Get a Daily dose of digital strategy lab Emailed to You Every Morning</h3>
+		<h3>Get a Daily Newsletter from Digital Strategy Lab  </h3>
 		<div>
 		<form action="/payment/" method="get">
 		<select name="type"" required />

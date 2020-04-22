@@ -8147,3 +8147,8 @@ function rd_duplicate_post_as_draft(){
 // function remove_default_post_type() {
 //     remove_menu_page( 'edit.php' );
 // }
+
+function custom_excerpt_length( $length ) {
+	return 20;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );

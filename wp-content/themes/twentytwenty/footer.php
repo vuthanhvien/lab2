@@ -15,7 +15,7 @@
 			<footer id="site-footer">
 				<div class="section-inner">
 				<p>
-					Copyright © 2019 Digital Strategy Lab.  All Rights Reserved.
+					Copyright © 2020 Digital Strategy Lab.  All Rights Reserved.
 				</p><!-- .footer-copyright -->
 				</div>
 			</footer><!-- #site-footer -->
@@ -154,9 +154,18 @@
 
 	var pathName = window.location.pathname;
 	pathName = pathName.split('/');
-	console.log(pathName);
 	if(pathName && pathName[1]){
 		var current = pathName[1];
+		var map = {
+			'partner': '#menu-item-40',
+			'job': '#menu-item-41',
+			'podcast': '#menu-item-42',
+			'event': '#menu-item-43',
+			'insiders': '#menu-item-44',
+			'news': '#menu-item-46',
+			'library': '#menu-item-45'
+		}
+		jQuery(map[current]).addClass('current-menu-item')
 	}
 	</script>
 	<style>

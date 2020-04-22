@@ -16,6 +16,7 @@ get_header();
 	<div class="section-inner">
 		<?php 
 		echo $post->post_content;
+		echo '<div class="line"></div>'
 		?>
 	</div>
 </div>
