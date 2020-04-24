@@ -185,4 +185,7 @@ if($type == 'insiders'){
 
 <?php echo do_shortcode('[signup]'); ?>
 <?php get_template_part( 'template-parts/footer-menus-widgets' ); ?>
+
+<?php echo do_shortcode('[contact-form-7 id="444" title=":enPartner:"]'); ?>
+<?php echo do_shortcode('[contact-form-7 id="445" title=":enInsider:"]') ?>
 <?php get_footer(); ?>

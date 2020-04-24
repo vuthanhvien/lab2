@@ -4,11 +4,11 @@
     border-radius: 4px;
     min-width: 50px;
     text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
     cursor: pointer;
     background-color: #F9A64A;
-    height: 70px;
+    height: 65px;
+    border: 2px solid #F9A64A;
+    padding:   20px;
 }
 
 *:focus{
@@ -156,8 +156,8 @@ a .title:hover {
     position: relative;
 }
 
-#site-header li:hover:after,
-#site-header li.current-menu-item:after {
+#site-header .primary-menu>li:hover:after,
+#site-header .primary-menu>li.current-menu-item:after {
     content: '';
     position: absolute;
     background: #F8A54A;
@@ -1179,7 +1179,7 @@ body #site-footer {
 .post-share:hover{
     background: #0D87D0;
     color: white;
-
+                
 }
 
 .post-share span {
@@ -1237,11 +1237,19 @@ body #site-footer {
 .post-action .wpulike {
     display: inline-block;
     border-radius: 5px;
-    background: #ccc;
+    background: white;
     vertical-align: top;
     height: 65px;
+    padding: 10px 10px;
 }
 
+.post-action .wpulike .count-box{
+    display: none;
+}
+.post-action .wpulike button:after{
+    width: 30px;
+    height: 30px;
+}
 .post-header .icon {
     margin-left: 30px;
     margin-right: 10px;
@@ -1999,13 +2007,13 @@ body #site-footer {
 }
 
 .primary-menu>li>.icon {
+    color: white !important;
+    margin-right: -6px;
     display: none !important;
 }
-
-header#site-header {
+header#site-header{
     position: sticky;
-    top: 0;
-    width: 100%;
+    top: -50px;
     z-index: 100;
 }
 
@@ -2270,4 +2278,89 @@ header#site-header {
     height: 2px;
     background: white;
     margin: 40px auto;
+}
+
+.wpcf7{
+    position: fixed;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.4);
+    height: 100vh;
+    width: 100vw;
+    top:0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.wpcf7 form{
+    background: #0D87D0;
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    padding: 30px 50px;
+}
+
+.wpcf7 form p,
+.wpcf7 form h3{
+    color: white;
+}
+
+.wpcf7 form h3{
+    font-size: 24px;
+    margin-top: 20px;
+
+}
+.wpcf7 form  img{
+    margin: 0 auto;
+}
+.wpcf7 orm p{
+    font-size: 16px;
+}
+.wpcf7 .row-input{
+    display: flex;
+    align-items: center;
+
+    margin: 20px 0;
+    margin-bottom: 50px;
+}
+
+.wpcf7 .row-input .your-email{
+    height: 50px;
+    flex: 1;
+}
+
+.wpcf7 .row-input input[type=submit]{
+    color: white;
+
+    font-size: 16px;
+    margin-left: 20px;
+    background: #F9A64A;
+    padding: 17px;
+    border-radius: 0;
+}
+
+.wpcf7 .wpcf7-not-valid-tip{
+    color: white;
+    font-size: 12px;
+
+    display: block;
+    margin-top: 10px;
+}
+
+.wpcf7 div.wpcf7-mail-sent-ok{
+    background: white;
+    font-size: 16px;
+    padding: 10px;
+    color: #398f14;
+
+}
+
+.wpcf7 div.wpcf7-validation-errors, 
+.wpcf7 div.wpcf7-acceptance-missing{
+    background: white;
+    font-size: 16px;
+    padding: 10px;
+    color: #7c7400;
 }

@@ -167,6 +167,29 @@
 		}
 		jQuery(map[current]).addClass('current-menu-item')
 	}
+
+	jQuery('#become-insider').click(function(){
+		jQuery('#wpcf7-f445-o2').css('display', 'flex');
+	})
+
+	jQuery('#become-partner').click(function(){
+		jQuery('#wpcf7-f444-o1').css('display', 'flex');
+	})
+
+
+	jQuery('.wpcf7').on('click', function(e) {
+		if (e.target !== this){return}
+			jQuery(this).hide();
+		});
+
+
+	var totalChild = jQuery('.post-text .the-article-body>*' ).length;
+		var child = '.post-text .the-article-body>*:nth-child('+Math.floor(totalChild/2)+')';
+		console.log(jQuery(child));
+	jQuery(child).append(jQuery('<div style="text-align:center; margin: 30px"><a href="/subscrice" target="_blank" class="button btn" style="padding: 22px 60px">Subscire now</a></div>'))
+
+	console.log(totalChild);
+
 	</script>
 	<style>
 	.slider-post{

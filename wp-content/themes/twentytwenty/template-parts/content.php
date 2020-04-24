@@ -101,7 +101,7 @@ if(!$isPremimum && !$isPremimum){
 					<div class="post-action">
 						<?php echo do_shortcode('[wp_ulike for="post" id="'.get_the_ID().'" style="wpulike-heart"]'); ?>
 					<button class="btn btn-warning" id="view-comment">
-						<img class="icon" src="/assets/chat.png" />
+						<!-- <img class="icon" src="/assets/chat.png" /> -->
 						<?php echo get_comments_number() ?> comments
 					</button>
 
@@ -174,11 +174,4 @@ if(!$isPremimum && !$isPremimum){
  
 	</div>
 	</div>
-		<br />
-		<br />
-		<br />
-
-
-	
-
 </article><!-- .post -->
