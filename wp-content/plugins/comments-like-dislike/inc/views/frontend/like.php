@@ -1,5 +1,6 @@
 <div class="cld-like-wrap  cld-common-wrap">
-    <a href="<?php echo $href; ?>"
+    <a 
+        href="<?php echo $href; ?>"
        class="cld-like-trigger cld-like-dislike-trigger <?php echo ($user_ip_check == 1 || isset( $_COOKIE['cld_' . $comment_id] )) ? 'cld-prevent' : ''; ?>"
        title="<?php echo $like_title; ?>"
        data-comment-id="<?php echo $comment_id; ?>"

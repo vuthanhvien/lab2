@@ -61,7 +61,7 @@ $dislike_title = isset( $cld_settings['basic_settings']['dislike_hover_text'] ) 
 
 //$this->print_array( $cld_settings );
 ?>
-<div class="cld-like-dislike-wrap cld-<?php echo esc_attr( $cld_settings['design_settings']['template'] ); ?>">
+<div class="zolo cld-like-dislike-wrap cld-<?php echo esc_attr( $cld_settings['design_settings']['template'] ); ?>">
     <?php
     /**
      * Like Dislike Order

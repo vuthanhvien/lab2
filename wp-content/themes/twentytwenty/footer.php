@@ -26,7 +26,6 @@
 
 	<script>
 
-		var $ = jQuery;
 
 		jQuery('.slider-post').append('<div class="dots"><div class="dot dot-1  active"/><div class="dot dot-2"/><div class="dot dot-3"/></div>');	
 		jQuery('.slider-post').append('<div class="next"><i class="fa fa-chevron-right" /></div>');	
@@ -34,7 +33,7 @@
 
 
 		jQuery('.slider-post').on('click', '.next', function() {
-			var sl = $(this).parent();
+			var sl = jQuery(this).parent();
 			var el = sl.find('.post-slide');
 			if(el.scrollLeft() <= el[0].scrollWidth - sl.width()){
 				el.animate( { scrollLeft: '+='+ sl.width() }, 100);
@@ -45,17 +44,17 @@
 		});
 
 		jQuery('.slider-post').on('click', '.dot-1', function() {
-			var sl = $(this).parent().parent();
+			var sl = jQuery(this).parent().parent();
 			sl.find('.post-slide').animate( { scrollLeft: 0 }, 100);
 			setActive(sl);
 		});
 		jQuery('.slider-post').on('click', '.dot-2', function() {
-			var sl = $(this).parent().parent();
+			var sl = jQuery(this).parent().parent();
 			sl.find('.post-slide').animate( { scrollLeft: sl.width() }, 100);
 			setActive(sl);
 		});
 		jQuery('.slider-post').on('click', '.dot-3', function() {
-			var sl = $(this).parent().parent();
+			var sl = jQuery(this).parent().parent();
 			sl.find('.post-slide').animate( { scrollLeft: 2 * sl.width() }, 100);
 			setActive(sl);
 		});
@@ -129,7 +128,7 @@
 
 				var  p = jQuery(this).data('page')
 					jQuery('.partner-list-wrap .dot').removeClass('active');
-					var sl = $(this).parent().parent();
+					var sl = jQuery(this).parent().parent();
 					sl.find('.partner-list').animate( { scrollLeft: (p - 1) *  sl.width() }, 100);
 					jQuery(this).addClass('active')
 					console.log('p_' + p);
@@ -148,7 +147,7 @@
 		jQuery('.post-comment-out').on('click',  function(e){
 			jQuery('.post-comment-out').hide();
 		})
-		$(".post-comment-out .post-comment").click(function(e) {
+		jQuery(".post-comment-out .post-comment").click(function(e) {
 			e.stopPropagation();
 	});
 

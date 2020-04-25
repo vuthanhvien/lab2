@@ -78,7 +78,7 @@ if(!$isPremimum && !$isPremimum){
 					<div class="post-space"></div>
 					<?php echo do_shortcode('[wp_ulike for="post" id="'.get_the_ID().'" style="wpulike-heart"]'); ?>
 					<img  class="icon  post-count-comment" src="/assets/chat.png" />
-					<?php echo get_comments_number() ?>
+					<?php echo $post->comment_count ?>
 
 					<div class="post-tag"><?php echo get_field('tag') ? get_field('tag') : 'Execution' ?></div>
 						
@@ -102,7 +102,7 @@ if(!$isPremimum && !$isPremimum){
 						<?php echo do_shortcode('[wp_ulike for="post" id="'.get_the_ID().'" style="wpulike-heart"]'); ?>
 					<button class="btn btn-warning" id="view-comment">
 						<!-- <img class="icon" src="/assets/chat.png" /> -->
-						<?php echo get_comments_number() ?> comments
+						<?php echo $post->comment_count ?> comments
 					</button>
 
 					</div>

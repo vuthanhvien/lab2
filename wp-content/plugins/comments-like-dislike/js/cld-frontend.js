@@ -22,8 +22,8 @@ function cld_getCookie(cname) {
 
 jQuery(document).ready(function ($) {
     var ajax_flag = 0;
-    $('body').on('click', '.cld-like-dislike-trigger', function () {
-        if (ajax_flag == 0) {
+    $('.cld-like-dislike-trigger').on('click', function () {
+    if (ajax_flag == 0) {
             var restriction = $(this).data('restriction');
             var comment_id = $(this).data('comment-id');
             var trigger_type = $(this).data('trigger-type');
