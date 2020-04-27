@@ -811,6 +811,8 @@ function create_shortcode_posts($args , $content) {
 	
 	$html = '';
 
+	$minStr = $GLOBALS['vi']  ? 'phút đọc' : 'min read';
+
 	if ( $the_query->have_posts() ) :
 		$index = 1;
 		while ( $the_query->have_posts() ) : $the_query->the_post();
@@ -845,7 +847,7 @@ function create_shortcode_posts($args , $content) {
 				break;
 				case 'min-read': 
 				case 'time': 
-					$html .= '<p class="min-read">'. get_field('min-read').' min read</p>'; 
+					$html .= '<p class="min-read">'. get_field('min-read').'  '.$minStr.'</p>'; 
 				break;
 				case 'content': 
 					$html .= '<div class="content">'.get_the_excerpt().'</div>'; 
@@ -885,7 +887,9 @@ add_shortcode( 'posts', 'create_shortcode_posts' );
 
 
 function create_shortcode_signup($args , $content) {
-
+$title= $GLOBALS['vi']  ? 'Nhận thông tin hàng ngày từ của  Digital Strategy Lab'  :  'Get a Daily Newsletter from Digital Strategy Lab'; 
+$signUpBtn = $GLOBALS['vi']  ? 'ĐĂNG KÝ' : 'SIGN UP';
+$subscriceBtn = $GLOBALS['vi']  ? 'THEO DÕI' : 'SUBSCRICE';
 	$posts =  do_shortcode('[posts fields="img,title" limit="3"]');
 
 	$html  = '<div class="main-banner" style="background-image: url(/assets/night.jpg)"><div class="blur"></div>';
@@ -895,12 +899,12 @@ $user = wp_get_current_user();
 if(!$user->exists()){
 	$html  .= '<div class="main-banner-right">
 	<div class="form">
-		<h3>Get a Daily Newsletter from Digital Strategy Lab  </h3>
+		<h3>'.$title.'</h3>
 		<div>
 		<form action="/signup/" method="get">
 		<input name="user_name" minlength="6" placeholder="Your name" required />
 		<input type="email" name="user_email" placeholder="Your email" required />
-		<button type="submit">SIGN UP</button>
+		<button type="submit">'.$signUpBtn.'</button>
 		</form>
 		</div>
 	</div>
@@ -909,14 +913,14 @@ if(!$user->exists()){
 }else{
 	$html  .= '<div class="main-banner-right">
 		<div class="form">
-		<h3>Get a Daily Newsletter from Digital Strategy Lab  </h3>
+		<h3>'.$title.'</h3>
 		<div>
 		<form action="/payment/" method="get">
 		<select name="type"" required />
 			<option value="standard" >Standard</option>
 			<option value="premium">Premium</option>
 		</select>
-		<button type="submit">SUBSCRICE</button>
+		<button type="submit">'.$subscriceBtn.'</button>
 		</form>
 		</div>
 	</div>

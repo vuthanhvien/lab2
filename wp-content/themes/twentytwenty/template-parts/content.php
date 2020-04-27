@@ -39,6 +39,8 @@ if(!$isPremimum && !$isPremimum){
 	$isView = true;
 }
 
+
+$vi = $GLOBALS['vi'];
 ?>
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 	<div class="post-detail">
@@ -52,7 +54,7 @@ if(!$isPremimum && !$isPremimum){
 		<div class="post-main">
 			<div class="post-sidebar">
 
-			<p>Share</p>
+			<p><?php echo $vi ? 'Chia sẻ' : 'Share' ?></p>
 				<a target="_blank" href="https://twitter.com/intent/tweet?text=<?php echo $actual_link ?>" class="post-share">
 					<i class="fa fa-twitter"></i>
 					<span>Tweet</span>
@@ -102,7 +104,7 @@ if(!$isPremimum && !$isPremimum){
 						<?php echo do_shortcode('[wp_ulike for="post" id="'.get_the_ID().'" style="wpulike-heart"]'); ?>
 					<button class="btn btn-warning" id="view-comment">
 						<!-- <img class="icon" src="/assets/chat.png" /> -->
-						<?php echo $post->comment_count ?> comments
+						<?php echo $post->comment_count ?> <?php echo $vi ? 'Bình luận' : 'comments' ?>
 					</button>
 
 					</div>
@@ -110,7 +112,7 @@ if(!$isPremimum && !$isPremimum){
 				</div>
 
 					<div class="post-next">
-						<h3>Up Next</h3>
+						<h3><?php echo $vi ? 'Bài viết tiếp theo' : 'Up Next' ?></h3>
 						<?php echo do_shortcode('[posts limit="4" fields="img,category,title" type="'.$post_type.'"]'); ?>
 					</div>
 					
@@ -121,8 +123,11 @@ if(!$isPremimum && !$isPremimum){
 					the_excerpt();
 					?>
 					<div style="background: #f4f4f4; border: 1px solid #ccc; padding: 20px">
-						<p>You don't have permission to read  this article, please login or subscice </p>
-						<a style="color: #0D87D0" class="btn" href="/login"><b>Go to login</b></a> or <a style="color: #0D87D0"  class="btn" href="/subscrice"><b>Go to subscrice</b></a>
+					<p>
+					<?php echo $vi ? 'Bạn không có quyền xem bài viết, hãy đăng nhập hoặc theo dõi' : "You don't have permission to read  this article, please login or subscice" ?>
+						</p>
+						<a style="color: #0D87D0" class="btn" href="/login"><b><?php echo !$vi ? 'Go to login' : 'Đi tới đăng nhập' ?></b></a> - 
+						 <a style="color: #0D87D0"  class="btn" href="/subscrice"><b><?php echo !$vi ? 'Go to login' : 'Đi tới đăng ký' ?> </b></a>
 					</div>
 					<?php
 				 }?>
@@ -136,7 +141,7 @@ if(!$isPremimum && !$isPremimum){
 		</div>
 
 		<div class="post-relate-outer">
-		<h3>Related Articles</h3>
+		<h3><?php echo $vi  ? 'Bài viết liên quan' : 'Related Articles' ?> </h3>
 
 		<div class="post-relate">
 			<div class="post-relate-left">

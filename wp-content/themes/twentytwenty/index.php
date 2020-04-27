@@ -14,16 +14,19 @@
  * @since 1.0.0
  */
 
+
 get_header();
 ?>
 
 <main id="site-content" role="main">
+
 
 	<?php
 
 	$currentUrl = $_SERVER['REQUEST_URI'];
 	$archive_title    = '';
 	$archive_subtitle = '';
+
 
 	if ( is_search() ) {
 		global $wp_query;

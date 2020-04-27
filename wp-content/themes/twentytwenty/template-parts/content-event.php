@@ -35,6 +35,7 @@ if( $fields['date_end_premium'] > date('Y-m-d')  ){
 	}
 }
 
+$vi = $GLOBALS['vi'];
 
 ?>
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
@@ -58,21 +59,18 @@ if( $fields['date_end_premium'] > date('Y-m-d')  ){
 					<div class="post-author"><?php echo get_avatar( get_the_author_meta( 'ID' )) ?></div>
 					<span class="post-author-name"><? echo get_the_author_meta('display_name') ?></span>
 					<div class="post-space"></div>
-						<img class="icon" src="/assets/heart.png" />
-						<?php echo get_comments_number() ?>
-						<img  class="icon" src="/assets/share.png" />
-						<?php echo get_comments_number() ?>
-						<img  class="icon" src="/assets/chat.png" />
-						<?php echo get_comments_number() ?>
-						
 				</div>
 				<div class="post-text">
 
 				<?php the_excerpt(); ?>
-				<div style="background: #f4f4f4; border: 1px solid #ccc; padding: 20px">
-					<p>You don't have permission to read  this article, please login or subscice </p>
-					<a style="color: #0D87D0" class="btn" href="/login"><b>Go to login</b></a> or <a style="color: #0D87D0"  class="btn" href="/subscrice"><b>Go to subscrice</b></a>
-				</div>
+					<div style="background: #f4f4f4; border: 1px solid #ccc; padding: 20px">
+					<p>
+					<?php echo $vi ? 'Bạn không có quyền xem bài viết, hãy đăng nhập hoặc theo dõi' : "You don't have permission to read  this article, please login or subscice" ?>
+						</p>
+						<a style="color: #0D87D0" class="btn" href="/login"><b><?php echo !$vi ? 'Go to login' : 'Đi tới đăng nhập' ?></b></a> - 
+						 <a style="color: #0D87D0"  class="btn" href="/subscrice"><b><?php echo !$vi ? 'Go to login' : 'Đi tới đăng ký' ?> </b></a>
+					</div>
+
 			</div>
 	</div>
 	</div>

@@ -143,11 +143,11 @@ a .title:hover {
 
 
 #site-header button.search {
-    padding: 10px;
+    padding:0px  10px;
     background: transparent;
     position: absolute;
     right: 0;
-    top: -15px;
+    top: 15px;
 }
 
 #site-header ul.primary-menu {

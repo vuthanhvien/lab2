@@ -13,5 +13,14 @@
  */
 define( 'WP_USE_THEMES', true );
 
+
+
+$currenturl = $_SERVER['REQUEST_URI'];
+$path = explode("/", $currenturl);
+
+global $vi;
+$vi = $path[1] == 'vi';
+    
+
 /** Loads the WordPress Environment and Template */
 require( dirname( __FILE__ ) . '/wp-blog-header.php' );

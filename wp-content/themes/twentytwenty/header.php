@@ -12,6 +12,8 @@
 
 $user = wp_get_current_user();
 
+$vi = $GLOBALS['vi'];
+
 
 ?><!DOCTYPE html>
 
@@ -56,13 +58,13 @@ $user = wp_get_current_user();
 					if($user->exists()){
 						?>
 							<a class="avatar-profile" href="/profile"><?php echo get_avatar($user->ID); echo ' '; echo $user->user_login; ?> </a>
-							<a class="button" href="/subscrice">Subscrice</a>
+							<a class="button" href="/subscrice"><?php echo $vi ?  'Theo dõi'  : 'Subscrice' ?></a>
 						<?php
 
 					}else{
 						?>
-							<a class="button" href="/login">Login</a>
-							<a class="button" href="/subscrice">Subscrice</a>
+							<a class="button" href="/login"><?php echo $vi ?  'Đăng nhập'  : 'Login' ?> </a>
+							<a class="button" href="/subscrice"><?php echo $vi ?  'Theo dõi'  : 'Subscrice' ?></a>
 						<?php
 
 					}

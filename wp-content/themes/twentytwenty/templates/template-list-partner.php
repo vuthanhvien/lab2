@@ -7,6 +7,7 @@
  * @subpackage Twenty_Twenty
  * @since 1.0
  */
+$vi = $GLOBALS['vi'];
 
 get_header();
 	$type = $post->post_name;
@@ -168,13 +169,15 @@ get_header();
 <?php 
 
 if($type == 'partner'){
+	$t = $vi ? 'Trở thành đối tác' : 'Become a Partner';
 	echo '<div class="text-center">
-		<button id="become-partner" class="btn">Become a Partner &nbsp; <i class="fa fa-long-arrow-right" ></i> </button>
+		<button id="become-partner" class="btn">'.$t.' &nbsp; <i class="fa fa-long-arrow-right" ></i> </button>
 	</div>';
 }
 if($type == 'insiders'){
+	$t = $vi ? 'Trở thành insider' : 'Become a Insider';
 	echo '<div class="text-center">
-		<button id="become-insider" class="btn">Become an Insider &nbsp; <i class="fa fa-long-arrow-right" ></i> </button>
+		<button id="become-insider" class="btn">'.$t.' &nbsp; <i class="fa fa-long-arrow-right" ></i> </button>
 	</div>';
 }
 
