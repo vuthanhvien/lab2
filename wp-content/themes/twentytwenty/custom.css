@@ -1,6 +1,6 @@
 #site-content .button.btn,
+#site-content .btn-cta a,
 #site-content button.btn {
-    height: 50px;
     border-radius: 4px;
     min-width: 50px;
     text-align: center;
@@ -8,8 +8,39 @@
     background-color: #F9A64A;
     height: 65px;
     border: 2px solid #F9A64A;
-    padding:   20px;
+    padding:  16px 30px;
+    font-weight: bold;
+    display: inline-block;
 }
+
+#site-content .btn-cta a{
+    max-width: 230px;
+    height: auto;
+    min-height: 65px;
+}
+#site-content .btn-cta{
+    display: block;
+}
+.blocks-gallery-grid, .wp-block-gallery{
+    width: 100%;
+}
+#site-content .btn-cta a,
+#site-content .button.btn a,
+#site-content button.btn a{
+    color: white;
+}
+#site-content .btn-cta a:hover,
+#site-content .button.btn:hover,
+#site-content button.btn:hover {
+    color: #F9A64A;
+    background-color: transparent;
+    border: 2px solid #F9A64A;
+}
+
+#site-content .button.btn:hover a{
+    color: #F9A64A;
+}
+
 
 .cld-like-count-wrap.cld-count-wrap,
 .cld-dislike-count-wrap.cld-count-wrap{
@@ -23,12 +54,6 @@
     outline: 0;
 }
 
-#site-content .button.btn:hover,
-#site-content button.btn:hover {
-    color: #F9A64A;
-    background-color: transparent;
-    border: 2px solid #F9A64A;
-}
 
 
 .text-center{
