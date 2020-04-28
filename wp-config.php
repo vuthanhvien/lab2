@@ -20,6 +20,9 @@
 
 // ** Thiết lập MySQL - Bạn có thể lấy các thông tin này từ host/server ** //
 /** Tên database MySQL */
+
+define('WP_ALLOW_MULTISITE', true );
+
 define( 'DB_NAME', 'lab2' );
 
 /** Username của database */
@@ -36,6 +39,9 @@ define( 'DB_CHARSET', 'utf8mb4' );
 
 /** Kiểu database collate. Đừng thay đổi nếu không hiểu rõ. */
 define('DB_COLLATE', '');
+
+define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
+define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
 
 /**#@+
  * Khóa xác thực và salt.
