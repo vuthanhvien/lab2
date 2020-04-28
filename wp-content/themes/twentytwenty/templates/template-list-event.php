@@ -44,7 +44,7 @@ $queryFirst = new WP_Query(
 				echo'<div class="event-banner-content">';
 				echo '<p class="hash">HIGHLIGH EVENT</p>';
 				echo '<h3 class="title">'.get_the_title().'</h3>';
-				echo '<a href="'.get_the_permalink().'" class="tag">DISCOVER MORE</a>';
+				echo '<a href="'.get_the_permalink().'" class="button btn">DISCOVER MORE</a>';
 				echo'</div>';
 			}
 		}

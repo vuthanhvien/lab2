@@ -22,13 +22,13 @@ get_header();
 
 		if($post_type == 'library'){
 			$tag = $_GET['tag'];
-			$category_parent = get_category_by_slug( 'strategy' );
+			$category_parent = get_category_by_slug( 'library' );
 			$categories = get_categories(array('child_of' => $category_parent->term_taxonomy_id));
 			?>
 			<div  class="tag-list">
-				<h5 style="padding: 0"><a href="/library/">VIETNAM DIGITAL ECONOMY</a></h5>
+				<h5 style="padding: 0"><a href="/library/?tag=vietnam-digital-economy" >VIETNAM DIGITAL ECONOMY</a></h5>
 			</div>
-			<div  class="tag-list"><p class="category"><?php echo $category_parent->name ?> </p>
+			<div  class="tag-list"> 
 			<h5 >
 				<?php
 				foreach($categories as $c) {
@@ -44,24 +44,7 @@ get_header();
 				</div>
 			<?php
 
-				$category_parent = get_category_by_slug( 'execution' );
-				$categories = get_categories(array('child_of' => $category_parent->term_taxonomy_id));
-				?>
-				<?php echo '<div class="tag-list"><p class="category">'.$category_parent->name.'</p>' ?>
-				<h5 >
-					<?php
-					foreach($categories as $c) {
-						if($c->slug == $tag ){
-							$isActive = true;
-						}else{
-							$isActive = false;
-						}
-						echo '<a '.($isActive ? 'class="active"' : '' ).' href="/library/?tag='.$c->slug.'">'.$c->name.'</a>';
-						?>
-					<?php }  ?>
-				</h5>
-					</div>
-				<?php
+	 
 
 
 		}else if($post_type == 'news'){

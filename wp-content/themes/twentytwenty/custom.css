@@ -26,7 +26,7 @@
 #site-content .button.btn:hover,
 #site-content button.btn:hover {
     color: #F9A64A;
-    background-color: white;
+    background-color: transparent;
     border: 2px solid #F9A64A;
 }
 
@@ -109,7 +109,7 @@ a .title:hover {
 
 #site-header .header-inner {
     background-color: #0D87D0 !important;
-    height: 90px;
+    height: 110px;
     padding: 0;
     margin: 0;
     width: 100%;
@@ -168,7 +168,7 @@ a .title:hover {
 #site-header .primary-menu>li.current-menu-item:after {
     content: '';
     position: absolute;
-    background: #F8A54A;
+    background: white;
     height: 4px;
     width: calc(100% - 10px);
     left: 5px;
@@ -210,6 +210,7 @@ body #site-footer {
 
 #top-footer .logo {
     margin-bottom: 42px;
+    width: 120px;
 }
 
 #top-footer .socials {
@@ -386,7 +387,7 @@ body #site-footer {
     position: absolute;
     top: 130px;
     left: 30px;
-    background: #0D87D0;
+    background: #F9A64A;
     border-radius: 5px;
     font-size: 12px;
     font-weight: bold;
@@ -689,7 +690,8 @@ body #site-footer {
 
 #post-2 h4 {
     font-size: 44px;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
+    white-space: nowrap;
 }
 
 #post-2 #section-events h4 a {
@@ -738,7 +740,7 @@ body #site-footer {
 
 #post-2 .section-list .news .post .category {
     position: absolute;
-    background: #0D87D0;
+    background: #F9A64A;
     padding: 10px 30px;
     top: 40px;
     right: 0;
@@ -893,7 +895,9 @@ body #site-footer {
     color: white;
     font-size: 14px;
     padding: 10px 20px;
-    background: #0D87D0;
+    background: #F9A64A;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
 #post-2 .section-list .library .post.first .author {
@@ -1715,7 +1719,7 @@ body #site-footer {
 }
 
 .event-banner a {
-    border-radius: 5px;
+    /* border-radius: 5px;
     color: white;
     background-color: #F9A64B;
     font-size: 22px;
@@ -1723,7 +1727,7 @@ body #site-footer {
     margin-top: 20px;
     padding: 20px 30px;
     margin-top: 40px;
-    display: inline-block;
+    display: inline-block; */
 }
 
 .event-banner-content {
@@ -1985,13 +1989,13 @@ body #site-footer {
 
 .tag-list h5 {
     margin: 0;
-    padding-left: 170px;
+    /* padding-left: 170px; */
 }
 
 .tag-list .category {
     font-size: 16px;
     display: inline-block;
-    width: 150px;
+    /* width: 150px; */
     text-align: center;
     float: left;
     margin: 0;
@@ -2038,6 +2042,9 @@ header#site-header{
     display: none;
     top: 60px
 }
+#site-header .primary-menu .sub-menu li:hover{
+    background-color: #ccc;
+}
 
 #site-header .primary-menu .sub-menu:after,
 #site-header .primary-menu .sub-menu:before {
@@ -2049,6 +2056,7 @@ header#site-header{
     color: #282C33;
     border-bottom: 1px solid #f4f4f4;
     padding: 20px 0;
+    text-transform: capitalize;
 
 }
 
@@ -2372,3 +2380,4 @@ header#site-header{
     padding: 10px;
     color: #7c7400;
 }
+

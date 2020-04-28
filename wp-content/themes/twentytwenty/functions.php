@@ -902,7 +902,7 @@ if(!$user->exists()){
 		<h3>'.$title.'</h3>
 		<div>
 		<form action="/signup/" method="get">
-		<input name="user_name" minlength="6" placeholder="Your name" required />
+		<input type="text" name="user_name" minlength="6" placeholder="Your name" required />
 		<input type="email" name="user_email" placeholder="Your email" required />
 		<button type="submit">'.$signUpBtn.'</button>
 		</form>

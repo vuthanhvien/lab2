@@ -187,10 +187,15 @@
 		console.log(jQuery(child));
 	jQuery(child).append(jQuery('<div style="text-align:center; margin: 30px"><a href="/subscrice" target="_blank" class="button btn" style="padding: 22px 60px">Subscire now</a></div>'))
 
+	jQuery('#menu-item-451 > a').html('More &nbsp; <i class="fa fa-sort-desc"></i>')
 	console.log(totalChild);
 
 	</script>
 	<style>
+	#menu-item-451 >a > .fa{
+		position: absolute;
+		top: 20px
+	}
 	.slider-post{
 		position: relative;
 
