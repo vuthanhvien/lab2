@@ -7907,6 +7907,40 @@ function kv_rest_setting_password($reset_key, $user_login, $user_email, $ID) {
 
 add_action('admin_init', 'my_general_section');  
 function my_general_section() {  
+
+	add_settings_section(  
+        'allow_free_trial', // Section ID 
+        'Allow free trial', // Section Title
+        'allow_free_trial_callback', // Callback
+        'general' // What Page?  This makes the section show up on the General Settings Page
+	);
+
+	add_settings_field(
+		'allow_free_trial_check', // Option ID
+        'Allow free trial', // Label
+        'my_checkbox_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'allow_free_trial', // Name of our section
+        array( // The $args
+            'allow_free_trial_check' // Should match Option ID
+        )  
+	);
+	
+
+	add_settings_field(
+		'allow_free_trial_month', // Option ID
+        'Month allow free trial', // Label
+        'my_trial_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'allow_free_trial', // Name of our section
+        array( // The $args
+            'allow_free_trial_month' // Should match Option ID
+        )  
+	);
+	
+
+
+	
     add_settings_section(  
         'price_member_trial', // Section ID 
         'Price trial', // Section Title
@@ -7916,7 +7950,7 @@ function my_general_section() {
 
     add_settings_field( // Option 1
         'trial_standard_1_month', // Option ID
-        'Standard', // Label
+        'Standard ($)', // Label
         'my_textbox_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'price_member_trial', // Name of our section
@@ -7927,7 +7961,7 @@ function my_general_section() {
 	
 	add_settings_field( // Option 1
         'trial_premium_1_month', // Option ID
-        'Premium', // Label
+        'Premium ($)', // Label
         'my_textbox_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'price_member_trial', // Name of our section
@@ -7947,7 +7981,7 @@ function my_general_section() {
 
     add_settings_field( // Option 1
         'standard_1_month', // Option ID
-        'Standard', // Label
+        'Standard ($)', // Label
         'my_textbox_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'price_member_month', // Name of our section
@@ -7958,7 +7992,7 @@ function my_general_section() {
 	
 	add_settings_field( // Option 1
         'premium_1_month', // Option ID
-        'Premium', // Label
+        'Premium ($)', // Label
         'my_textbox_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'price_member_month', // Name of our section
@@ -7978,7 +8012,7 @@ function my_general_section() {
 
     add_settings_field( // Option 1
         'standard_1_year', // Option ID
-        'Standard', // Label
+        'Standard ($)', // Label
         'my_textbox_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'price_member_year', // Name of our section
@@ -7989,7 +8023,7 @@ function my_general_section() {
 	
 	add_settings_field( // Option 1
         'premium_1_year', // Option ID
-        'Premium', // Label
+        'Premium ($)', // Label
         'my_textbox_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'price_member_year', // Name of our section
@@ -7998,6 +8032,11 @@ function my_general_section() {
         )  
 	); 
 	
+
+    register_setting('general','allow_free_trial_check', 'esc_attr');
+	register_setting('general','allow_free_trial_month', 'esc_attr');
+
+
 
     register_setting('general','standard_1_year', 'esc_attr');
 	register_setting('general','premium_1_year', 'esc_attr');
@@ -8012,8 +8051,17 @@ function my_general_section() {
     register_setting('general','trial_premium_1_month', 'esc_attr');
 }
 
+function allow_free_trial_callback(){
+    echo '<p>Allow free trial after user register </p>';  
+
+}
 function price_member_trial_callback() { // Section Callback
     echo '<p>Price for trial 1 month</p>';  
+}
+
+function my_trial_callback($args){
+	$option = get_option($args[0]);
+    echo '<input type="number" step="1" placeholder="Months" id="'. $args[0] .'" name="'. $args[0] .'" value="' . $option . '"  />';
 }
 
 function price_member_callback() { // Section Callback
@@ -8022,6 +8070,16 @@ function price_member_callback() { // Section Callback
 
 function price_member_callback_year() { // Section Callback
     echo '<p>Price for member per year</p>';  
+}
+
+
+function my_checkbox_callback($args){
+	$option = get_option($args[0]);
+	if($option == 'on'){
+		echo '<input type="checkbox" id="'. $args[0] .'" name="'. $args[0] .'" checked />';
+	}else{
+		echo '<input type="checkbox" id="'. $args[0] .'" name="'. $args[0] .'"  />';
+	}
 }
 
 
