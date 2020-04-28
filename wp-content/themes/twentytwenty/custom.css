@@ -1,3 +1,23 @@
+#site-content .btn-cta.btn-long a {
+    padding-left: 80px;
+    padding-right: 80px;
+    max-width: 500px;
+}
+
+#site-content .lp-15{
+    letter-spacing: 15px;
+}
+#site-content .lp-5{
+    letter-spacing: 5px;
+}
+#site-content .event-sche-author a{
+    color: #F8A54A;
+    text-decoration: underline!important;
+    
+}
+#site-content .bg-white{
+    background: white;
+}
 #site-content .button.btn,
 #site-content .btn-cta a,
 #site-content button.btn {
@@ -8,27 +28,33 @@
     background-color: #F9A64A;
     height: 65px;
     border: 2px solid #F9A64A;
-    padding:  16px 30px;
+    padding: 20px 30px;
     font-weight: bold;
     display: inline-block;
+    line-height: 16px;
 }
 
-#site-content .btn-cta a{
+#site-content .btn-cta a {
     max-width: 230px;
     height: auto;
     min-height: 65px;
 }
-#site-content .btn-cta{
+
+#site-content .btn-cta {
     display: block;
 }
-.blocks-gallery-grid, .wp-block-gallery{
+
+.blocks-gallery-grid,
+.wp-block-gallery {
     width: 100%;
 }
+
 #site-content .btn-cta a,
 #site-content .button.btn a,
-#site-content button.btn a{
+#site-content button.btn a {
     color: white;
 }
+
 #site-content .btn-cta a:hover,
 #site-content .button.btn:hover,
 #site-content button.btn:hover {
@@ -37,26 +63,26 @@
     border: 2px solid #F9A64A;
 }
 
-#site-content .button.btn:hover a{
+#site-content .button.btn:hover a {
     color: #F9A64A;
 }
 
 
 .cld-like-count-wrap.cld-count-wrap,
-.cld-dislike-count-wrap.cld-count-wrap{
+.cld-dislike-count-wrap.cld-count-wrap {
     font-size: 16px;
     font-weight: bold;
     margin-right: 20px;
     color: #666;
 }
 
-*:focus{
+*:focus {
     outline: 0;
 }
 
 
 
-.text-center{
+.text-center {
     text-align: center;
 }
 
@@ -168,7 +194,7 @@ a .title:hover {
 
 
 #site-header button.search {
-    padding:0px  10px;
+    padding: 0px 10px;
     background: transparent;
     position: absolute;
     right: 0;
@@ -343,7 +369,8 @@ body #site-footer {
     border-radius: 5px;
     margin-top: 40px;
 }
-#site-content .auth-page #wp-submit:hover{
+
+#site-content .auth-page #wp-submit:hover {
     border: 2px solid #F9A64B;
     background: white;
     color: #F9A64B;
@@ -519,15 +546,17 @@ body #site-footer {
     background: #0D87D0;
     color: white;
 }
-.main-banner .blur{
+
+.main-banner .blur {
     height: 100%;
     width: 100%;
     background: rgba(0, 0, 0, 0.4);
     position: absolute;
-    top:0 ;
+    top: 0;
     left: 0
 }
-.main-banner .section-inner{
+
+.main-banner .section-inner {
     position: relative;
     z-index: 1;
 }
@@ -598,7 +627,7 @@ body #site-footer {
 }
 
 .main-banner {
-    padding:  0;
+    padding: 0;
     background-size: cover;
     background-position: center;
     min-height: 600px;
@@ -665,17 +694,20 @@ body #site-footer {
     background: white;
     color: #F9A64B;
 }
-#cta .wp-block-image{
+
+#cta .wp-block-image {
     width: 100px;
     float: left;
 }
-#cta  p{
+
+#cta p {
     padding-left: 140px;
     padding-top: 20px;
     width: 365px;
     position: relative;
 }
-#cta  a:after{
+
+#cta a:after {
     content: '';
     width: 37px;
     height: 24px;
@@ -688,27 +720,33 @@ body #site-footer {
     right: -27px;
 
 }
-#cta{
+
+#cta {
     padding: 70px 0;
 }
-#cta h3{
+
+#cta h3 {
     color: white;
-    
+
 }
-#cta  a{
+
+#cta a {
     font-weight: bold;
     font-size: 24px;
     color: #241E1F;
 }
-#cta  a:hover{
-    text-decoration: underline!important;
+
+#cta a:hover {
+    text-decoration: underline !important;
 }
+
 #cta .cta-1,
-#cta .cta-2{
+#cta .cta-2 {
     background: white;
     padding: 20px 60px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
+
 #post-2 .section-list {
     padding-top: 70px;
 }
@@ -964,7 +1002,7 @@ body #site-footer {
 }
 
 #section-insiders .wp-block-group__inner-container::before,
-    #section-insiders .wp-block-group__inner-container::after{
+#section-insiders .wp-block-group__inner-container::after {
     content: '';
     height: 100%;
     position: absolute;
@@ -976,7 +1014,8 @@ body #site-footer {
     background-repeat: no-repeat;
     background-position: bottom;
 }
-#section-insiders .wp-block-group__inner-container::before{
+
+#section-insiders .wp-block-group__inner-container::before {
     left: unset;
     right: -320px;
     width: 320px;
@@ -1213,10 +1252,11 @@ body #site-footer {
     display: block;
 
 }
-.post-share:hover{
+
+.post-share:hover {
     background: #0D87D0;
     color: white;
-                
+
 }
 
 .post-share span {
@@ -1280,13 +1320,15 @@ body #site-footer {
     padding: 10px 10px;
 }
 
-.post-action .wpulike .count-box{
+.post-action .wpulike .count-box {
     display: none;
 }
-.post-action .wpulike button:after{
+
+.post-action .wpulike button:after {
     width: 30px;
     height: 30px;
 }
+
 .post-header .icon {
     margin-left: 30px;
     margin-right: 10px;
@@ -2048,7 +2090,8 @@ body #site-footer {
     margin-right: -6px;
     display: none !important;
 }
-header#site-header{
+
+header#site-header {
     position: sticky;
     top: -50px;
     z-index: 100;
@@ -2067,7 +2110,8 @@ header#site-header{
     display: none;
     top: 60px
 }
-#site-header .primary-menu .sub-menu li:hover{
+
+#site-header .primary-menu .sub-menu li:hover {
     background-color: #ccc;
 }
 
@@ -2310,24 +2354,25 @@ header#site-header{
     font-weight: 500;
     font-size: 16px;
 }
+
 .list-banner h3 {
     margin: 40px;
 }
 
-.list-banner .line{
+.list-banner .line {
     width: 100px;
     height: 2px;
     background: white;
     margin: 40px auto;
 }
 
-.wpcf7{
+.wpcf7 {
     position: fixed;
     z-index: 999;
     background: rgba(0, 0, 0, 0.4);
     height: 100vh;
     width: 100vw;
-    top:0;
+    top: 0;
     left: 0;
     display: flex;
     align-items: center;
@@ -2335,7 +2380,7 @@ header#site-header{
     display: none;
 }
 
-.wpcf7 form{
+.wpcf7 form {
     background: #0D87D0;
     max-width: 700px;
     width: 100%;
@@ -2344,22 +2389,25 @@ header#site-header{
 }
 
 .wpcf7 form p,
-.wpcf7 form h3{
+.wpcf7 form h3 {
     color: white;
 }
 
-.wpcf7 form h3{
+.wpcf7 form h3 {
     font-size: 24px;
     margin-top: 20px;
 
 }
-.wpcf7 form  img{
+
+.wpcf7 form img {
     margin: 0 auto;
 }
-.wpcf7 orm p{
+
+.wpcf7 orm p {
     font-size: 16px;
 }
-.wpcf7 .row-input{
+
+.wpcf7 .row-input {
     display: flex;
     align-items: center;
 
@@ -2367,12 +2415,12 @@ header#site-header{
     margin-bottom: 50px;
 }
 
-.wpcf7 .row-input .your-email{
+.wpcf7 .row-input .your-email {
     height: 50px;
     flex: 1;
 }
 
-.wpcf7 .row-input input[type=submit]{
+.wpcf7 .row-input input[type=submit] {
     color: white;
 
     font-size: 16px;
@@ -2382,7 +2430,7 @@ header#site-header{
     border-radius: 0;
 }
 
-.wpcf7 .wpcf7-not-valid-tip{
+.wpcf7 .wpcf7-not-valid-tip {
     color: white;
     font-size: 12px;
 
@@ -2390,7 +2438,7 @@ header#site-header{
     margin-top: 10px;
 }
 
-.wpcf7 div.wpcf7-mail-sent-ok{
+.wpcf7 div.wpcf7-mail-sent-ok {
     background: white;
     font-size: 16px;
     padding: 10px;
@@ -2398,11 +2446,10 @@ header#site-header{
 
 }
 
-.wpcf7 div.wpcf7-validation-errors, 
-.wpcf7 div.wpcf7-acceptance-missing{
+.wpcf7 div.wpcf7-validation-errors,
+.wpcf7 div.wpcf7-acceptance-missing {
     background: white;
     font-size: 16px;
     padding: 10px;
     color: #7c7400;
 }
-
