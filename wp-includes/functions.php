@@ -8215,16 +8215,18 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 function save_extra_user_profile_fields( $user_id ) {
 
-	if ( !current_user_can( 'edit_user', $user_id ) ) { 
-		return false; 
+	$isFreeTrial = get_option('allow_free_trial_check');
+	if($isFreeTrial == 'on'){
+		$monthFreeTrial  = get_option('allow_free_trial_month');
+		$monthFreeTrial = $monthFreeTrial ? $monthFreeTrial : 3;
+
+
+		$current = date('Y-m-d');
+		$current = strtotime( "+".$monthFreeTrial." month", strtotime( $current ) );
+		update_field('date_end_premium',$current, 'user_'.$user_id );
+		
 	}
 
-	$current = date('Y-m-d');
-	$current = strtotime( "+3 month", strtotime( $current ) );
-
-	
-	// update_user_meta( $user_id, 'date_end_premium', $current);   
-	update_field('date_end_premium',$current, 'user_'.$user_id );
 }
 add_action( 'user_register', 'save_extra_user_profile_fields' );
 	
