@@ -11,6 +11,13 @@
 
 $user = wp_get_current_user();
 
+ 
+if($user->exists()){
+}else{
+    wp_redirect('/login');
+}
+
+
 $options = Array();
 
 $type = $_GET['type'];
@@ -22,7 +29,19 @@ if( $type != 'premium'){
 $options['trial'] = $type == 'premium' ?  get_option('trial_standard_1_month') : get_option('trial_premium_1_month')  ;
 $options['month'] = $type == 'premium' ?  get_option('standard_1_month') * 6 : get_option('premium_1_month') * 6 ;
 $options['year'] = $type == 'premium' ?  get_option('standard_1_year') : get_option('premium_1_year')  ;
+$vi = $GLOBALS['vi'];
 
+if($vi){
+    $options['trial']  = number_format($options['trial']* 23000) .' vnd';
+    $options['month']  =  number_format($options['month']* 23000) .' vnd';
+    $options['year']  =  number_format($options['year']* 23000) .' vnd';
+}else{
+   
+
+    $options['trial']  = '$'.$options['trial'].'.00';
+    $options['month']  = '$'.$options['month'].'.00';
+    $options['year']  = '$'.$options['year'].'.00';
+}
 
 get_header();
 
@@ -42,16 +61,79 @@ if($fields['date_end_premium'] && $type =='premium'){
 <div class="profile">
 <div class="container">
             <div class="header clearfix">
-                <?php if($type == 'premium') {
-                    ?>
-                        <h3>Payment premium &nbsp;&nbsp;<a style="font-size: 16px;color: #0D87D0" href="/payment/?type=standard">Go stardard</a></h3>
-                    <?php
+                <?php 
+                if($GLOBALS['vi']){
+
+                    if($type == 'premium') 
+                    {
+                        ?> <h3>Thanh toán gói premium &nbsp;&nbsp;<a style="font-size: 16px;color: #0D87D0" href="/vi/payment/?type=standard">Qua gói stardard</a></h3> <?php
+                    }else{
+                        ?> <h3>Thanh toán gói standard &nbsp;&nbsp;<a style="font-size: 16px;color: #0D87D0"  href="/vi/payment/?type=premium">Qua gói premium</a></h3> <?php
+                    } 
+
+                    if($type == 'premium'){
+                        echo  '
+                        <ul>
+                        <li>Truy cập mọi số báo và tải được bản in preprint</li>
+                        <li>Không quảng cáo, truy cập website vô hạn</li>
+                        <li>Tải được email newsletter</li>
+                        <li>Giảm 10% khi đăng ký tham dự Sự Kiện</li>
+                        <li> Giảm 30% cho Báo Digital Strategy Lab</li>
+                        <li>Podcast deep Digital/Tech dành riêng cho thành viên.</li>
+                        <li> Nhận 1 tháng đầu miễn phí cho tài khoản thành viên mới</li>
+                        </ul>';
+                    }else{
+                        echo  '
+                        <ul>
+                        <li><b> Nhận nội dung độc quyền, nội dung gốc từ Digital Strategy Lab hàng tháng và hàng quý (bao gồm series </b></li>
+                        <li>Truy cập mọi số báo và tải được bản in preprint</li>
+                        <li>Không quảng cáo, truy cập website vô hạn</li>
+                        <li>Tải được email newsletter</li>
+                        <li>Giảm 10% khi đăng ký tham dự Sự Kiện</li>
+                        <li> Giảm 30% cho Báo Digital Strategy Lab</li>
+                        <li>Podcast deep Digital/Tech dành riêng cho thành viên.</li>
+                        <li> Nhận 1 tháng đầu miễn phí cho tài khoản thành viên mới</li>
+                        </ul>
+                        ';
+                    }
+
+
+
                 }else{
-                    ?>
-                        <h3>Payment standard &nbsp;&nbsp;<a style="font-size: 16px;color: #0D87D0"  href="/payment/?type=premium">Go premium</a></h3
-                <?php
-                } ?>
-                <p style="width: 70%">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    if($type == 'premium') 
+                    {
+                        ?> <h3>Payment for premium &nbsp;&nbsp;<a style="font-size: 16px;color: #0D87D0" href="/payment/?type=standard">Go stardard</a></h3> <?php
+                    }else{
+                        ?> <h3>Payment for standard &nbsp;&nbsp;<a style="font-size: 16px;color: #0D87D0"  href="/payment/?type=premium">Go premium</a></h3> <?php
+                    } 
+
+                    if($type == 'premium'){
+                        echo  '
+                        <ul>
+                        <li>Weekly article issues access and articles preprint download</li>
+                        <li>Ad-free, unlimited website access</li>
+                        <li>The Download email newsletter</li>
+                        <li>10% discount to our events</li>
+                        <li>30% Digital Strategy Lab Press discount</li>
+                        <li>Deep Digital/Tech, our subscriber-only podcast </li>
+                        <li>Get 1 month free trial for your first order </li>
+                        </ul>';
+                    }else{
+                        echo  '
+                        <ul>
+                        <li><b> Monthly/Quarterly exclusive and original digital content (guide series, digital books, collections, magazine, cases etc)</b></li>
+                        <li>Weekly article issues access and articles preprint download</li>
+                        <li>Ad-free, unlimited website access</li>
+                        <li>The Download email newsletter</li>
+                        <li>10% discount to our events</li>
+                        <li>30% Digital Strategy Lab Press discount</li>
+                        <li>Deep Digital/Tech, our subscriber-only podcast </li>
+                        <li>Get 1 month free trial for your first order </li>
+                        </ul>';
+                    }
+                }
+                ?>
             </div>
             <hr style="margin: 40px 0" >
             <div class="table-responsive">
@@ -60,30 +142,24 @@ if($fields['date_end_premium'] && $type =='premium'){
                 <div class="plans">
                     <div class="plan-inner" >
                     <div class="plan <?php echo $isEx ? 'disabled' : '' ?>"  id="plan-trial">
-                        <h2>Trial plan 1 month</h2>
-                        <h3>$<?php echo $options['trial']; ?>.00</h3>
+                        <h2><?php echo $vi ? 'Xài thử 1 tháng' : 'Trial plan 1 month' ?></h2>
+                        <h3><?php echo $options['trial']; ?></h3>
                         
-                        <p>Lorem ipsum dolor sit amet, consectetur </p>
-                        <p>Lorem ipsum dolor sit amet</p>
-                        <button id="select-trial">Select</button>
+                        <button id="select-trial"><?php echo $vi ? 'Chọn' : 'Select' ?></button>
                     </div>
                     </div>
                     <div class="plan-inner">
                     <div class="plan" id="plan-month">
-                        <h2>For 6 month</h2>
-                        <h3>$<?php echo $options['month']; ?>.00</h3>
-                        <p>Lorem ipsum dolor sit amet</p>
-                        <p>Lorem ipsum dolor sit amet</p>
-                        <button id="select-month">Select</button>
+                        <h2><?php echo $vi ? 'Mua cho 6 tháng' : 'For 6 months' ?></h2>
+                        <h3><?php echo $options['month']; ?></h3>
+                        <button id="select-month"><?php echo $vi ? 'Chọn' : 'Select' ?></button>
                     </div>
                     </div>
                     <div class="plan-inner">
                     <div class="plan" id="plan-year">
-                        <h2>For 1 year</h2>
-                        <h3>$<?php echo $options['year']; ?>.00</h3>
-                        <p>Lorem ipsum dolor sit amet</p>
-                        <p>Lorem ipsum dolor sit amet</p>
-                        <button id="select-year">Select</button>
+                        <h2><?php echo $vi ? 'Mua cho 1 năm' : 'For 1 year' ?></h2>
+                        <h3><?php echo $options['year']; ?></h3>
+                            <button id="select-year"><?php echo $vi ? 'Chọn' : 'Select' ?></button>
                     </div>
                     </div>
                 </div>
@@ -91,11 +167,11 @@ if($fields['date_end_premium'] && $type =='premium'){
                 <br />
                 
                 <div class="plan-action">
-                    <p>Plan: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b id="plan"></b></p>
-                    <p>Total: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b id="price">0.00$</b></p>
+                    <p><?php echo $vi ? 'Gói' : 'Plan' ?>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b id="plan"></b></p>
+                    <p><?php echo $vi ? 'Tổng cộng' : 'Total' ?>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b id="price">0.00$</b></p>
                     <br />
                     <br />
-                    <button type="submit" id="submit" class="btn btn-default">Make payment with VNPAY</button>
+                    <button type="submit" style="text-transform: unset" id="submit" class="btn btn-default"><?php echo $vi ? 'Thanh toán qua VNPAY' : 'Make payment with VNPAY' ?></button>
                     </div>
                     <br />
                     <br />
@@ -113,8 +189,8 @@ if($fields['date_end_premium'] && $type =='premium'){
             $('#plan-trial').addClass('selected');
             $('#plan-month').removeClass('selected');
             $('#plan-year').removeClass('selected');
-            $('#price').html('$<?php echo $options['trial'];  ?>.00')
-            $('#plan').html('Trial for 1 month');
+            $('#price').html('<?php echo $options['trial'];  ?>')
+            $('#plan').html('<?php echo $vi ? 'Xài thử 1 tháng' : 'Trial plan 1 month' ?>');
             selected = 'trial';
 
         })
@@ -123,16 +199,16 @@ if($fields['date_end_premium'] && $type =='premium'){
             $('#plan-trial').removeClass('selected');
             $('#plan-month').addClass('selected');
             $('#plan-year').removeClass('selected');
-            $('#price').html('$<?php echo $options['month'];  ?>.00')
-            $('#plan').html('6 months');
+            $('#price').html('<?php echo $options['month'];  ?>')
+            $('#plan').html('<?php echo $vi ? 'Mua cho 6 tháng' : 'For 6 months' ?>');
             selected = 'month';
         })
         $('#select-year').click(function(){
             $('#plan-trial').removeClass('selected');
             $('#plan-month').removeClass('selected');
             $('#plan-year').addClass('selected');
-            $('#price').html('$<?php echo $options['year'];  ?>.00')
-            $('#plan').html('1 year');
+            $('#price').html('<?php echo $options['year'];  ?>')
+            $('#plan').html('<?php echo $vi ? 'Mua cho 1 năm' : 'For 1 year' ?>');
             selected = 'year';
         })
 

@@ -68,7 +68,7 @@ $vi = $GLOBALS['vi'];
 					<?php echo $vi ? 'Bạn không có quyền xem bài viết, hãy đăng nhập hoặc theo dõi' : "You don't have permission to read  this article, please login or subscice" ?>
 						</p>
 						<a style="color: #0D87D0" class="btn" href="/login"><b><?php echo !$vi ? 'Go to login' : 'Đi tới đăng nhập' ?></b></a> - 
-						 <a style="color: #0D87D0"  class="btn" href="/subscrice"><b><?php echo !$vi ? 'Go to login' : 'Đi tới đăng ký' ?> </b></a>
+						 <a style="color: #0D87D0"  class="btn" href="/Subscribe"><b><?php echo !$vi ? 'Go to login' : 'Đi tới đăng ký' ?> </b></a>
 					</div>
 
 			</div>

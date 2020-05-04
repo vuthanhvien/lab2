@@ -9,7 +9,15 @@
  */
 
 get_header();
+
+
 $category = $post->post_name;
+
+$highlightStr = $GLOBALS['vi'] ?  'SỰ KIỆN NỔI BẬT' : 'HIGHLIGHED EVENT';
+$allEventStr = $GLOBALS['vi'] ? 'TẤT CẢ SỰ KIỆN' : 'ALL EVENT'  ;
+$discoverStr = $GLOBALS['vi'] ? 'TÌM HIỂU THÊM': 'DISCOVER MORE';
+
+$prefix = $GLOBALS['vi'] ? '/vi' : '';
 
 $queryFirst = new WP_Query( 
 	array(
@@ -42,9 +50,9 @@ $queryFirst = new WP_Query(
 				echo $img;
 				echo '<div class="blur"></div> ';
 				echo'<div class="event-banner-content">';
-				echo '<p class="hash">HIGHLIGH EVENT</p>';
+				echo '<p class="hash">'.$highlightStr.'</p>';
 				echo '<h3 class="title">'.get_the_title().'</h3>';
-				echo '<a href="'.get_the_permalink().'" class="button btn">DISCOVER MORE</a>';
+				echo '<a href="'.get_the_permalink().'" class="button btn">'.$discoverStr.'</a>';
 				echo'</div>';
 			}
 		}
@@ -75,11 +83,13 @@ $queryFirst = new WP_Query(
 
 
 	echo $post->post_content;
+	echo '<br />';
+	echo '<br />';
 
 	if($type == 'all'){
-		echo '<div class="tab-event"><a href="/event/?type=highlight" >HIGHLIGHTED EVENT</a><a href="/event/?type=all" class="active">ALL EVENT</a></div>';
+		echo '<div class="tab-event"><a href="'.$prefix.'/event/?type=highlight" >'.$highlightStr.'</a><a href="'.$prefix.'/event/?type=all" class="active">'.$allEventStr.'</a></div>';
 	}else{
-		echo '<div class="tab-event"><a href="/event/?type=highlight" class="active">HIGHLIGHTED EVENT</a><a href="/event/?type=all">ALL EVENT</a></div>';
+		echo '<div class="tab-event"><a href="'.$prefix.'/event/?type=highlight" class="active">'.$highlightStr.'</a><a href="'.$prefix.'/event/?type=all">'.$allEventStr.'</a></div>';
 	}
 
 	if ($query->have_posts()) {

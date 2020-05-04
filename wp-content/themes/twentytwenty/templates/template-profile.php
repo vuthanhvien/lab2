@@ -77,45 +77,49 @@ if($_POST['type']){
 
 $tab = $_GET['tab'] ?  $_GET['tab'] : 'profile';
 
+$vi = $GLOBALS['vi'];
+
+$prefix = $vi ? '/vi' : '';
+
 get_header();
 ?>
 
 <main id="site-content" role="main">
 <div class="section-inner" >
 <div class="profile">
-    <h4>Manage your account</h4>
+    <h4><?php echo $vi ? 'Quản lý tài khoản' : 'Manage your account' ?> </h4>
     <br />
 
-    <a class="profile-tab <?php echo $tab =='profile' ? 'active' : '' ?>" href="/profile/?tab=profile" >Profile</a>
-    <a class="profile-tab <?php echo $tab =='plan' ? 'active' : '' ?> " href="/profile/?tab=plan">Subscription plan</a>
+    <a class="profile-tab <?php echo $tab =='profile' ? 'active' : '' ?>" href="<?php echo $prefix ?>/profile/?tab=profile" ><?php echo $vi ? 'Thông tin cá nhân' : 'Profile' ?> </a>
+    <a class="profile-tab <?php echo $tab =='plan' ? 'active' : '' ?> " href="<?php echo $prefix ?>/profile/?tab=plan"><?php echo $vi ? 'Thông tin gói' : 'Subscription plan' ?></a>
 
     <?php if($tab == 'profile') { ?>
 
-   <form action="/profile/" method="post">
+   <form action="<?php echo $prefix ?>/profile/" method="post">
        <input name="type" value="profile" type="hidden"  />
     <div class="profile-item">
-        <p>First name</p>
+        <p><?php echo $vi ? 'Họ' : 'First name' ?></p>
         <input name="first_name" placeholder="First name" value="<?php echo $user->first_name ?>" />
     </div>
     <div class="profile-item">
-        <p>Last name</p>
+        <p><?php echo $vi ? 'Tên' : 'Last name' ?></p>
         <input name="last_name" placeholder="Last name"  value="<?php echo $user->last_name ?>" />
     </div>
     <div class="profile-item">
-        <p>Email</p>
+        <p><?php echo $vi ? 'Email' : 'Email' ?></p>
         <input disabled placeholder="Email" value="<?php echo $user->user_email ?>" />
     </div>
     <div class="profile-item">
-        <p>Phone</p>
+        <p><?php echo $vi ? 'Số điện thoại' : 'Phone' ?></p>
         <input name="phone"  placeholder="Phone"  value="<?php echo get_field('phone', 'user_'.$user->ID) ?>" />
     </div>
     <div style="text-align: right">
-    <a href="/wp-login.php?action=logout">Logout</a>
+    <a href="/wp-login.php?action=logout"><?php echo $vi ? 'Thoát' : 'Logout' ?></a>
     &nbsp;
     &nbsp;
     &nbsp;
     &nbsp;
-    <button>Save change</button>
+    <button  class="btn" ><?php echo $vi ? 'Lưu lại' : 'Save change' ?></button>
     
    
     </div>
@@ -123,18 +127,18 @@ get_header();
 
   
     <br />
-    <form action="/profile/" method="post">
+    <form action="<?php echo $prefix ?>/profile/" method="post">
        <input name="type" value="password" type="hidden"  />
     <div class="profile-item">
-        <p>Old password</p>
+        <p><?php echo $vi ? 'Mật khẩu cũ' : 'Old password' ?></p>
         <input name="old_password" type="password" required placeholder="Old  Password" />
     </div>
     <div class="profile-item">
-        <p>New password</p>
+        <p><?php echo $vi ? 'Mật khẩu mỡi' : 'New password' ?></p>
         <input name="new_password" type="password" minlength="8" required placeholder="Password" />
     </div>
     <div class="profile-item">
-        <p>Password confirm</p>
+        <p><?php echo $vi ? 'Mật khẩu xác nhận' : 'Password confirm' ?></p>
         <input name="confirm_password" type="password"  minlength="8" required placeholder="Password" />
     </div>
 
@@ -148,7 +152,7 @@ get_header();
         }
      ?>
     &nbsp; &nbsp; &nbsp; &nbsp;
-    <button type="submit">Change password</button>
+    <button class="btn" type="submit"><?php echo $vi ? 'Đổi mật khẩu' : 'Change password' ?></button>
     </div>
     <br />
     <br />
@@ -163,19 +167,19 @@ get_header();
         ?>
         <?php if($date_end_standard) {  ?>
         <div class="plan">
-            <p>Your plan: <b>Standard </b></p>
-            <p>Expire Date: <b><?php echo $date_end_standard ?></b> </p>
+            <p><?php echo $vi ? 'Gói' : 'Your plan' ?>: <b>Standard</p>
+            <p><?php echo $vi ? 'Ngày hết hạn' : 'Expire date' ?>: <b><?php echo $date_end_standard ?></b> </p>
         </div>
         <?php } ?>
         <?php if($date_end_premium) {  ?>
         <div class="plan">
-            <p>Your plan: <b>Premium </b></p>
-            <p>Expire Date: <b><?php echo $date_end_premium ?></b> </p>
+            <p><?php echo $vi ? 'Gói' : 'Your plan' ?>: <b>Premium </b></p>
+            <p><?php echo $vi ? 'Ngày hết hạn' : 'Expire date' ?>: <b><?php echo $date_end_premium ?></b> </p>
         </div>
         <?php } ?>
 
         <?php if(!$date_end_premium  && !$date_end_standard ){
-                echo "<p>You don't have any plan, let subscrice</p>";
+                echo $vi ? "<p>Bạn chưa mua gói, hãy theo dõi </p>" : "<p>You don't have any plan, let subscribe</p>";
             } ?>
 
 
@@ -184,20 +188,20 @@ get_header();
 
         <div style="text-align: right">
         <?php if(!$date_end_premium && $date_end_standard) {  ?>
-            <a  href="/payment?type=premium" class="button" >Upgrade plan</a>
+            <a  href="<?php echo $prefix ?>/payment?type=premium" class="button btn" ><?php echo $vi ? 'Năng cấp gói' : 'Upgrade plan' ?></a>
             &nbsp;
             &nbsp;
             &nbsp;
 
-            <a href="/payment?type=standard" class="button" >Renew plan</a>
+            <a href="<?php echo $prefix ?>/payment?type=standard" class="button btn" ><?php echo $vi ? 'Gia hạn gói' : 'Renew plan' ?></a>
             <?php } ?>
 
         <?php if($date_end_premium) {  ?>
-            <a href="/payment?type=premium" class="button" >Renew plan</a>
+            <a href="<?php echo $prefix ?>/payment?type=premium" class="button btn" ><?php echo $vi ? 'Gia hạn gói' : 'Renew plan' ?></a>
             <?php } ?>
 
             <?php if(!$date_end_premium  && !$date_end_standard ){
-                echo '<a href="/subscrice" class="button" >Subscrice</a>';
+                echo $vi ?  '<a href="'.$prefix.'/subscribe" class="button" >Theo dõi</a>' : '<a href="'.$prefix.'/subscribe" class="button" >Subscribe</a>';
 
             } ?>
     </div>

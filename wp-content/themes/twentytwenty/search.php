@@ -1,10 +1,13 @@
-<?php get_header(); ?>
+<?php get_header();
+
+$vi = $GLOBALS['vi'];
+?>
 
 
 <main id="site-content" role="main">
 	<div class="section-inner">
 
-	<h3>Search result: <?php echo $s; ?></h3>
+	<h4><?php echo $vi ? 'Kết quả tìm kiếm': 'Search result'?>: <?php echo $s; ?></h4>
 
 
 <?php
@@ -55,7 +58,7 @@ if ($query->have_posts()) {
 	wp_reset_postdata();
 
 }else{
-	echo '<div class="npost"><p>No post</p></div>';
+	echo '<div class="npost"><p>'.($vi ? 'Không tìm thấy bài viết': 'No post available' ).'</p></div>';
 }
  ?>
 

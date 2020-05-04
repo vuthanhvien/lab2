@@ -887,9 +887,14 @@ add_shortcode( 'posts', 'create_shortcode_posts' );
 
 
 function create_shortcode_signup($args , $content) {
-$title= $GLOBALS['vi']  ? 'Nhận thông tin hàng ngày từ của  Digital Strategy Lab'  :  'Get a Daily Newsletter from Digital Strategy Lab'; 
+$title= $GLOBALS['vi']  ? 'Nhận Newsletter hàng ngày từ Digital Strategy Lab'  :  'Get a Daily Newsletter from Digital Strategy Lab'; 
 $signUpBtn = $GLOBALS['vi']  ? 'ĐĂNG KÝ' : 'SIGN UP';
-$subscriceBtn = $GLOBALS['vi']  ? 'THEO DÕI' : 'SUBSCRICE';
+$SubscribeBtn = $GLOBALS['vi']  ? 'THEO DÕI' : 'Subscribe';
+$nameTitle = $GLOBALS['vi']  ? 'Họ và tên' : 'Your name';
+$emailTitle = $GLOBALS['vi']  ? 'Email' : 'Your email';
+
+$prefix = $GLOBALS['vi'] ? '/vi'  : '';
+
 	$posts =  do_shortcode('[posts fields="img,title" limit="3"]');
 
 	$html  = '<div class="main-banner" style="background-image: url(/assets/night.jpg)"><div class="blur"></div>';
@@ -901,9 +906,9 @@ if(!$user->exists()){
 	<div class="form">
 		<h3>'.$title.'</h3>
 		<div>
-		<form action="/signup/" method="get">
-		<input type="text" name="user_name" minlength="6" placeholder="Your name" required />
-		<input type="email" name="user_email" placeholder="Your email" required />
+		<form action="'.$prefix.'/signup/" method="get">
+		<input type="text" name="user_name" minlength="6" placeholder="'.$nameTitle.'" required />
+		<input type="email" name="user_email" placeholder="'.$emailTitle.'" required />
 		<button type="submit">'.$signUpBtn.'</button>
 		</form>
 		</div>
@@ -915,12 +920,12 @@ if(!$user->exists()){
 		<div class="form">
 		<h3>'.$title.'</h3>
 		<div>
-		<form action="/payment/" method="get">
+		<form action="'.$prefix.'/payment/" method="get">
 		<select name="type"" required />
 			<option value="standard" >Standard</option>
 			<option value="premium">Premium</option>
 		</select>
-		<button type="submit">'.$subscriceBtn.'</button>
+		<button type="submit">'.$SubscribeBtn.'</button>
 		</form>
 		</div>
 	</div>

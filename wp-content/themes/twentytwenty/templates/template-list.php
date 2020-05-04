@@ -9,6 +9,10 @@
  */
 
 get_header();
+$prefix = $GLOBALS['vi'] ? '/vi' : '';
+
+$vnEcomStr = $GLOBALS['vi'] ? 'NỀN KINH TẾ KỸ THUẬT SỐ VIỆT NAM' : 'VIETNAM DIGITAL ECONOMY';
+
 ?>
 
 <main id="site-content" role="main">
@@ -24,9 +28,16 @@ get_header();
 			$tag = $_GET['tag'];
 			$category_parent = get_category_by_slug( 'library' );
 			$categories = get_categories(array('child_of' => $category_parent->term_taxonomy_id));
+
+			if($tag == 'vietnam-digital-economy' ){
+				$isActive = true;
+			}else{
+				$isActive = false;
+			}
+
 			?>
 			<div  class="tag-list">
-				<h5 style="padding: 0"><a href="/library/?tag=vietnam-digital-economy" >VIETNAM DIGITAL ECONOMY</a></h5>
+				<h5 style="padding: 0"><a <?php echo $isActive ? 'class="active"' : ''  ?>  href="<?php echo $prefix ?>/library/?tag=vietnam-digital-economy" ><?php echo $vnEcomStr ?> </a></h5>
 			</div>
 			<div  class="tag-list"> 
 			<h5 >
@@ -37,7 +48,7 @@ get_header();
 					}else{
 						$isActive = false;
 					}
-					echo '<a '.($isActive ? 'class="active"' : '' ).' href="/library/?tag='.$c->slug.'">'.$c->name.'</a>';
+					echo '<a '.($isActive ? 'class="active"' : '' ).' href="'.$prefix.'/library/?tag='.$c->slug.'">'.$c->name.'</a>';
 					?>
 				<?php }  ?>
 			</h5>
@@ -62,7 +73,7 @@ get_header();
 					}else{
 						$isActive = false;
 					}
-					echo '<a '.($isActive ? 'class="active"' : '' ).' href="/news/?tag='.$c->slug.'">'.$c->name.'</a>';
+					echo '<a '.($isActive ? 'class="active"' : '' ).' href="'.$prefix.'/news/?tag='.$c->slug.'">'.$c->name.'</a>';
 					?>
 				<?php }  ?>
 			</h5>

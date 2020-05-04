@@ -14,6 +14,8 @@ $user = wp_get_current_user();
 
 $vi = $GLOBALS['vi'];
 
+$prefix = $vi ? '/vi' : '';
+
 
 ?><!DOCTYPE html>
 
@@ -46,25 +48,32 @@ $vi = $GLOBALS['vi'];
 
 		<?php
 		wp_body_open();
+
+		$currentPath = $_SERVER['REQUEST_URI'];
+		if($vi) {
+			$currentPath = substr($currentPath, 3); 
+		}else{
+			$currentPath = $currentPath;
+		}
 		?>
 
 		<header id="site-header" class="header-footer-group" role="banner">
 			<div class="header-top">
 			<div class="section-inner">
-				<a href="/">English</a>
-				<a href="/vi/">Tiếng Việt</a>
+				<a href="/en<?php echo $currentPath ?>">English</a>
+				<a href="/vi<?php echo $currentPath ?>">Tiếng Việt</a>
 
 				<?php 
 					if($user->exists()){
 						?>
-							<a class="avatar-profile" href="/profile"><?php echo get_avatar($user->ID); echo ' '; echo $user->user_login; ?> </a>
-							<a class="button" href="/subscrice"><?php echo $vi ?  'Theo dõi'  : 'Subscrice' ?></a>
+							<a class="avatar-profile" href="<?php echo $prefix  ?>/profile"><?php echo get_avatar($user->ID); echo ' '; echo $user->user_login; ?> </a>
+							<a class="button" href="<?php echo $prefix  ?>/subscribe"><?php echo $vi ?  'Theo dõi'  : 'Subscribe' ?></a>
 						<?php
 
 					}else{
 						?>
-							<a class="button" href="/login"><?php echo $vi ?  'Đăng nhập'  : 'Login' ?> </a>
-							<a class="button" href="/subscrice"><?php echo $vi ?  'Theo dõi'  : 'Subscrice' ?></a>
+							<a class="button" href="<?php echo $prefix  ?>/login"><?php echo $vi ?  'Đăng nhập'  : 'Login' ?> </a>
+							<a class="button" href="<?php echo $prefix  ?>/subscribe"><?php echo $vi ?  'Theo dõi'  : 'Subscribe' ?></a>
 						<?php
 
 					}

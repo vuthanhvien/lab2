@@ -11,6 +11,8 @@
  * @since 1.0.0
  */
 
+ $vi = $GLOBALS['vi'];
+
 ?>
 			<footer id="site-footer">
 				<div class="section-inner">
@@ -175,6 +177,10 @@
 		jQuery('#wpcf7-f444-o1').css('display', 'flex');
 	})
 
+	jQuery('.wpcf7').on('click', '.continue', function(e){
+		jQuery('.wpcf7').hide();
+	})
+
 
 	jQuery('.wpcf7').on('click', function(e) {
 		if (e.target !== this){return}
@@ -185,11 +191,11 @@
 	var totalChild = jQuery('.post-text .the-article-body>*' ).length;
 		var child = '.post-text .the-article-body>*:nth-child('+Math.floor(totalChild/2)+')';
 		console.log(jQuery(child));
-	jQuery(child).append(jQuery('<div style="text-align:center; margin: 30px"><a href="/subscrice" target="_blank" class="button btn" style="padding: 22px 60px">Subscire now</a></div>'))
+	jQuery(child).append(jQuery('<div style="text-align:center; margin: 30px"><a href="/subscribe" target="_blank" class="button btn" style="padding: 22px 60px"><?php echo $vi ? 'Theo dõi ngay' : 'Subscribe now' ?></a></div>'))
 
 	jQuery('#menu-item-451 > a').html('More &nbsp; <i class="fa fa-sort-desc"></i>')
-	console.log(totalChild);
 
+	
 	</script>
 	<style>
 	#menu-item-451 >a > .fa{

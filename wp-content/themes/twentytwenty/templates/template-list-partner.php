@@ -29,9 +29,9 @@ get_header();
 
 <?php  if($type  == 'partner') { ?>
 	<div class="section-inner">
-		<?php 
-		echo $post->post_content;
-		?>
+	<h3><?php 
+		echo $vi ? 'Đối tác' :'Partners';
+		?></h3>
 </div>
 <?php } ?>
 
@@ -127,12 +127,22 @@ get_header();
 <div class="top-partner">
 	<div class="section-inner">
 	<?php 
-	if($type == 'partner'){
-		echo '<h3>Top partners</h3>';
+	if($vi){
+		if($type == 'partner'){
+			echo '<h3>Top đối tác</h3>';
+		}
+		if($type == 'insiders'){
+			echo '<h3>Top insider</h3>';
+		}
+	}else{
+		if($type == 'partner'){
+			echo '<h3>Top partners</h3>';
+		}
+		if($type == 'insiders'){
+			echo '<h3>Top insiders</h3>';
+		}
 	}
-	if($type == 'insiders'){
-		echo '<h3>Top insiders</h3>';
-	}
+	
 	?>
 </div>
 <div class="partner-list-wrap">
@@ -169,7 +179,7 @@ get_header();
 <?php 
 
 if($type == 'partner'){
-	$t = $vi ? 'Trở thành đối tác' : 'Become a Partner';
+	$t = $vi ? 'Trở thành đối tác' : 'Become our Partner';
 	echo '<div class="text-center">
 		<button id="become-partner" class="btn">'.$t.' &nbsp; <i class="fa fa-long-arrow-right" ></i> </button>
 	</div>';
@@ -182,6 +192,19 @@ if($type == 'insiders'){
 }
 
 ?>
+</div>
+<div class="media-partner bg-white" style="padding: 50px 0">
+<div class="section-inner">
+
+<?php  if($type  == 'partner') { ?>
+		<?php 
+		echo $post->post_content;
+		?>
+</div>
+<?php } ?>
+
+</div>
+
 </div>
 
 </main><!-- #site-content -->

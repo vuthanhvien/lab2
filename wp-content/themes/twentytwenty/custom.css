@@ -37,7 +37,8 @@
 #site-content .btn-cta a {
     max-width: 230px;
     height: auto;
-    min-height: 65px;
+    min-height: 55px;
+    margin: 10px 0;
 }
 
 #site-content .btn-cta {
@@ -703,7 +704,7 @@ body #site-footer {
 #cta p {
     padding-left: 140px;
     padding-top: 20px;
-    width: 365px;
+    width: 400px;
     position: relative;
 }
 
@@ -1548,39 +1549,43 @@ body #site-footer {
     font-size: 22px;
 }
 
-.subscrice-page {
+.subscribe-page {
     text-align: center;
     padding-top: 40px;
 
 }
 
-.subscrice-content {
+.subscribe-content {
     background: white;
     padding: 35px;
 }
+.subscribe-content p{
+    /* text-align: left; */
+}
 
-.subscrice-page h2 {
+.subscribe-page h2 {
     color: #241E1F;
     font-size: 44px;
 
 }
 
-.subscrice-content img {
+.subscribe-content img {
     margin: 20px auto;
+    max-width: 150px!important;
 }
 
-.subscrice-content h4 {
+.subscribe-content h4 {
     color: #393E46;
     font-size: 22px;
 }
 
-.subscrice-content p {
+.subscribe-content p {
     color: #393E46;
     font-size: 16px;
-    max-width: 300px;
+    max-width: 380px;
 }
 
-.subscrice-content .wp-block-button.is-style-outline .wp-block-button__link {
+.subscribe-content .wp-block-button.is-style-outline .wp-block-button__link {
     border-radius: 5px;
     height: 77px;
     background-color: #F9A64B;
@@ -1592,14 +1597,14 @@ body #site-footer {
     width: 300px;
 }
 
-.subscrice-description {
+.subscribe-description {
     font-size: 14px;
     color: #6F7885;
     font-weight: bold;
 
 }
 
-.subscrice-content .subscrice-price span {
+.subscribe-content .subscribe-price span {
     font-size: 72px;
     color: #393E46;
     font-weight: 500;
@@ -1642,7 +1647,7 @@ body #site-footer {
     margin-bottom: 10px;
 }
 
-.plan-action button,
+/* .plan-action button, */
 .plans .plan button {
     border-radius: 5px;
     height: 77px;
@@ -1674,7 +1679,7 @@ body #site-footer {
 
 }
 
-.plan-action button,
+/* .plan-action button, */
 .plans .plan.selected button {
     background-color: #F9A64B !important;
     color: white !important;
@@ -2104,7 +2109,7 @@ header#site-header {
 #site-header .primary-menu .sub-menu {
     background-color: white;
     min-width: 400px;
-    padding: 20px 0;
+    padding: 10px 0;
     border-radius: 10px;
     left: 0px;
     display: none;
@@ -2113,6 +2118,9 @@ header#site-header {
 
 #site-header .primary-menu .sub-menu li:hover {
     background-color: #ccc;
+}
+#site-header .primary-menu .sub-menu li:hover  a{
+    border-color: #ccc;
 }
 
 #site-header .primary-menu .sub-menu:after,
@@ -2124,8 +2132,10 @@ header#site-header {
 #site-header .primary-menu .sub-menu a {
     color: #282C33;
     border-bottom: 1px solid #f4f4f4;
-    padding: 20px 0;
+    padding: 20px;
     text-transform: capitalize;
+    font-weight: normal;
+    margin: 0;
 
 }
 
@@ -2379,31 +2389,93 @@ header#site-header {
     justify-content: center;
     display: none;
 }
+.wpcf7-form .popup-success{
+    display: none;
+}
+.wpcf7-form.sent{
+    background: white;
+    border: 2px solid #0D87D0;
+}
+.wpcf7-form.sent h3,
+.wpcf7-form.sent p
+{
+    color: #555;
+}
+
+
+.wpcf7 .row-input input[type=submit] {
+    color: white;
+    height: 50px;
+
+    font-size: 16px;
+    margin-left: 20px;
+    background: #F9A64A;
+    padding: 17px;
+    border-radius: 0;
+}
+
+.wpcf7 .sent div.wpcf7-mail-sent-ok {
+    display: none!important;
+}
+.wpcf7-form.sent button.btn{
+
+    border-radius: 4px;
+    min-width: 50px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #F9A64A;
+    height: 65px;
+    border: 2px solid #F9A64A;
+    padding: 20px 30px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 16px;
+    margin: 20px auto;
+    
+}
+.wpcf7-form.sent button.btn:hover{
+    color: #F9A64A;
+    background-color: transparent;
+    border: 2px solid #F9A64A;
+
+}
+.wpcf7-form.sent .popup{
+    display: none;
+}
+.wpcf7-form.sent .popup-success{
+    display: block;
+}
 
 .wpcf7 form {
     background: #0D87D0;
-    max-width: 700px;
+    max-width: 900px;
     width: 100%;
     text-align: center;
-    padding: 30px 50px;
+    padding: 30px 150px;
 }
 
 .wpcf7 form p,
 .wpcf7 form h3 {
     color: white;
 }
+.wpcf7 form h3 span{
+    background: #F8A54A;
+    display: inline-block;
+    padding: 5px 10px;
+}
 
 .wpcf7 form h3 {
-    font-size: 24px;
+    font-size: 20px;
     margin-top: 20px;
-
+    margin-bottom: 10px;
 }
 
 .wpcf7 form img {
     margin: 0 auto;
+    width: 140px;
 }
 
-.wpcf7 orm p {
+.wpcf7 form p {
     font-size: 16px;
 }
 
@@ -2412,23 +2484,22 @@ header#site-header {
     align-items: center;
 
     margin: 20px 0;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
-.wpcf7 .row-input .your-email {
-    height: 50px;
+.wpcf7 .row-input input {
+    height: 40px;
+    margin-bottom: 10px;
     flex: 1;
 }
-
-.wpcf7 .row-input input[type=submit] {
-    color: white;
-
-    font-size: 16px;
-    margin-left: 20px;
-    background: #F9A64A;
-    padding: 17px;
-    border-radius: 0;
+.wpcf7 .line-input {
+    width: 100%;
 }
+.wpcf7 .line-input br{
+    display: none;
+}
+
+
 
 .wpcf7 .wpcf7-not-valid-tip {
     color: white;
