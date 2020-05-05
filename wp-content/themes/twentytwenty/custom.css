@@ -185,7 +185,7 @@ a .title:hover {
     font-size: 18px;
     color: white;
     font-weight: bold;
-    margin: 0 15px;
+    margin: 0 10px;
     padding: 0px;
 }
 
@@ -204,6 +204,7 @@ a .title:hover {
 
 #site-header ul.primary-menu {
     margin-right: 70px;
+    white-space: nowrap;
     /* justify-content: flex-start; */
 }
 
@@ -2099,11 +2100,17 @@ body #site-footer {
 }
 
 header#site-header {
-    position: sticky;
-    top: -50px;
+    /* position: sticky; */
+    /* top: -50px; */
     z-index: 100;
+    position: sticky;
+    top: 0
 }
-
+#site-header .header-inner{
+}
+.menu-modal.active{
+    z-index: 111;
+}
 #site-content {
     /* margin-top: 140px; */
 }
