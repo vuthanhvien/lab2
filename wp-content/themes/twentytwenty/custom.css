@@ -2765,4 +2765,14 @@ header#site-header {
     .site-logo img{
         height: 63px;
     }
+    .wpcf7 form{
+        padding: 20px;
+        max-width: 90vw;
+    }
+    .wpcf7 .row-input{
+        display: block;
+    }
+    .wpcf7 form img{
+        display: none;
+    }
 }

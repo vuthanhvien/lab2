@@ -30,6 +30,24 @@
 
 
 		jQuery('.slider-post').append('<div class="dots"><div class="dot dot-1  active"/><div class="dot dot-2"/><div class="dot dot-3"/></div>');	
+
+		// var s_width = jQuery('.slider-post').get()[0].scrollWidth;
+		// 	var es_width = jQuery('.slider-post-wrap').width();
+		// 	var html = '<div class="dots">'
+		// 	console.log(p_width , e_width)
+		// 	for(var i = 1; i<=  Math.ceil(p_width / e_width)  ; i++ ){
+		// 		var p = i;
+		// 		if(i == 1){
+		// 			html += '<div  data-page="'+i+'" class="dot active dot-'+i+'"/>';
+
+		// 		}else{
+		// 			html += '<div data-page="'+i+'"  class="dot dot-'+i+'"/>';
+
+		// 		}
+		// 	}
+		// 	html += ' </div>'
+
+
 		jQuery('.slider-post').append('<div class="next"><i class="fa fa-chevron-right" /></div>');	
 		// jQuery('.slider-post').append('<div class="back"><i class="fa fa-chevron-left" /></div>'); 
 
