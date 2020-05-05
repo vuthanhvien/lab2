@@ -129,10 +129,10 @@ get_header();
 	<?php 
 	if($vi){
 		if($type == 'partner'){
-			echo '<h3>Top đối tác</h3>';
+			echo '<h3>Đối tác nổi bật</h3>';
 		}
 		if($type == 'insiders'){
-			echo '<h3>Top insider</h3>';
+			echo '<h3>Insider</h3>';
 		}
 	}else{
 		if($type == 'partner'){

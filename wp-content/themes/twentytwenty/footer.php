@@ -109,35 +109,55 @@
 
 		if(jQuery('.partner-list').get()[0]){
 
-		var p_width = jQuery('.partner-list').get()[0].scrollWidth;
-		var e_width = jQuery('.partner-list-wrap').width();
-		var html = '<div class="dots">'
-		console.log(p_width , e_width)
-		for(var i = 1; i<=  Math.ceil(p_width / e_width)  ; i++ ){
-			var p = i;
-			if(i == 1){
-				html += '<div  data-page="'+i+'" class="dot active dot-'+i+'"/>';
+			jQuery('.partner-list-wrap').append('<div class="next"><i class="fa fa-chevron-right" /></div>');	
 
-			}else{
-				html += '<div data-page="'+i+'"  class="dot dot-'+i+'"/>';
 
+			var p_width = jQuery('.partner-list').get()[0].scrollWidth;
+			var e_width = jQuery('.partner-list-wrap').width();
+			var html = '<div class="dots">'
+			console.log(p_width , e_width)
+			for(var i = 1; i<=  Math.ceil(p_width / e_width)  ; i++ ){
+				var p = i;
+				if(i == 1){
+					html += '<div  data-page="'+i+'" class="dot active dot-'+i+'"/>';
+
+				}else{
+					html += '<div data-page="'+i+'"  class="dot dot-'+i+'"/>';
+
+				}
 			}
-		}
-		 html += ' </div>'
-		jQuery('.partner-list-wrap').append(html);	
+			html += ' </div>'
+			jQuery('.partner-list-wrap').append(html);	
 
 			jQuery('.partner-list-wrap').on('click', '.dot', function() {
 
 				var  p = jQuery(this).data('page')
-					jQuery('.partner-list-wrap .dot').removeClass('active');
-					var sl = jQuery(this).parent().parent();
-					sl.find('.partner-list').animate( { scrollLeft: (p - 1) *  sl.width() }, 100);
-					jQuery(this).addClass('active')
-					console.log('p_' + p);
-				});
+				jQuery('.partner-list-wrap .dot').removeClass('active');
+				var sl = jQuery(this).parent().parent();
+				sl.find('.partner-list').animate( { scrollLeft: (p - 1) *  sl.width() }, 100);
+				jQuery(this).addClass('active')
+				console.log('p_' + p);
+			});
+
+			jQuery('.partner-list-wrap').on('click', '.next', function() {
+				jQuery('.partner-list-wrap .dot').removeClass('active');
+				console.log( )
+				if(jQuery('.partner-list').scrollLeft() >=  p_width - e_width -100 ){
+					jQuery('.partner-list').animate( { scrollLeft: 0}, 100);
+				}else{
+					jQuery('.partner-list').animate( { scrollLeft: '+='+e_width}, 100);
+				}
+
+				var dot = Math.ceil((jQuery('.partner-list').scrollLeft() + e_width) / e_width) 
+				console.log(dot);
+				
+				jQuery('.partner-list-wrap .dot-'+dot).addClass('active');
+
+
+			});
 
 		 
-			}
+		}
 	
  
 		jQuery('.post-count-comment').on('click',  function(){
@@ -248,6 +268,22 @@
 		}
 		 .dots  .dot.active{
 			background: #555;
+		}
+		.partner-list-wrap{
+			position: relative
+		}
+		.partner-list-wrap .next{
+			position: absolute;
+			top: calc(50% - 30px);
+			right: 20px;
+			background: white;
+			height: 60px;
+			width: 60px;
+			border-radius: 30px;
+			padding-top: 20px;
+			text-align: center;
+			box-shadow: 4px 3px 4px rgba(0,0,0,0.2);
+
 		}
 	</style>
 </html>
