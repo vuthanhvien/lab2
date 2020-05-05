@@ -46,6 +46,7 @@ $vi = $GLOBALS['vi'];
 	<div class="post-detail">
 		<div class="post-banner">
 			<?php echo $img ?>
+			<div class="blur" ></div>
 		<div class="post-banner-content">
 			<h1><?php echo get_the_title() ?></h1>
 			<h3><?php echo get_the_date() ?></h3>
@@ -160,6 +161,9 @@ $vi = $GLOBALS['vi'];
 
 	<div class="post-comment-out">
 	<div class="post-comment">
+		<a class="post-comment-close">
+		<i class="fa fa-close" ></i>
+				</a>
 	<?php
 
 		if ( ( is_single() || is_page() ) && ( comments_open() || get_comments_number() ) && ! post_password_required() ) {

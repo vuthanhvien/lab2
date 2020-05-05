@@ -1195,6 +1195,14 @@ body #site-footer {
     align-items: center;
 
 }
+.post-banner .blur{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
 .post-banner>img {
     width: 100%;
@@ -2159,79 +2167,12 @@ header#site-header {
 }
 
 
-@media (max-width: 992px) {
-    #site-header ul.primary-menu {
-        display: none;
-    }
 
-    .toggle-inner .toggle-text {
-        display: none;
-    }
-
-    #site-content .section-inner {
-        padding: 0 20px;
-    }
-
-    .header-inner .toggle {
-        top: 50px !important;
-    }
-
-    #site-header button.search {
-        display: none;
-    }
-
-    #site-header .header-left {
-        margin-left: calc(50% - 60px);
-        height: 80px;
-    }
-
-    .site-logo img,
-    .header-titles {
-        height: 80px;
-        max-height: 80px !important;
-
-    }
-
-    .header-inner .toggle svg path {
-        fill: white;
-    }
-
-    .list-post .post {
-        width: 100%;
-    }
-
-    .footer-widgets {
-        width: 100%;
-    }
-
-    #top-footer {
-        padding: 20px;
-    }
-
-    #site-footer {
-        padding: 20px;
-    }
-
-    .main-banner .main-banner-left {
-        width: 100%;
-        margin: 0;
-        padding: 20px;
-        height: 400px;
-    }
-
-    .main-banner-right {
-        width: 100%;
-        padding: 20px;
-        margin-top: 50px;
-
-    }
-
-    .header-top a {
-        margin-right: 10px;
-    }
+.post-comment-close{
+    display: block;
+    position: relative;
+    padding: 15px;
 }
-
-
 .partner-list-wrap {
     text-align: center;
     width: 100%;
@@ -2532,4 +2473,229 @@ header#site-header {
     font-size: 16px;
     padding: 10px;
     color: #7c7400;
+}
+
+
+@media (max-width: 992px) {
+    #section-insiders .wp-block-group__inner-container::before,
+    #section-insiders .wp-block-group__inner-container::after{
+        content: unset;
+    }
+    #section-events .post{
+        width: 100%!important;
+    }
+    #site-header ul.primary-menu {
+        display: none;
+    }
+
+    .toggle-inner .toggle-text {
+        display: none;
+    }
+
+    #site-content .section-inner {
+        padding: 0 20px;
+    }
+
+    .header-inner .toggle {
+        top: 0px !important;
+        height: 100%;
+    }
+
+    #site-header button.search {
+        display: none;
+    }
+
+    #site-header .header-left {
+        margin-left: calc(50% - 60px);
+        height: 80px;
+    }
+
+    .site-logo img,
+    .header-titles {
+        height: 80px;
+        max-height: 80px !important;
+
+    }
+
+    .header-inner .toggle svg path {
+        fill: white;
+    }
+
+    .list-post .post {
+        width: 100%;
+    }
+
+    .footer-widgets {
+        width: 100%;
+    }
+
+    #top-footer {
+        padding: 20px;
+    }
+
+    #site-footer {
+        padding: 20px;
+    }
+
+    .main-banner .main-banner-left {
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+        height: 400px;
+    }
+
+    .main-banner-right {
+        width: 100%;
+        padding: 20px;
+        margin-top: 100px;
+
+    }
+    #post-2 .news{
+        padding-top: 50px;
+    }
+    #section-partner,
+    #section-events,
+    #section-insiders{
+        padding: 100px 15px;
+    }
+    .main-banner-right .form{
+        padding: 30px;
+    }
+    .main-banner{
+        padding-bottom: 50px;
+    }
+    .header-top a {
+        margin-right: 10px;
+    }
+    #cta .cta-1, #cta .cta-2{
+        padding: 0;
+    }
+    #cta a:after{
+        content: unset;
+    }
+    .sliders-signup .next, .slider-post .back, .slider-post .next{
+        display: none;
+    }
+
+    .post-sidebar{
+        display: block;
+        width: 100%;
+        padding-top: 0;
+        position: relative;
+        top: 0;
+    }
+    .post-share{
+        display: inline-block;
+        margin: 10px;
+    }
+    .post-sidebar p{
+        display: none;
+    }
+    .post-content{
+        width: 100%;
+        margin-top: 0px;
+    }
+    .post-text{
+        padding: 50px 15px;
+    }
+    .post-header{
+        padding: 15px;
+    }
+    .post-next .post .category, .post-next .post .title{
+        padding: 0;
+        padding-top: 20px;
+    }
+
+    .post-next .post img{
+        float: none;
+        width: 100%;
+    }
+    .post-next .post .title{
+        font-size: 18px;
+        margin-top: 0;
+    }
+    .post-relate .post-relate-right,
+    .post-relate .post-relate-left,
+    .post-relate .post-relate-left .post{
+        width: 100%;
+    }
+    .post-relate{
+        display: block;
+        padding: 15px;
+    }
+    .post-relate .post{
+        width: 100%;
+        margin-left: 0!important;
+
+    }
+    .post-banner-content{
+        padding: 15px;
+    }
+    .post-banner-content h1{
+        font-size: 24px;
+    }
+    .post-banner{
+        align-items: flex-end;
+    }
+    .post-event{
+        width: 100%;
+    }
+    .event-banner .title{
+        font-size: 24px;
+    }
+    .event-banner-content{
+        padding: 15px;
+    }
+    .tab-event a.active{
+        padding: 12px;
+    }
+    .tab-event a{
+        padding: 12px;
+
+    }
+
+    .profile-item p:nth-child(1){
+        width: 100%;
+    }
+    .profile-item input[type="password"], .profile-item input{
+        width: 100%;
+    }
+    .modal-menu > li > a, .modal-menu > li > .ancestor-wrapper > a{
+        color: #0D87D0
+    }
+    .header-top a{
+        margin-left: 15px;
+    }
+    .list-podcast .col{
+        width: 100%;
+    }
+    .list-podcast .post{
+        width: 100%;
+    }
+    .list-podcast .post:nth-child(2n),
+    .list-podcast .col:nth-child(2n){
+        margin-left: 0;
+    }
+    .paging-navigation a,
+    .paging-navigation .next,
+    .paging-navigation .prev{
+        padding: 14px;
+    }
+    .post-next .post{
+        padding: 15px;
+    }
+    #site-footer p{
+        font-size: 14px;
+        padding: 10px;
+    }
+    button.close-nav-toggle .toggle-text{
+        display: none;
+    }
+    .menu-top{
+        
+    padding-right: 16px;
+    }
+    .post-header .icon{
+        margin-left: 5px;
+    }
 }

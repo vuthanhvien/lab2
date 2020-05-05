@@ -159,7 +159,9 @@
 		 
 		}
 	
- 
+		jQuery('.post-comment-close').on('click',  function(){
+			jQuery('.post-comment-out').hide();
+		})
 		jQuery('.post-count-comment').on('click',  function(){
 			jQuery('.post-comment-out').show();
 		})
