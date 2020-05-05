@@ -2476,6 +2476,13 @@ header#site-header {
 }
 
 
+.search-modal .search-field{
+    padding-left: 40px!important;
+}
+.search-modal.active .search-untoggle{
+    margin-right: 0;
+}
+
 @media (max-width: 992px) {
     #section-insiders .wp-block-group__inner-container::before,
     #section-insiders .wp-block-group__inner-container::after{
