@@ -1559,8 +1559,8 @@ body #site-footer {
     background: white;
     padding: 35px;
 }
-.subscribe-content p{
-    /* text-align: left; */
+.subscribe-content li{
+    text-align: left;
 }
 
 .subscribe-page h2 {
@@ -1578,11 +1578,13 @@ body #site-footer {
     color: #393E46;
     font-size: 22px;
 }
+.subscribe-content ul{
+    max-width: 380px;
 
-.subscribe-content p {
+}
+.subscribe-content li {
     color: #393E46;
     font-size: 16px;
-    max-width: 380px;
 }
 
 .subscribe-content .wp-block-button.is-style-outline .wp-block-button__link {

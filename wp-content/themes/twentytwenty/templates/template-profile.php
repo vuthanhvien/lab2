@@ -201,7 +201,7 @@ get_header();
             <?php } ?>
 
             <?php if(!$date_end_premium  && !$date_end_standard ){
-                echo $vi ?  '<a href="'.$prefix.'/subscribe" class="button" >Theo dõi</a>' : '<a href="'.$prefix.'/subscribe" class="button" >Subscribe</a>';
+                echo $vi ?  '<a href="'.$prefix.'/subscribe" class="button" >Subscribe</a>' : '<a href="'.$prefix.'/subscribe" class="button" >Subscribe</a>';
 
             } ?>
     </div>

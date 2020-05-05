@@ -85,7 +85,7 @@ if($fields['date_end_premium'] && $type =='premium'){
                     }else{
                         echo  '
                         <ul>
-                        <li><b> Nhận nội dung độc quyền, nội dung gốc từ Digital Strategy Lab hàng tháng và hàng quý (bao gồm series </b></li>
+                        <li><b> Nhận nội dung độc quyền, nội dung gốc từ Digital Strategy Lab hàng tháng và hàng quý (bao gồm series hướng dẫn, e-book, bộ sưu tập, tạp chí, cases study,…) </b></li>
                         <li>Truy cập mọi số báo và tải được bản in preprint</li>
                         <li>Không quảng cáo, truy cập website vô hạn</li>
                         <li>Tải được email newsletter</li>

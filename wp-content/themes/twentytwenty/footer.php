@@ -188,10 +188,10 @@
 		});
 
 
-	var totalChild = jQuery('.post-text .the-article-body>*' ).length;
-		var child = '.post-text .the-article-body>*:nth-child('+Math.floor(totalChild/2)+')';
+	var totalChild = jQuery('.post-text  >*' ).length;
+		var child = '.post-text  >*:nth-child('+Math.floor((totalChild - 3 )/2)+')';
 		console.log(jQuery(child));
-	jQuery(child).append(jQuery('<div style="text-align:center; margin: 30px"><a href="/subscribe" target="_blank" class="button btn" style="padding: 22px 60px"><?php echo $vi ? 'Theo dõi ngay' : 'Subscribe now' ?></a></div>'))
+	jQuery(child).append(jQuery('<div style="text-align:center; margin: 30px"><a href="/subscribe" target="_blank" class="button btn" style="padding: 22px 60px"><?php echo $vi ? 'Subscribe ngay' : 'Subscribe now' ?></a></div>'))
 
 	jQuery('#menu-item-451 > a').html('More &nbsp; <i class="fa fa-sort-desc"></i>')
 
