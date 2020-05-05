@@ -2573,7 +2573,7 @@ header#site-header {
     #cta a:after{
         content: unset;
     }
-    .sliders-signup .next, .slider-post .back, .slider-post .next{
+    .slider-post .back, .slider-post .next{
         display: none;
     }
 
@@ -2664,7 +2664,8 @@ header#site-header {
         color: #0D87D0
     }
     .header-top a{
-        margin-left: 15px;
+        margin-left: 5px;
+        margin-right: 5px;
     }
     .list-podcast .col{
         width: 100%;
@@ -2697,5 +2698,64 @@ header#site-header {
     }
     .post-header .icon{
         margin-left: 5px;
+    }
+    #post-2 h4{
+        font-size: 30px;
+    }
+    #cta p{
+        width: auto;
+        padding-left: 100px;
+        padding-top: 30px;
+    }
+    #cta a{
+        font-size: 18px;
+    }
+    .sliders-signup .next{
+        right: -8px;
+        top: 42%;
+    }
+    #section-events .wp-block-column,
+    .library .wp-block-column,
+    .podcast .wp-block-column,
+    .news .wp-block-column {
+        flex-basis: unset!important;
+    }
+    #site-content .auth-page .form{
+        width: 100%;
+        margin-left: 0;
+        padding: 30px;
+    }
+    #site-content .auth-page #wp-submit{
+        padding: 10px;
+    }
+    #section-insiders .post{
+        display: block;
+        width: 100%;
+    }
+    .plans .plan-inner{
+        display: block;
+        width: 100%;
+    }
+    .top-partner .partner{
+        width: 280px;
+    }
+    .header-top .avatar-profile{
+        margin: 0 10px;
+        margin-top: 18px;
+    }
+    .header-top {
+        font-size: 12px;
+    }
+    .header-top a.button{
+        margin-left: 0;
+    }
+    .list-post .post{
+        margin-right: 0;
+    }
+    #site-header .header-inner{
+        height: 70px;
+    }
+    .site-logo img{
+        height: 63px;
     }
 }
