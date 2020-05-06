@@ -1874,6 +1874,10 @@ body #site-footer {
     position: absolute;
     top: 20px;
     left: 20px;
+    height: 80px;
+}
+.post-event .partner-img img{
+    height: 100%;
 }
 
 .post-event {
