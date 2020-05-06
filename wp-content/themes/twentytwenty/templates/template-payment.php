@@ -171,8 +171,12 @@ if($fields['date_end_premium'] && $type =='premium'){
                     <p><?php echo $vi ? 'Tổng cộng' : 'Total' ?>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b id="price">0.00$</b></p>
                     <br />
                     <br />
-                    <button type="submit" style="text-transform: unset" id="submit" class="btn btn-default"><?php echo $vi ? 'Thanh toán qua VNPAY' : 'Make payment with VNPAY' ?></button>
+                    <button disabled type="submit" style="text-transform: unset" id="submit" class="btn btn-default"><?php echo $vi ? 'Thanh toán qua VNPAY' : 'Make payment with VNPAY' ?></button>
                     </div>
+                    <br />
+                    <p style="text-align: right">
+                        <?php echo $vi ? 'Chức năng này chưa sẵn sàng, hãy đợi 1 thời gian nữa nhé' : 'This feature have not ready.' ?>
+                    </p>
                     <br />
                     <br />
             </div>
