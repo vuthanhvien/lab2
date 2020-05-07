@@ -2675,13 +2675,25 @@ header#site-header {
         margin-top: 100px;
 
     }
+    #post-2 .section-list .library .post.first .min-read{
+        margin-top: 0;
+    }
 
     #post-2 .news {
         padding-top: 40px;
         margin-bottom: 0;
     }
+    #post-2 .wp-block-column.library{
+        margin-bottom: 30px;
+    }
     #post-2 .wp-block-columns{
+        margin-bottom: 0px;
+    }
+    #post-2 .wp-block-column{
         margin-bottom: 10px;
+    }
+    #section-insiders .wp-block-column:nth-child(1) .post{
+        margin-top: 0;
     }
     #post-2 .section-list .news .post .img{
         height: 200px;
