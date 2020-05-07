@@ -2677,7 +2677,8 @@ header#site-header {
     }
 
     #post-2 .news {
-        padding-top: 20px;
+        padding-top: 40px;
+        margin-bottom: 0;
     }
     #post-2 .wp-block-columns{
         margin-bottom: 10px;
@@ -3226,7 +3227,7 @@ header#site-header {
         font-size: 12px;
     }
     #site-content h3{
-        font-size: 18px;
+        font-size: 24px;
     }
     .top-partner .partner p{
         font-size: 14px;
