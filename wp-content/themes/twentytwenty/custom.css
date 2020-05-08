@@ -2974,7 +2974,7 @@ header#site-header {
         padding: 0;
     }
     #site-footer .section-inner{
-        display: block;
+        display: block!important;
     }
 
     button.close-nav-toggle .toggle-text {
