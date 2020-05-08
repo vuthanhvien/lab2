@@ -13,7 +13,7 @@
 
  $vi = $GLOBALS['vi'];
 
-$prefix =  $vi ? '/vi' : '/';
+$prefix =  $vi ? '/vi' : '';
 
 ?>
 			<footer id="site-footer">
