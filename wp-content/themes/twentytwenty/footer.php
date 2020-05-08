@@ -13,12 +13,19 @@
 
  $vi = $GLOBALS['vi'];
 
+$prefix =  $vi ? '/vi' : '/';
+
 ?>
 			<footer id="site-footer">
 				<div class="section-inner">
 				<p>
 					Copyright © 2020 Digital Strategy Lab.  All Rights Reserved.
 				</p><!-- .footer-copyright -->
+				<p>
+                    <a href="<?php echo $prefix ?>/advertise"   ><?php echo $vi ? 'Quảng cáo' : 'Advertise' ?></a> |
+                    <a href="<?php echo $prefix ?>/terms-of-use"  ><?php echo $prefix ? 'Điều khoản sử dụng' : 'Terms of Use' ?></a> |
+				<a href="<?php echo $prefix ?>/privacy"  ><?php echo $prefix ? 'Chính sách bảo mật' : 'Privacy Policy' ?></a>
+					</p>
 				</div>
 			</footer><!-- #site-footer -->
 
