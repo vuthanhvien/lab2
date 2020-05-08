@@ -15,9 +15,12 @@
 
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
+<h3><?php the_title() ?></h3>
+
 	<?php
 
-	get_template_part( 'template-parts/entry-header' );
+	// get_template_part( 'template-parts/entry-header' );
+
 
 	if ( ! is_search() ) {
 		get_template_part( 'template-parts/featured-image' );

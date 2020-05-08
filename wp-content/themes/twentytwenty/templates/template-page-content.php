@@ -12,7 +12,7 @@ get_header();
 ?>
 
 <main id="site-content" role="main">
-	<div class="section-inner">
+	<div class="section-inner" style="background: white; padding: 15px">
 	<?php
 
 	if ( have_posts() ) {
