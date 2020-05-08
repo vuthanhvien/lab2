@@ -1,5 +1,11 @@
 {
   "post_types": {
+    "library": {},
+    "insiders": {},
+    "event": {},
+    "podcast": {},
+    "news": {},
+    "partner": {},
     "page": {},
     "post": {},
     "wp_block": {},
