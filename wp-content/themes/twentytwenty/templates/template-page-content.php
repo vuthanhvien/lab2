@@ -20,7 +20,7 @@ get_header();
 		while ( have_posts() ) {
 			the_post();
 
-			get_template_part( 'template-parts/content-page', get_post_type() );
+			get_template_part( 'template-parts/content-page-content', get_post_type() );
 		}
 	}
 
