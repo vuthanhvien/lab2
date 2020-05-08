@@ -2970,8 +2970,11 @@ header#site-header {
         padding: 10px;
     }
     body #site-footer{
-        height:60px;
+        min-height:60px;
         padding: 0;
+    }
+    #site-footer .section-inner{
+        display: block;
     }
 
     button.close-nav-toggle .toggle-text {
