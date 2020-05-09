@@ -1328,7 +1328,7 @@ body #site-footer {
 }
 .post-text p{
     margin-bottom: 14px;
-    /* text-align: justify; */
+    text-align: justify;
 }
 .post-text h1{
     margin-bottom: 24px;
