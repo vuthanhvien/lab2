@@ -7718,7 +7718,7 @@ function create_custom_type_job()
  
 }
 /* Kích hoạt hàm tạo custom post type */
-add_action('init', 'create_custom_type_job');
+// add_action('init', 'create_custom_type_job');
 
 
 
@@ -8200,11 +8200,11 @@ function rd_duplicate_post_as_draft(){
 
   
 
-//   add_action( 'admin_menu', 'remove_default_post_type' );
+  add_action( 'admin_menu', 'remove_default_post_type' );
 
-// function remove_default_post_type() {
-//     remove_menu_page( 'edit.php' );
-// }
+function remove_default_post_type() {
+    remove_menu_page( 'edit.php' );
+}
 
 function custom_excerpt_length( $length ) {
 	return 20;
