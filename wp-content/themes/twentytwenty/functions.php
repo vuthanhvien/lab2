@@ -887,7 +887,7 @@ add_shortcode( 'posts', 'create_shortcode_posts' );
 
 
 function create_shortcode_signup($args , $content) {
-$title= $GLOBALS['vi']  ? 'Nhận Newsletter hàng ngày từ Digital Strategy Lab'  :  'Get a Daily Newsletter from Digital Strategy Lab'; 
+$title= $GLOBALS['vi']  ? 'Nhận Newsletter hàng ngày từ <br />Digital Strategy Lab'  :  'Get a Daily Newsletter from <br />Digital Strategy Lab'; 
 $signUpBtn = $GLOBALS['vi']  ? 'ĐĂNG KÝ' : 'SIGN UP';
 $SubscribeBtn = $GLOBALS['vi']  ? 'Subscribe' : 'Subscribe';
 $nameTitle = $GLOBALS['vi']  ? 'Họ và tên' : 'Your name';
