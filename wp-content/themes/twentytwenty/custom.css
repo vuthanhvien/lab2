@@ -1938,7 +1938,7 @@ body #site-footer {
 }
 
 .post-event {
-    height: 530px;
+    height: 270px;
     position: relative;
     width: calc(33% - 10px);
     display: inline-block;
