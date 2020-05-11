@@ -830,7 +830,7 @@ body #site-footer {
 #post-2 .section-list .news .post {
     display: block;
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
 
 }
 
@@ -2238,6 +2238,12 @@ header#site-header {
 
 #site-header .primary-menu>li:hover .sub-menu {
     display: block;
+}
+
+#site-header .primary-menu>li#menu-item-451:hover .sub-menu{
+    left: unset;
+    right: 0;
+    min-width: 200px;
 }
 
 
