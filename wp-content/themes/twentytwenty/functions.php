@@ -1771,3 +1771,16 @@ function save_extra_user_profile_fields( $user_id ) {
 }
 add_action( 'user_register', 'save_extra_user_profile_fields' );
 	
+
+function send_smtp_email( $phpmailer ) {
+	$phpmailer->isSMTP();
+	$phpmailer->Host       = "pro48.emailserver.vn";
+	$phpmailer->SMTPAuth   = true;
+	$phpmailer->Port       = 465;
+	$phpmailer->Username   = "noreply@mindblix.com";
+	$phpmailer->Password   = "LoC!9nzaj&C+";
+	$phpmailer->SMTPSecure = true;
+	$phpmailer->From       = "noreply@mindblix.com";
+	$phpmailer->FromName   = "Admin";
+}
+add_action( 'phpmailer_init', 'send_smtp_email' );
