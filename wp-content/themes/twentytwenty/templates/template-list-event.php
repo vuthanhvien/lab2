@@ -70,7 +70,7 @@ $queryFirst = new WP_Query(
 		'post_status'   => 'publish',
 		'nopaging'		=> false,
 		'posts_per_page'=> 15,
-		'offset'       	=> 1,
+		'offset'       	=> 0,
 		'post_type'		=> $category,
 		'orderby'		=> 'desc'
 	);
