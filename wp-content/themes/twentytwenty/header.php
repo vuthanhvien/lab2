@@ -59,8 +59,8 @@ $prefix = $vi ? '/vi' : '';
 
 			<div class="header-top">
 				<div class="section-inner">
-					<a href="/en<?php echo $currentPath ?>">English</a>
-					<a href="/vi<?php echo $currentPath ?>">Tiếng Việt</a>
+					<a href="http://digitalstrategy.vn/<?php echo $currentPath ?>">English</a>
+					<a href="http://chienluocso.vn/<?php echo $currentPath ?>">Tiếng Việt</a>
 
 					<?php 
 						if($user->exists()){

@@ -691,6 +691,7 @@ body #site-footer {
     color: #393E46;
     margin-top: 0;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .main-banner-right .form select,

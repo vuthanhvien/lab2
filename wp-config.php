@@ -23,13 +23,13 @@
 
 define('WP_ALLOW_MULTISITE', true );
 
-define( 'DB_NAME', 'min87586_dev' );
+define( 'DB_NAME', 'lab2' );
 
 /** Username của database */
-define( 'DB_USER', 'min87586_admin' );
+define( 'DB_USER', 'root' );
 
 /** Mật khẩu của database */
-define( 'DB_PASSWORD', '12345678@X' );
+define( 'DB_PASSWORD', '' );
 
 /** Hostname của database */
 define( 'DB_HOST', 'localhost' );
