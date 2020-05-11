@@ -22,11 +22,11 @@ class WPM_Menus {
 	 * WPM_Menus constructor.
 	 */
 	public function __construct() {
-		add_filter( 'wp_setup_nav_menu_item', array( $this, 'translate_menu_item' ), ( 'POST' === $_SERVER['REQUEST_METHOD'] ? 99 : 5 ) );
-		add_filter( 'wp_setup_nav_menu_item', array( $this, 'translate_menu_url' ) );
-		add_filter( 'customize_nav_menu_available_items', array( $this, 'filter_menus' ), 5 );
-		add_filter( 'customize_nav_menu_searched_items', array( $this, 'filter_menus' ), 5 );
-		add_filter( 'wp_nav_menu_objects', array( $this, 'add_languages_to_menu' ), 5 );
+		// add_filter( 'wp_setup_nav_menu_item', array( $this, 'translate_menu_item' ), ( 'POST' === $_SERVER['REQUEST_METHOD'] ? 99 : 5 ) );
+		// add_filter( 'wp_setup_nav_menu_item', array( $this, 'translate_menu_url' ) );
+		// add_filter( 'customize_nav_menu_available_items', array( $this, 'filter_menus' ), 5 );
+		// add_filter( 'customize_nav_menu_searched_items', array( $this, 'filter_menus' ), 5 );
+		// add_filter( 'wp_nav_menu_objects', array( $this, 'add_languages_to_menu' ), 5 );
 	}
 
 	/**

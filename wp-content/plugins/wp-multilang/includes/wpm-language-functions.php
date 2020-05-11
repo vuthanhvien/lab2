@@ -35,6 +35,7 @@ function wpm_get_languages() {
  * @return string
  */
 function wpm_get_user_language() {
+
 	return wpm()->setup->get_user_language();
 }
 

@@ -106,9 +106,9 @@ class WPM_Setup {
 		add_filter( 'query_vars', array( $this, 'set_lang_var' ) );
 		add_action( 'parse_request', array( $this, 'setup_query_var' ), 0 );
 		add_filter( 'request', array( $this, 'set_home_page' ) );
-		add_filter( 'option_home', array( $this, 'set_home_url' ), 99 );
+		// add_filter( 'option_home', array( $this, 'set_home_url' ), 99 );
 		if ( defined( 'DOMAIN_MAPPING' ) ) {
-			add_filter( 'pre_option_home', array( $this, 'set_home_url' ), 99 );
+			// add_filter( 'pre_option_home', array( $this, 'set_home_url' ), 99 );
 		}
 		add_action( 'after_switch_theme', array( __NAMESPACE__ . '\WPM_Config', 'load_config_run' ) );
 		add_action( 'update_option_active_plugins', array( __NAMESPACE__ . '\WPM_Config', 'load_config_run' ) );
@@ -387,7 +387,12 @@ class WPM_Setup {
 			$user_language = $this->get_default_language();
 		}
 
-		return $user_language;
+		$domain = $_SERVER['HTTP_HOST'];
+		if($domain == 'digitalstrategy.vn'){
+			return 'en';
+		}else{
+			return 'vi';
+		}
 	}
 
 	/**
@@ -406,6 +411,7 @@ class WPM_Setup {
 				}
 			} else {
 				if ( $url_lang && $user_language === $default_language ) {
+					// wp_redirect( home_url( $this->get_original_request_uri() ) );
 					wp_redirect( home_url( preg_replace( '!^/' . $url_lang . '(/|$)!i', '/', $this->get_original_request_uri() ) ) );
 					exit;
 				}
