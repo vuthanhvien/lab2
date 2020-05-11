@@ -1780,7 +1780,5 @@ function send_smtp_email( $phpmailer ) {
 	$phpmailer->Username   = "noreply@mindblix.com";
 	$phpmailer->Password   = "LoC!9nzaj&C+";
 	$phpmailer->SMTPSecure = true;
-	$phpmailer->From       = "noreply@mindblix.com";
-	$phpmailer->FromName   = "Admin";
 }
 add_action( 'phpmailer_init', 'send_smtp_email' );
