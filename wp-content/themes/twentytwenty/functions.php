@@ -941,3 +941,833 @@ add_shortcode( 'signup', 'create_shortcode_signup' );
 
 
 
+
+
+
+
+function create_custom_type_library()
+{
+ 
+    /*
+     * Biến $label để chứa các text liên quan đến tên hiển thị của Post Type trong Admin
+     */
+    $label = array(
+        'name' => 'Library', //Tên post type dạng số nhiều
+        'singular_name' => 'Library' //Tên post type dạng số ít
+    );
+ 
+    /*
+     * Biến $args là những tham số quan trọng trong Post Type
+     */
+    $args = array(
+        'labels' => $label, //Gọi các label trong biến $label ở trên
+        'description' => 'Post type: library', //Mô tả của post type
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'author',
+            'thumbnail',
+            'comments',
+            'trackbacks',
+            'revisions',
+            'custom-fields'
+        ), //Các tính năng được hỗ trợ trong post type
+        'taxonomies' => array( 'category', 'post_tag' ), //Các taxonomy được phép sử dụng để phân loại nội dung
+        'hierarchical' => false, //Cho phép phân cấp, nếu là false thì post type này giống như Post, true thì giống như Page
+        'public' => true, //Kích hoạt post type
+        'show_ui' => true, //Hiển thị khung quản trị như Post/Page
+        'show_in_menu' => true, //Hiển thị trên Admin Menu (tay trái)
+        'show_in_nav_menus' => true, //Hiển thị trong Appearance -> Menus
+        'show_in_admin_bar' => true, //Hiển thị trên thanh Admin bar màu đen.
+        'menu_position' =>5, //Thứ tự vị trí hiển thị trong menu (tay trái)
+        'menu_icon' => '', //Đường dẫn tới icon sẽ hiển thị
+        'can_export' => true, //Có thể export nội dung bằng Tools -> Export
+        'has_archive' => false, //Cho phép lưu trữ (month, date, year)
+        'exclude_from_search' => false, //Loại bỏ khỏi kết quả tìm kiếm
+        'publicly_queryable' => true, //Hiển thị các tham số trong query, phải đặt true
+		'show_in_rest' => true,
+		'capability_type' => 'post', //
+		'menu_icon' => 'dashicons-playlist-video'
+    );
+ 
+    register_post_type('library', $args); //Tạo post type với slug tên là sanpham và các tham số trong biến $args ở trên
+ 
+}
+/* Kích hoạt hàm tạo custom post type */
+add_action('init', 'create_custom_type_library');
+
+
+function create_custom_type_insiders()
+{
+ 
+    /*
+     * Biến $label để chứa các text liên quan đến tên hiển thị của Post Type trong Admin
+     */
+    $label = array(
+        'name' => 'Insiders', //Tên post type dạng số nhiều
+        'singular_name' => 'Insiders' //Tên post type dạng số ít
+    );
+ 
+    /*
+     * Biến $args là những tham số quan trọng trong Post Type
+     */
+    $args = array(
+        'labels' => $label, //Gọi các label trong biến $label ở trên
+        'description' => 'Post type: insiders', //Mô tả của post type
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'author',
+            'thumbnail',
+            'comments',
+            'trackbacks',
+            'revisions',
+            'custom-fields'
+        ), //Các tính năng được hỗ trợ trong post type
+        'taxonomies' => array( 'category', 'post_tag' ), //Các taxonomy được phép sử dụng để phân loại nội dung
+        'hierarchical' => false, //Cho phép phân cấp, nếu là false thì post type này giống như Post, true thì giống như Page
+        'public' => true, //Kích hoạt post type
+        'show_ui' => true, //Hiển thị khung quản trị như Post/Page
+        'show_in_menu' => true, //Hiển thị trên Admin Menu (tay trái)
+        'show_in_nav_menus' => true, //Hiển thị trong Appearance -> Menus
+        'show_in_admin_bar' => true, //Hiển thị trên thanh Admin bar màu đen.
+        'menu_position' => 5, //Thứ tự vị trí hiển thị trong menu (tay trái)
+        'menu_icon' => '', //Đường dẫn tới icon sẽ hiển thị
+        'can_export' => true, //Có thể export nội dung bằng Tools -> Export
+        'has_archive' => false, //Cho phép lưu trữ (month, date, year)
+        'exclude_from_search' => false, //Loại bỏ khỏi kết quả tìm kiếm
+        'publicly_queryable' => true, //Hiển thị các tham số trong query, phải đặt true
+        'capability_type' => 'post' ,
+		'menu_icon' => 'dashicons-groups'
+    );
+ 
+    register_post_type('insiders', $args); //Tạo post type với slug tên là sanpham và các tham số trong biến $args ở trên
+ 
+}
+/* Kích hoạt hàm tạo custom post type */
+add_action('init', 'create_custom_type_insiders');
+
+
+function create_custom_type_event()
+{
+ 
+    /*
+     * Biến $label để chứa các text liên quan đến tên hiển thị của Post Type trong Admin
+     */
+    $label = array(
+        'name' => 'Event', //Tên post type dạng số nhiều
+        'singular_name' => 'Event' //Tên post type dạng số ít
+    );
+ 
+    /*
+     * Biến $args là những tham số quan trọng trong Post Type
+     */
+    $args = array(
+        'labels' => $label, //Gọi các label trong biến $label ở trên
+        'description' => 'Post type: event', //Mô tả của post type
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'author',
+            'thumbnail',
+            'comments',
+            'custom-fields'
+        ), //Các tính năng được hỗ trợ trong post type
+        'hierarchical' => false, //Cho phép phân cấp, nếu là false thì post type này giống như Post, true thì giống như Page
+        'public' => true, //Kích hoạt post type
+        'show_ui' => true, //Hiển thị khung quản trị như Post/Page
+        'show_in_menu' => true, //Hiển thị trên Admin Menu (tay trái)
+        'show_in_nav_menus' => true, //Hiển thị trong Appearance -> Menus
+        'show_in_admin_bar' => true, //Hiển thị trên thanh Admin bar màu đen.
+        'menu_position' => 5, //Thứ tự vị trí hiển thị trong menu (tay trái)
+        'menu_icon' => '', //Đường dẫn tới icon sẽ hiển thị
+        // 'can_export' => true, //Có thể export nội dung bằng Tools -> Export
+        'has_archive' => false, //Cho phép lưu trữ (month, date, year)
+        'exclude_from_search' => false, //Loại bỏ khỏi kết quả tìm kiếm
+        'publicly_queryable' => true, //Hiển thị các tham số trong query, phải đặt true
+		'show_in_rest' => true,
+        'capability_type' => 'post' ,
+		'menu_icon' => 'dashicons-calendar-alt'
+    );
+ 
+    register_post_type('event', $args); //Tạo post type với slug tên là sanpham và các tham số trong biến $args ở trên
+ 
+}
+/* Kích hoạt hàm tạo custom post type */
+add_action('init', 'create_custom_type_event');
+
+
+function create_custom_type_podcast()
+{
+ 
+    /*
+     * Biến $label để chứa các text liên quan đến tên hiển thị của Post Type trong Admin
+     */
+    $label = array(
+        'name' => 'Podcast', //Tên post type dạng số nhiều
+        'singular_name' => 'Podcast' //Tên post type dạng số ít
+    );
+ 
+    /*
+     * Biến $args là những tham số quan trọng trong Post Type
+     */
+    $args = array(
+        'labels' => $label, //Gọi các label trong biến $label ở trên
+        'description' => 'Post type: podcast', //Mô tả của post type
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'author',
+            'thumbnail',
+            'comments',
+            'trackbacks',
+            'revisions',
+            'custom-fields'
+        ), //Các tính năng được hỗ trợ trong post type
+        'taxonomies' => array( 'category', 'post_tag' ), //Các taxonomy được phép sử dụng để phân loại nội dung
+        'hierarchical' => false, //Cho phép phân cấp, nếu là false thì post type này giống như Post, true thì giống như Page
+        'public' => true, //Kích hoạt post type
+        'show_ui' => true, //Hiển thị khung quản trị như Post/Page
+        'show_in_menu' => true, //Hiển thị trên Admin Menu (tay trái)
+        'show_in_nav_menus' => true, //Hiển thị trong Appearance -> Menus
+        'show_in_admin_bar' => true, //Hiển thị trên thanh Admin bar màu đen.
+        'menu_position' => 5, //Thứ tự vị trí hiển thị trong menu (tay trái)
+        'menu_icon' => '', //Đường dẫn tới icon sẽ hiển thị
+        'can_export' => true, //Có thể export nội dung bằng Tools -> Export
+        'has_archive' => false, //Cho phép lưu trữ (month, date, year)
+        'exclude_from_search' => false, //Loại bỏ khỏi kết quả tìm kiếm
+        'publicly_queryable' => true, //Hiển thị các tham số trong query, phải đặt true
+		'show_in_rest' => true,
+        'capability_type' => 'post' ,
+		'menu_icon' => 'dashicons-playlist-audio'
+    );
+ 
+    register_post_type('podcast', $args); //Tạo post type với slug tên là sanpham và các tham số trong biến $args ở trên
+ 
+}
+add_action('init', 'create_custom_type_podcast');
+
+
+
+function create_custom_type_news()
+{
+ 
+    /*
+     * Biến $label để chứa các text liên quan đến tên hiển thị của Post Type trong Admin
+     */
+    $label = array(
+        'name' => 'News', //Tên post type dạng số nhiều
+        'singular_name' => 'News' //Tên post type dạng số ít
+    );
+ 
+    /*
+     * Biến $args là những tham số quan trọng trong Post Type
+     */
+    $args = array(
+        'labels' => $label, //Gọi các label trong biến $label ở trên
+        'description' => 'Post type: news', //Mô tả của post type
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'author',
+            'thumbnail',
+            'comments',
+            'custom-fields'
+        ), //Các tính năng được hỗ trợ trong post type
+		'taxonomies' => array( 'category', 'post_tag' ), //Các taxonomy được phép sử dụng để phân loại nội dung
+        'hierarchical' => false, //Cho phép phân cấp, nếu là false thì post type này giống như Post, true thì giống như Page
+        'public' => true, //Kích hoạt post type
+        'show_ui' => true, //Hiển thị khung quản trị như Post/Page
+        'show_in_menu' => true, //Hiển thị trên Admin Menu (tay trái)
+        'show_in_nav_menus' => true, //Hiển thị trong Appearance -> Menus
+        'show_in_admin_bar' => true, //Hiển thị trên thanh Admin bar màu đen.
+        'menu_position' => 5, //Thứ tự vị trí hiển thị trong menu (tay trái)
+        'menu_icon' => '', //Đường dẫn tới icon sẽ hiển thị
+        'can_export' => true, //Có thể export nội dung bằng Tools -> Export
+        'has_archive' => false, //Cho phép lưu trữ (month, date, year)
+        'exclude_from_search' => false, //Loại bỏ khỏi kết quả tìm kiếm
+        'publicly_queryable' => true, //Hiển thị các tham số trong query, phải đặt true
+        'capability_type' => 'post' ,
+		'rewrite' => true,
+		'show_in_rest' => true,
+		'menu_icon' => 'dashicons-welcome-widgets-menus'
+    );
+ 
+    register_post_type('news', $args); //Tạo post type với slug tên là sanpham và các tham số trong biến $args ở trên
+ 
+}
+
+/* Kích hoạt hàm tạo custom post type */
+add_action('init', 'create_custom_type_news');
+
+
+
+
+function create_custom_type_job()
+{
+ 
+    /*
+     * Biến $label để chứa các text liên quan đến tên hiển thị của Post Type trong Admin
+     */
+    $label = array(
+        'name' => 'Job', //Tên post type dạng số nhiều
+        'singular_name' => 'Job' //Tên post type dạng số ít
+    );
+ 
+    /*
+     * Biến $args là những tham số quan trọng trong Post Type
+     */
+    $args = array(
+        'labels' => $label, //Gọi các label trong biến $label ở trên
+        'description' => 'Post type: job', //Mô tả của post type
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'author',
+            'thumbnail',
+            'comments',
+            'trackbacks',
+            'revisions',
+            'custom-fields'
+        ), //Các tính năng được hỗ trợ trong post type
+        'taxonomies' => array( 'category', 'post_tag' ), //Các taxonomy được phép sử dụng để phân loại nội dung
+        'hierarchical' => false, //Cho phép phân cấp, nếu là false thì post type này giống như Post, true thì giống như Page
+        'public' => true, //Kích hoạt post type
+        'show_ui' => true, //Hiển thị khung quản trị như Post/Page
+        'show_in_menu' => true, //Hiển thị trên Admin Menu (tay trái)
+        'show_in_nav_menus' => true, //Hiển thị trong Appearance -> Menus
+        'show_in_admin_bar' => true, //Hiển thị trên thanh Admin bar màu đen.
+        'menu_position' => 5, //Thứ tự vị trí hiển thị trong menu (tay trái)
+        'menu_icon' => '', //Đường dẫn tới icon sẽ hiển thị
+        'can_export' => true, //Có thể export nội dung bằng Tools -> Export
+        'has_archive' => false, //Cho phép lưu trữ (month, date, year)
+        'exclude_from_search' => false, //Loại bỏ khỏi kết quả tìm kiếm
+        'publicly_queryable' => true, //Hiển thị các tham số trong query, phải đặt true
+        'capability_type' => 'post' ,
+		'menu_icon' => 'dashicons-clipboard',
+		'show_in_rest' => true,
+		'rewrite' => true
+    );
+ 
+    register_post_type('job', $args); //Tạo post type với slug tên là sanpham và các tham số trong biến $args ở trên
+ 
+}
+/* Kích hoạt hàm tạo custom post type */
+// add_action('init', 'create_custom_type_job');
+
+
+
+
+
+function create_custom_type_partner()
+{
+ 
+    /*
+     * Biến $label để chứa các text liên quan đến tên hiển thị của Post Type trong Admin
+     */
+    $label = array(
+        'name' => 'Partner', //Tên post type dạng số nhiều
+        'singular_name' => 'Partner' //Tên post type dạng số ít
+    );
+ 
+    /*
+     * Biến $args là những tham số quan trọng trong Post Type
+     */
+    $args = array(
+        'labels' => $label, //Gọi các label trong biến $label ở trên
+        'description' => 'Post type: partner', //Mô tả của post type
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'author',
+            'thumbnail',
+            'comments',
+            'trackbacks',
+            'revisions',
+            'custom-fields'
+        ), //Các tính năng được hỗ trợ trong post type
+        'taxonomies' => array( 'category', 'partner_tag' ), //Các taxonomy được phép sử dụng để phân loại nội dung
+        'hierarchical' => false, //Cho phép phân cấp, nếu là false thì post type này giống như Post, true thì giống như Page
+        'public' => true, //Kích hoạt post type
+        'show_ui' => true, //Hiển thị khung quản trị như Post/Page
+        'show_in_menu' => true, //Hiển thị trên Admin Menu (tay trái)
+        'show_in_nav_menus' => true, //Hiển thị trong Appearance -> Menus
+        'show_in_admin_bar' => true, //Hiển thị trên thanh Admin bar màu đen.
+        'menu_position' => 5, //Thứ tự vị trí hiển thị trong menu (tay trái)
+        'menu_icon' => '', //Đường dẫn tới icon sẽ hiển thị
+        'can_export' => true, //Có thể export nội dung bằng Tools -> Export
+        'has_archive' => false, //Cho phép lưu trữ (month, date, year)
+        'exclude_from_search' => false, //Loại bỏ khỏi kết quả tìm kiếm
+        'publicly_queryable' => true, //Hiển thị các tham số trong query, phải đặt true
+        'capability_type' => 'post' ,
+		'menu_icon' => 'dashicons-businessman',
+		'rewrite' => true
+    );
+ 
+    register_post_type('partner', $args); //Tạo post type với slug tên là sanpham và các tham số trong biến $args ở trên
+ 
+}
+/* Kích hoạt hàm tạo custom post type */
+add_action('init', 'create_custom_type_partner');
+ 
+
+
+/* Tự động chuyển đến một trang khác sau khi login */
+function my_login_redirect( $redirect_to, $request, $user ) {
+	//is there a user to check?
+	global $user;
+	if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+			//check for admins
+			if ( in_array( 'administrator', $user->roles ) ) {
+					// redirect them to the default place
+					return admin_url();
+			} else {
+					return home_url();
+			}
+	} else {
+			return $redirect_to;
+	}
+}
+
+add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
+
+function redirect_login_page() {
+    $login_page  = home_url( '/login/' );
+    $page_viewed = basename($_SERVER['REQUEST_URI']);  
+ 
+    if( $page_viewed == "wp-login.php" && $_SERVER['REQUEST_METHOD'] == 'GET') {
+        wp_redirect($login_page);
+        exit;
+    }
+}
+add_action('init','redirect_login_page');
+
+
+/* Kiểm tra lỗi đăng nhập */
+function login_failed() {
+    $login_page  = home_url( '/login/' );
+    wp_redirect( $login_page . '?login=failed' );
+    exit;
+}
+add_action( 'wp_login_failed', 'login_failed' );  
+ 
+function verify_username_password( $user, $username, $password ) {
+    $login_page  = home_url( '/login/' );
+    if( $username == "" || $password == "" ) {
+        wp_redirect( $login_page . "?login=empty" );
+        exit;
+    }
+}
+add_filter( 'authenticate', 'verify_username_password', 1, 3);
+
+
+function hide_admin_bar(){ return false; }
+add_filter( 'show_admin_bar', 'hide_admin_bar' );
+
+
+add_filter( 'redirect_canonical', 'custom_disable_redirect_canonical' );
+function custom_disable_redirect_canonical( $redirect_url ) {
+    if ( is_paged() && is_singular() ) $redirect_url = false; 
+    return $redirect_url; 
+}
+
+
+
+function kv_forgot_password_reset_email($user_input) {
+	global $wpdb; 
+	$user_data = get_user_by( 'email', $user_input ); 
+	$user_login = $user_data->user_login;
+	$user_email = $user_data->user_email;
+
+	$key = $wpdb->get_var("SELECT user_activation_key FROM $wpdb->users WHERE user_login ='".$user_login."'");
+	if(empty($key)) {
+	//generate reset key
+		$key = wp_generate_password(20, false);
+		$wpdb->update($wpdb->users, array('user_activation_key' => $key), array('user_login' => $user_login));
+	}
+
+	$message = __('Someone requested that the password be reset for the following account:') . "<br><br><br>";
+	$message .= get_option('siteurl') . "<br><br>";
+	$message .= sprintf(__('Username: %s'), $user_login) . "<br><br><br>";
+	$message .= __('If this was a error, just ignore this email as no action will be taken.') . "<br><br>";
+	$message .= __('To reset your password, visit the following address:') . "<br><br>";
+	$message .= '<a href="'.tg_validate_url() . "action=reset_pwd&key=$key&login=" . rawurlencode($user_login) . '" > '.tg_validate_url() . "action=reset_pwd&key=$key&login=" . rawurlencode($user_login) ."</a><br><br>";
+	$headers = array('Content-Type: text/html; charset=UTF-8');
+	if ( $message && !wp_mail($user_email, 'Password Reset Request', $message, $headers) ) {
+	$msg = false ; 
+	}
+	else $msg = true; 
+
+	return $msg ; 
+}
+
+function tg_validate_url() {
+	global $post;
+	$page_url = esc_url(get_permalink( $post->ID ));
+	$urlget = strpos($page_url, "?");
+	if ($urlget === false) {
+		$concate = "?";
+	} else {
+		$concate = "&";
+	}
+	return $page_url.$concate;
+}
+
+function kv_rest_setting_password($reset_key, $user_login, $user_email, $ID) {
+ 
+	$new_password = wp_generate_password(7, false); //you can change the number 7 to whatever length needed for the new password
+	wp_set_password( $new_password, $ID ); //mailing the reset details to the user
+
+	$message = __('Your new password for the account at:') . "<br><br>";
+	$message .= get_bloginfo('name') . "<br><br>";
+	$message .= sprintf(__('Username: %s'), $user_login) . "<br><br>";
+	$message .= sprintf(__('Password: %s'), $new_password) . "<br><br>";
+	$message .= __('You can now login with your new password at: ').'<a href="'.get_option('siteurl')."/login" .'" >' . get_option('siteurl')."/login" . "</a> <br><br>";
+
+	$headers = array('Content-Type: text/html; charset=UTF-8');
+	if ( $message && !wp_mail($user_email, 'Your New Password to login into eimams', $message, $headers) ) {
+		 $msg = false; 
+	} else {
+		 $msg = true; 
+		 $redirect_to = get_site_url()."/login?action=reset_success";
+		 wp_safe_redirect($redirect_to);
+		 exit();
+	} 
+
+	return $msg; 
+}
+
+
+
+add_action('admin_init', 'my_general_section');  
+function my_general_section() {  
+
+	add_settings_section(  
+        'allow_free_trial', // Section ID 
+        'Allow free trial', // Section Title
+        'allow_free_trial_callback', // Callback
+        'general' // What Page?  This makes the section show up on the General Settings Page
+	);
+
+	add_settings_field(
+		'allow_free_trial_check', // Option ID
+        'Allow free trial', // Label
+        'my_checkbox_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'allow_free_trial', // Name of our section
+        array( // The $args
+            'allow_free_trial_check' // Should match Option ID
+        )  
+	);
+	
+
+	add_settings_field(
+		'allow_free_trial_month', // Option ID
+        'Month allow free trial', // Label
+        'my_trial_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'allow_free_trial', // Name of our section
+        array( // The $args
+            'allow_free_trial_month' // Should match Option ID
+        )  
+	);
+	
+
+
+	
+    add_settings_section(  
+        'price_member_trial', // Section ID 
+        'Price trial', // Section Title
+        'price_member_trial_callback', // Callback
+        'general' // What Page?  This makes the section show up on the General Settings Page
+    );
+
+    add_settings_field( // Option 1
+        'trial_standard_1_month', // Option ID
+        'Standard ($)', // Label
+        'my_textbox_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'price_member_trial', // Name of our section
+        array( // The $args
+            'trial_standard_1_month' // Should match Option ID
+        )  
+	); 
+	
+	add_settings_field( // Option 1
+        'trial_premium_1_month', // Option ID
+        'Premium ($)', // Label
+        'my_textbox_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'price_member_trial', // Name of our section
+        array( // The $args
+            'trial_premium_1_month' // Should match Option ID
+        )  
+	); 
+	
+
+
+	add_settings_section(  
+        'price_member_month', // Section ID 
+        'Price membership per month', // Section Title
+        'price_member_callback', // Callback
+        'general' // What Page?  This makes the section show up on the General Settings Page
+    );
+
+    add_settings_field( // Option 1
+        'standard_1_month', // Option ID
+        'Standard ($)', // Label
+        'my_textbox_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'price_member_month', // Name of our section
+        array( // The $args
+            'standard_1_month' // Should match Option ID
+        )  
+	); 
+	
+	add_settings_field( // Option 1
+        'premium_1_month', // Option ID
+        'Premium ($)', // Label
+        'my_textbox_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'price_member_month', // Name of our section
+        array( // The $args
+            'premium_1_month' // Should match Option ID
+        )  
+	); 
+	
+
+
+	add_settings_section(  
+        'price_member_year', // Section ID 
+        'Price membership per year', // Section Title
+        'price_member_callback_year', // Callback
+        'general' // What Page?  This makes the section show up on the General Settings Page
+    );
+
+    add_settings_field( // Option 1
+        'standard_1_year', // Option ID
+        'Standard ($)', // Label
+        'my_textbox_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'price_member_year', // Name of our section
+        array( // The $args
+            'standard_1_year' // Should match Option ID
+        )  
+	); 
+	
+	add_settings_field( // Option 1
+        'premium_1_year', // Option ID
+        'Premium ($)', // Label
+        'my_textbox_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'price_member_year', // Name of our section
+        array( // The $args
+            'premium_1_year' // Should match Option ID
+        )  
+	); 
+	
+
+    register_setting('general','allow_free_trial_check', 'esc_attr');
+	register_setting('general','allow_free_trial_month', 'esc_attr');
+
+
+
+    register_setting('general','standard_1_year', 'esc_attr');
+	register_setting('general','premium_1_year', 'esc_attr');
+
+
+ 
+    register_setting('general','standard_1_month', 'esc_attr');
+	register_setting('general','premium_1_month', 'esc_attr');
+	
+
+    register_setting('general','trial_standard_1_month', 'esc_attr');
+    register_setting('general','trial_premium_1_month', 'esc_attr');
+}
+
+function allow_free_trial_callback(){
+    echo '<p>Allow free trial after user register </p>';  
+
+}
+function price_member_trial_callback() { // Section Callback
+    echo '<p>Price for trial 1 month</p>';  
+}
+
+function my_trial_callback($args){
+	$option = get_option($args[0]);
+    echo '<input type="number" step="1" placeholder="Months" id="'. $args[0] .'" name="'. $args[0] .'" value="' . $option . '"  />';
+}
+
+function price_member_callback() { // Section Callback
+    echo '<p>Price for member per month</p>';  
+}
+
+function price_member_callback_year() { // Section Callback
+    echo '<p>Price for member per year</p>';  
+}
+
+
+function my_checkbox_callback($args){
+	$option = get_option($args[0]);
+	if($option == 'on'){
+		echo '<input type="checkbox" id="'. $args[0] .'" name="'. $args[0] .'" checked />';
+	}else{
+		echo '<input type="checkbox" id="'. $args[0] .'" name="'. $args[0] .'"  />';
+	}
+}
+
+
+function my_textbox_callback($args) {  // Textbox Callback
+    $option = get_option($args[0]);
+    echo '<input type="number" step="0.01" placeholder="$USD price" id="'. $args[0] .'" name="'. $args[0] .'" value="' . $option . '" />';
+}
+
+
+/*
+ * Function for post duplication. Dups appear as drafts. User is redirected to the edit screen
+ */
+function rd_duplicate_post_as_draft(){
+	global $wpdb;
+	if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'rd_duplicate_post_as_draft' == $_REQUEST['action'] ) ) ) {
+	  wp_die('No post to duplicate has been supplied!');
+	}
+   
+	/*
+	 * Nonce verification
+	 */
+	if ( !isset( $_GET['duplicate_nonce'] ) || !wp_verify_nonce( $_GET['duplicate_nonce'], basename( __FILE__ ) ) )
+	  return;
+   
+	/*
+	 * get the original post id
+	 */
+	$post_id = (isset($_GET['post']) ? absint( $_GET['post'] ) : absint( $_POST['post'] ) );
+	/*
+	 * and all the original post data then
+	 */
+	$post = get_post( $post_id );
+   
+	/*
+	 * if you don't want current user to be the new post author,
+	 * then change next couple of lines to this: $new_post_author = $post->post_author;
+	 */
+	$current_user = wp_get_current_user();
+	$new_post_author = $current_user->ID;
+   
+	/*
+	 * if post data exists, create the post duplicate
+	 */
+	if (isset( $post ) && $post != null) {
+   
+	  /*
+	   * new post data array
+	   */
+	  $args = array(
+		'comment_status' => $post->comment_status,
+		'ping_status'    => $post->ping_status,
+		'post_author'    => $new_post_author,
+		'post_content'   => $post->post_content,
+		'post_excerpt'   => $post->post_excerpt,
+		'post_name'      => $post->post_name,
+		'post_parent'    => $post->post_parent,
+		'post_password'  => $post->post_password,
+		'post_status'    => 'draft',
+		'post_title'     => $post->post_title,
+		'post_type'      => $post->post_type,
+		'to_ping'        => $post->to_ping,
+		'menu_order'     => $post->menu_order
+	  );
+   
+	  /*
+	   * insert the post by wp_insert_post() function
+	   */
+	  $new_post_id = wp_insert_post( $args );
+   
+	  /*
+	   * get all current post terms ad set them to the new post draft
+	   */
+	  $taxonomies = get_object_taxonomies($post->post_type); // returns array of taxonomy names for post type, ex array("category", "post_tag");
+	  foreach ($taxonomies as $taxonomy) {
+		$post_terms = wp_get_object_terms($post_id, $taxonomy, array('fields' => 'slugs'));
+		wp_set_object_terms($new_post_id, $post_terms, $taxonomy, false);
+	  }
+   
+	  /*
+	   * duplicate all post meta just in two SQL queries
+	   */
+	  $post_meta_infos = $wpdb->get_results("SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id=$post_id");
+	  if (count($post_meta_infos)!=0) {
+		$sql_query = "INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) ";
+		foreach ($post_meta_infos as $meta_info) {
+		  $meta_key = $meta_info->meta_key;
+		  if( $meta_key == '_wp_old_slug' ) continue;
+		  $meta_value = addslashes($meta_info->meta_value);
+		  $sql_query_sel[]= "SELECT $new_post_id, '$meta_key', '$meta_value'";
+		}
+		$sql_query.= implode(" UNION ALL ", $sql_query_sel);
+		$wpdb->query($sql_query);
+	  }
+   
+   
+	  /*
+	   * finally, redirect to the edit post screen for the new draft
+	   */
+	  wp_redirect( admin_url( 'post.php?action=edit&post=' . $new_post_id ) );
+	  exit;
+	} else {
+	  wp_die('Post creation failed, could not find original post: ' . $post_id);
+	}
+  }
+  add_action( 'admin_action_rd_duplicate_post_as_draft', 'rd_duplicate_post_as_draft' );
+   
+  /*
+   * Add the duplicate link to action list for post_row_actions
+   */
+  function rd_duplicate_post_link( $actions, $post ) {
+	if (current_user_can('edit_posts')) {
+	  $actions['duplicate'] = '<a href="' . wp_nonce_url('admin.php?action=rd_duplicate_post_as_draft&post=' . $post->ID, basename(__FILE__), 'duplicate_nonce' ) . '" title="Duplicate this item" rel="permalink">Duplicate</a>';
+	}
+	return $actions;
+  }
+   
+  add_filter( 'post_row_actions', 'rd_duplicate_post_link', 10, 2 );
+
+  
+
+//   add_action( 'admin_menu', 'remove_default_post_type' );
+
+// function remove_default_post_type() {
+//     remove_menu_page( 'edit.php' );
+// }
+
+function custom_excerpt_length( $length ) {
+	return 20;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+
+
+function save_extra_user_profile_fields( $user_id ) {
+
+	$isFreeTrial = get_option('allow_free_trial_check');
+	if($isFreeTrial == 'on'){
+		$monthFreeTrial  = get_option('allow_free_trial_month');
+		$monthFreeTrial = $monthFreeTrial ? $monthFreeTrial : 3;
+
+
+		$current = date('Y-m-d');
+		$current = strtotime( "+".$monthFreeTrial." month", strtotime( $current ) );
+		update_field('date_end_premium',$current, 'user_'.$user_id );
+		
+	}
+
+}
+add_action( 'user_register', 'save_extra_user_profile_fields' );
+	
