@@ -19,7 +19,13 @@ $currenturl = $_SERVER['REQUEST_URI'];
 $path = explode("/", $currenturl);
 
 global $vi;
-$vi = $path[1] == 'vi';
+$domain = $_SERVER['HTTP_HOST'];
+if($domain == 'digitalstrategy.vn'){
+    $vi = 'en';
+}else{
+    $vi = 'vi';
+}
+
     
 
 /** Loads the WordPress Environment and Template */
