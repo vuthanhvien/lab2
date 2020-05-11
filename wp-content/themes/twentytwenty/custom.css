@@ -1,3 +1,29 @@
+@font-face {
+    font-family: 'Nova';
+    src: url(/assets/fonts/SVN-Proxima\ Nova\ Regular.ttf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Nova';
+    src: url(/assets/fonts/SVN-Proxima\ Nova\ Bold.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Nova';
+    src: url(/assets/fonts/SVN-Proxima\ Nova\ Light.ttf);
+    font-weight: 200;
+}
+ 
+@font-face {
+    font-family: 'Nova';
+    src: url(/assets/fonts/SVN-Proxima\ Nova\ SemiBold.ttf);
+    font-weight: 600;
+}
+ 
+
+
 #site-content .btn-cta.btn-long a {
     padding-left: 80px;
     padding-right: 80px;
@@ -1326,26 +1352,33 @@ body #site-footer {
 .post-text .wpulike {
     display: none;
 }
-.post-text p{
+
+.post-text p {
     margin-bottom: 28px;
     /* text-align: justify!important; */
 }
-.post-text h1{
+
+.post-text h1 {
     margin-bottom: 32px;
 }
-.post-text h2{
+
+.post-text h2 {
     margin-bottom: 30px;
 }
-.post-text h3{
+
+.post-text h3 {
     margin-bottom: 28px;
 }
-.post-text h4{
+
+.post-text h4 {
     margin-bottom: 28px;
 }
-.post-text h5{
-    margin-bottom:28px;
+
+.post-text h5 {
+    margin-bottom: 28px;
 }
-.post-text h6{
+
+.post-text h6 {
     margin-bottom: 28px;
 }
 
@@ -1898,7 +1931,8 @@ body #site-footer {
     left: 20px;
     height: 80px;
 }
-.post-event .partner-img img{
+
+.post-event .partner-img img {
     height: 100%;
 }
 
@@ -2192,6 +2226,7 @@ header#site-header {
     text-transform: capitalize;
     font-weight: normal;
     margin: 0;
+    white-space: normal;
 
 }
 
@@ -2697,7 +2732,8 @@ header#site-header {
         margin-top: 100px;
 
     }
-    #post-2 .section-list .library .post.first .min-read{
+
+    #post-2 .section-list .library .post.first .min-read {
         margin-top: 0;
     }
 
@@ -2705,26 +2741,33 @@ header#site-header {
         padding-top: 40px;
         margin-bottom: 0;
     }
-    #post-2 .wp-block-column.library{
+
+    #post-2 .wp-block-column.library {
         margin-bottom: 30px;
     }
-    #post-2 .wp-block-columns{
+
+    #post-2 .wp-block-columns {
         margin-bottom: 0px;
     }
-    #post-2 .wp-block-column{
+
+    #post-2 .wp-block-column {
         margin-bottom: 10px;
     }
-    #section-insiders .wp-block-column:nth-child(1) .post{
+
+    #section-insiders .wp-block-column:nth-child(1) .post {
         margin-top: 0;
     }
-    #post-2 .section-list .news .post .img{
+
+    #post-2 .section-list .news .post .img {
         height: 200px;
     }
-    #post-2 .section-list .podcast .post .title{
+
+    #post-2 .section-list .podcast .post .title {
         font-size: 14px;
         padding-left: 60px;
     }
-    #post-2 .section-list .podcast .post .index{
+
+    #post-2 .section-list .podcast .post .index {
         font-size: 24px;
         left: 20px;
         top: 20px;
@@ -2735,10 +2778,12 @@ header#site-header {
     #section-insiders {
         padding: 30px 15px;
     }
-    #section-insiders p{
+
+    #section-insiders p {
         display: none;
     }
-    #section-insiders .post .min-read{
+
+    #section-insiders .post .min-read {
         display: block;
     }
 
@@ -2749,11 +2794,13 @@ header#site-header {
     .main-banner-right .form h3 {
         font-size: 16px;
     }
+
     #section-partner p a,
-    #section-events p a{
+    #section-events p a {
         display: none;
     }
-    #section-events .post .img img{
+
+    #section-events .post .img img {
         height: 250px;
     }
 
@@ -2763,50 +2810,61 @@ header#site-header {
         height: 50px;
         text-indent: 30px;
     }
-    #section-events .post-slide a h5{
+
+    #section-events .post-slide a h5 {
         font-size: 16px;
     }
-    #section-events .post-slide a{
+
+    #section-events .post-slide a {
         height: 130px;
     }
 
-    #section-events .class-partner_name{
+    #section-events .class-partner_name {
         bottom: 50px
     }
+
     .main-banner-right .form button {
         margin-top: 20px;
         height: 50px;
 
         font-size: 14px;
     }
-    #post-2 .section-list .news .post .title{
+
+    #post-2 .section-list .news .post .title {
         font-size: 16px;
 
     }
-    #post-2 .section-list .library .post.first .title{
+
+    #post-2 .section-list .library .post.first .title {
         font-size: 16px;
-        padding: 5px  15px;
+        padding: 5px 15px;
 
     }
-    #post-2 .section-list .library .post.first .content{
+
+    #post-2 .section-list .library .post.first .content {
         font-size: 14px;
-        padding: 5px  15px;
+        padding: 5px 15px;
     }
-    #post-2 .section-list .library .post.first .min-read{
+
+    #post-2 .section-list .library .post.first .min-read {
         font-size: 14px;
-        padding: 5px  15px;
+        padding: 5px 15px;
 
     }
-    #post-2 .section-list .library .post.first .author{
+
+    #post-2 .section-list .library .post.first .author {
         left: 15px;
         top: 100px;
     }
-    #post-2 .section-list .library .post.first .img{
+
+    #post-2 .section-list .library .post.first .img {
         height: 150px;
     }
-    #post-2 .section-list .library .post .min-read{
+
+    #post-2 .section-list .library .post .min-read {
         /* font-size: 14px; */
     }
+
     .main-banner {
         padding: 20px 0;
     }
@@ -2845,9 +2903,10 @@ header#site-header {
 
     .post-share {
         display: inline-block;
-        margin:  10px 2px;
+        margin: 10px 2px;
     }
-    .post-share span{
+
+    .post-share span {
         font-size: 10px;
     }
 
@@ -2921,7 +2980,8 @@ header#site-header {
         margin-bottom: 10px;
         margin-right: 0;
     }
-    .paging-navigation{
+
+    .paging-navigation {
         margin: 20px 0;
     }
 
@@ -2991,12 +3051,14 @@ header#site-header {
         font-size: 12px;
         padding: 10px;
     }
-    body #site-footer{
-        min-height:60px;
+
+    body #site-footer {
+        min-height: 60px;
         padding: 0;
     }
-    #site-footer .section-inner{
-        display: block!important;
+
+    #site-footer .section-inner {
+        display: block !important;
     }
 
     button.close-nav-toggle .toggle-text {
@@ -3011,36 +3073,44 @@ header#site-header {
     .post-header .icon {
         margin-left: 5px;
     }
-    .post-author img{
+
+    .post-author img {
         display: none;
     }
-    .post-tag{
+
+    .post-tag {
         margin-left: 10px;
         font-size: 12px;
         padding: 10px;
     }
-    #section-insiders .wp-block-column:nth-child(1) .post{
+
+    #section-insiders .wp-block-column:nth-child(1) .post {
         height: 200px;
     }
-    #section-insiders .post{
+
+    #section-insiders .post {
         height: 200px;
-        
+
     }
-    #site-content .list-podcast .post .title{
+
+    #site-content .list-podcast .post .title {
         font-size: 16px;
     }
 
     #site-content #post-2 h4 {
         font-size: 24px;
     }
-    #post-2 .section-list p a{
+
+    #post-2 .section-list p a {
         display: none;
     }
+
     #post-2 .section-list p {
         display: none;
         font-size: 14px;
     }
-    #post-2 .section-list p.min-read{
+
+    #post-2 .section-list p.min-read {
         display: block;
         font-size: 14px;
     }
@@ -3074,25 +3144,29 @@ header#site-header {
         padding: 15px;
     }
 
-    #site-content .auth-page .form h4{
+    #site-content .auth-page .form h4 {
         font-size: 18px;
         margin: 10px 0;
     }
-    #site-content .auth-redirect{
+
+    #site-content .auth-redirect {
         margin: 10px 0;
     }
-    #site-content .auth-page input{
+
+    #site-content .auth-page input {
         margin-top: 20px;
         height: 45px;
         font-size: 14px;
     }
+
     #site-content .auth-page #wp-submit {
         padding: 10px;
         height: 50px;
         margin-top: 20px;
         font-size: 14px;
     }
-    #site-content .auth-redirect a{
+
+    #site-content .auth-redirect a {
         font-size: 12px;
     }
 
@@ -3147,334 +3221,431 @@ header#site-header {
     .wpcf7 form img {
         display: none;
     }
-    .list-post .post .content{
+
+    .list-post .post .content {
         font-size: 14px;
         padding: 0;
         margin: 15px;
     }
-    .list-post .post .title{
+
+    .list-post .post .title {
         padding: 0;
         margin: 15px;
         font-size: 16px;
         margin-top: 30px;
     }
-    #cta h3{
+
+    #cta h3 {
         font-size: 24px;
     }
-    #cta{
+
+    #cta {
         padding: 30px 0px;
     }
-    #cta .wp-block-image img{
+
+    #cta .wp-block-image img {
         width: 70px;
         margin: 15px;
     }
-    #top-footer h2{
+
+    #top-footer h2 {
         font-size: 18px;
     }
-    #top-footer .post h5{
+
+    #top-footer .post h5 {
         font-size: 14px;
         height: 32px;
     }
-    #top-footer .post p{
+
+    #top-footer .post p {
         font-size: 12px;
     }
-    #top-footer aside{
+
+    #top-footer aside {
         padding-top: 20px;
         padding-bottom: 20px;
     }
-    #top-footer p{
+
+    #top-footer p {
         font-size: 14px;
     }
-    .modal-menu > li > a, .modal-menu > li > .ancestor-wrapper > a{
+
+    .modal-menu>li>a,
+    .modal-menu>li>.ancestor-wrapper>a {
         padding: 10px 20px;
-        font-size: 14px!important;
+        font-size: 14px !important;
     }
-    .modal-menu ul li a{
+
+    .modal-menu ul li a {
         padding: 10px 20px;
-        font-size: 14px!important;
+        font-size: 14px !important;
 
     }
-    .post-banner>img{
+
+    .post-banner>img {
         height: 250px;
     }
-    .post-text p,.post-text *{
+
+    .post-text p,
+    .post-text * {
         font-size: 14px;
     }
-    .post-text h2{
+
+    .post-text h2 {
         font-size: 20px;
     }
-    .post-text p{
+
+    .post-text p {
         font-size: 14px;
     }
-    .post-text p{
+
+    .post-text p {
         font-size: 14px;
     }
-    #site-content .button.btn, #site-content .btn-cta a, #site-content button.btn{
-        padding: 15px 40px!important;
+
+    #site-content .button.btn,
+    #site-content .btn-cta a,
+    #site-content button.btn {
+        padding: 15px 40px !important;
         height: 50px;
         font-size: 14px;
     }
-    .post-next h3{
+
+    .post-next h3 {
         font-size: 18px;
         padding: 0;
         text-align: center;
     }
-    .post-next .post .title{
+
+    .post-next .post .title {
         font-size: 16px;
     }
-    .post-relate-outer{
+
+    .post-relate-outer {
         margin-top: 20px;
         padding-top: 15px;
     }
-    .post-relate-outer h3{
+
+    .post-relate-outer h3 {
         font-size: 18px;
         margin-bottom: 10px;
     }
-    .post-relate .post-relate-left .post{
+
+    .post-relate .post-relate-left .post {
         height: 200px;
         margin-top: 0;
     }
-    .post-relate .post-relate-left .post .title{
+
+    .post-relate .post-relate-left .post .title {
         font-size: 16px;
     }
-    .event-banner{
+
+    .event-banner {
         height: 300px;
         padding-top: 120px;
     }
-    .event-banner img{
+
+    .event-banner img {
         height: 300px;
 
     }
-    .event-banner .hash{
+
+    .event-banner .hash {
         font-size: 16px;
     }
-    .event-banner .blur{
+
+    .event-banner .blur {
         height: 300px;
     }
-    .tab-event{
+
+    .tab-event {
         margin-bottom: 20px;
     }
-    .post-event .title{
+
+    .post-event .title {
         font-size: 16px;
     }
-    .post-event .partner-img{
+
+    .post-event .partner-img {
         width: 100px;
     }
-    .paging-navigation .next{
+
+    .paging-navigation .next {
         font-size: 12px;
     }
-    #site-content h3{
+
+    #site-content h3 {
         font-size: 24px;
     }
-    .top-partner .partner p{
+
+    .top-partner .partner p {
         font-size: 14px;
     }
-    .top-partner .partner{
+
+    .top-partner .partner {
         width: 200px;
         padding: 15px;
         height: 200px;
     }
-    .top-partner .partner img{
+
+    .top-partner .partner img {
         margin: 10px auto;
     }
-    .top-partner{
+
+    .top-partner {
         padding: 20px 0;
     }
-    #site-content .auth-page{
+
+    #site-content .auth-page {
         padding: 15px 0;
     }
+
     #post-97 {
         padding: 20px 0;
     }
-    #post-97 h2{
+
+    #post-97 h2 {
         font-size: 24px;
     }
-    .subscribe-content li{
+
+    .subscribe-content li {
         font-size: 14px;
     }
-    .subscribe-content{
-        padding: 15px ;
+
+    .subscribe-content {
+        padding: 15px;
     }
-    .profile li{
+
+    .profile li {
         font-size: 12px;
     }
-    .profile h3 a{
-        font-size: 12px!important;
+
+    .profile h3 a {
+        font-size: 12px !important;
     }
-    .plans .plan h2{
+
+    .plans .plan h2 {
         font-size: 16px;
     }
-    .plans .plan h3{
+
+    .plans .plan h3 {
         padding: 20px;
     }
-    .plans .plan button{
+
+    .plans .plan button {
         height: 50px;
         margin-top: 0px;
         font-size: 16px;
         padding: 0 20px;
     }
-    .plan-action p{
+
+    .plan-action p {
         font-size: 14px;
     }
-    .profile br{
-    }
-    .plan-action button{
+
+    .profile br {}
+
+    .plan-action button {
         margin-top: 0;
     }
-    .list-banner p{
+
+    .list-banner p {
         font-size: 12px;
     }
-    .list-banner{
+
+    .list-banner {
         padding: 15px 0px;
     }
-    .list-banner h3{
+
+    .list-banner h3 {
         margin: 15px;
     }
-    .list-banner .line{
+
+    .list-banner .line {
         display: none;
     }
-    .list-podcast .col .post{
+
+    .list-podcast .col .post {
         height: 200px;
     }
-    .list-podcast .col.big .post{
+
+    .list-podcast .col.big .post {
         height: 200px;
     }
-    .tag-list a{
+
+    .tag-list a {
         font-size: 12px;
     }
-    .event .wp-block-spacer{
+
+    .event .wp-block-spacer {
         display: none;
     }
-   #site-content .event h2{
+
+    #site-content .event h2 {
         font-size: 22px;
         margin: 20px 0;
     }
+
     #site-content .event .wp-block-columns,
-    #site-content .event .wp-block-column{
+    #site-content .event .wp-block-column {
         margin: 0;
     }
-    #site-content .event .wp-block-cover{
-        min-height: 400px!important;
+
+    #site-content .event .wp-block-cover {
+        min-height: 400px !important;
     }
-    #site-content .event p{
+
+    #site-content .event p {
         font-size: 14px;
     }
-    #site-content .event .btn-cta{
+
+    #site-content .event .btn-cta {
         width: 100%;
     }
-    #site-content .event .btn-cta a{
+
+    #site-content .event .btn-cta a {
         width: 100%;
         min-width: 100%;
     }
-    #site-content h4{
+
+    #site-content h4 {
         font-size: 16px;
     }
-    #site-content .event  .wp-block-image img{
+
+    #site-content .event .wp-block-image img {
         /* max-height: 100px; */
     }
-    .wp-block-group.has-background{
+
+    .wp-block-group.has-background {
         padding: 0;
     }
-    .partner-profile{
+
+    .partner-profile {
         padding: 15px;
         flex-direction: column;
         margin-top: 15px;
     }
-    .partner-content{
+
+    .partner-content {
         width: 100%;
     }
-    .partner-avatar{
+
+    .partner-avatar {
         margin: 0 auto;
 
-        
+
     }
-    .partner-avatar img{
+
+    .partner-avatar img {
         height: 100%;
         width: 100%;
         margin-bottom: 50px;
     }
-    .partner-profile h2{
+
+    .partner-profile h2 {
         font-size: 18px;
     }
-    .partner-content p{
+
+    .partner-content p {
         font-size: 14px;
     }
-    .partner-content{
+
+    .partner-content {
         padding: 0;
     }
-    .partner-action{
+
+    .partner-action {
         text-align: center;
     }
-    .partner-posts .post .min-read{
+
+    .partner-posts .post .min-read {
         display: block;
         padding: 10px;
     }
-    .partner-posts .post .title{
+
+    .partner-posts .post .title {
         padding: 10px;
         font-size: 18px;
         margin: 0;
 
     }
-    .partner-posts .post .content{
+
+    .partner-posts .post .content {
         padding: 10px;
         font-size: 14px;
     }
-    .partner-posts{
+
+    .partner-posts {
         width: 100%;
     }
-    .partner-posts .post img{
+
+    .partner-posts .post img {
         position: relative;
         width: 100%;
         height: 150px;
     }
-    #site-content .post-banner-content h3{
+
+    #site-content .post-banner-content h3 {
         font-size: 12px;
     }
-    .comment-respond #submit{
+
+    .comment-respond #submit {
         font-size: 14px;
         padding: 10px 20px;
     }
-    .comment-respond p:not(.comment-notes){
+
+    .comment-respond p:not(.comment-notes) {
         margin: 0px;
     }
+
     .post-comment .comment-respond p:not(.comment-notes),
-   .post-comment .comments-wrapper{
+    .post-comment .comments-wrapper {
         margin-top: 0;
-        padding: 0!important;
+        padding: 0 !important;
     }
-    .post-comment ,  .post-comment  *{
+
+    .post-comment,
+    .post-comment * {
         font-size: 14px;
     }
-    .post-comment form{
+
+    .post-comment form {
         width: 100%;
         max-width: 100%;
         padding: 0;
     }
-    .post-comment .comment-metadata time{
+
+    .post-comment .comment-metadata time {
         font-size: 12px;
     }
-    .post-comment .by-post-author{
-        display: none!important;
+
+    .post-comment .by-post-author {
+        display: none !important;
     }
+
     .post-comment .comment-reply a,
-    .post-comment .comment-content p{
+    .post-comment .comment-content p {
         font-size: 12px;
     }
-    .post-comment .comment-body{
+
+    .post-comment .comment-body {
         padding-bottom: 20px;
     }
-    .post-comment .comment-respond textarea{
+
+    .post-comment .comment-respond textarea {
         height: 100px;
     }
-    body p{
+
+    body p {
         font-size: 14px;
     }
 }
-.class-tag{
+
+.class-tag {
     position: absolute;
     padding: 5px 10px;
     font-size: 14px;
-    top:30px;
+    top: 30px;
     right: 0;
     color: white;
     background: #F8A54A;
