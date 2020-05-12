@@ -21,9 +21,9 @@ $path = explode("/", $currenturl);
 global $vi;
 $domain = $_SERVER['HTTP_HOST'];
 if($domain == 'digitalstrategy.vn'){
-    $vi = 'en';
+    $vi = false;
 }else{
-    $vi = 'vi';
+    $vi = true;
 }
 
     

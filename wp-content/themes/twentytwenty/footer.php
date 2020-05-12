@@ -23,8 +23,8 @@ $prefix =  $vi ? '/vi' : '';
 				</p><!-- .footer-copyright -->
 				<p>
                     <a href="<?php echo $prefix ?>/advertise"   ><?php echo $vi ? 'Quảng cáo' : 'Advertise' ?></a> |
-                    <a href="<?php echo $prefix ?>/terms-of-use"  ><?php echo $prefix ? 'Điều khoản sử dụng' : 'Terms of Use' ?></a> |
-				<a href="<?php echo $prefix ?>/privacy"  ><?php echo $prefix ? 'Chính sách bảo mật' : 'Privacy Policy' ?></a>
+                    <a href="<?php echo $prefix ?>/terms-of-use"  ><?php echo $vi ? 'Điều khoản sử dụng' : 'Terms of Use' ?></a> |
+				<a href="<?php echo $prefix ?>/privacy"  ><?php echo $vi ? 'Chính sách bảo mật' : 'Privacy Policy' ?></a>
 					</p>
 				</div>
 			</footer><!-- #site-footer -->
