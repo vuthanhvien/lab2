@@ -26,37 +26,52 @@ $param = array(
 $query = new WP_Query($param);
 
 $searchObj = array(
-	'LOCATION' =>  array(
-		'Hà Nội' => true,
-		'Hồ Chí Minh' => false,
-		'Đà Nãng' => true,
-		'Singapore' => true,
-	),
-	'FUNCTION' =>  array(
-		'Hà Nội' => true,
+	'location' =>  array(
+		'Hà Nội' => false,
 		'Hồ Chí Minh' => false,
 		'Đà Nãng' => false,
 		'Singapore' => false,
 	),
-	'YEARS OF EXP' =>  array(
-		'Hà Nội' => false,
-		'Hồ Chí Minh' => true,
-		'Đà Nãng' => true,
-		'Singapore' => true,
+	'function' =>  array(
+		'Web development' => false,
+		'Sales & Business Development' => false,
+		'Finance, Legal & Accounting' => false,
+		'Marketing & PR' => false,
+		'Enterprise Software & Systems' => false,
+		'Data & Analytics' => false,
+		'Project & Product management' => false,
+		'Human Resource' => false,
+		'UI/UX Design' => false,
+		'DevOps & Cloud Management' => false,
+		'Customer Service' => false,
+		'Logistics & Operations' => false,
 	),
-	'INDUSTRY' =>  array(
-		'Hà Nội' => false,
-		'Hồ Chí Minh' => true,
-		'Đà Nãng' => true,
-		'Singapore' => true,
+	'year of exp' =>  array(
+		'0-1 year' => false,
+		'1-3 years' => false,
+		'3-5 years' => false,
+		'5+ year' => false,
 	),
-	'TYPE' =>  array(
+	'industry' =>  array(
+		'Ecommerce' => false,
+		'Professional Services' => false,
+		'Financial Tech' => false,
+		'Clean Tech' => false,
+		'Health' => false,
+		'General Internet' => false,
+		'Software as a service' => false,
+		'AI' => false,
+		'Meida' => false,
+		'Gaming' => false,
+		'Logictics & Transportation' => false,
+	),
+	'type' =>  array(
 		'Full time' => false,
 		'Part time' => false,
 		'Remote' => false,
 		'Freelancer' => false,
 	),
-	'SALARY' =>  array(
+	'salary' =>  array(
 		'Dynamic' => false,
 		'0-500' => false,
 		'500-1000' => false,
@@ -73,24 +88,35 @@ $searchObj = array(
 <main id="site-content" role="main">
 
 	<div class="search-job section-inner">
-		<div class="form-search">
+		<form class="form-search">
 			<i style="position: absolute;  margin-top: 20px;  margin-left: 10px;" class="fa fa-search"></i>
-			<input value="<?php  echo $search ?>" placeholder="Search by job title, company or skill" />
+			<input name="search" value="<?php  echo $search ?>" placeholder="Search by job title, company or skill" />
+			
 			<div class="dropdown-list">
-				<?php foreach ($searchObj as $key => $obj){ ?>
-				<div class="dropdown" id="dropdown-<?php echo $key ?>">
+				<?php foreach ($searchObj as $key => $obj){ 
+					$isHave = false;
+					foreach ($obj as $k => $option){
+						if($option) {$isHave = true;}
+					}
+					?>
+					<input type="hidden" name="<?php echo $key ?>" />
+				<div class="dropdown <?php echo $isHave ? 'active' : '' ?> " id="dropdown-<?php echo $key ?>">
 					<a><?php echo $key ?> <i class="fa fa-chevron-down" style="font-size: 12px" ></i></a>
 					<div class="dropdown-menu">
 						<i style="position: absolute;  margin-top: 15px;  margin-left: 10px;"  class="fa fa-search"></i>
 						<input class="dropdown-filter"  placeholder="Filter"/>
 						<?php foreach ($obj as $k => $option){ ?>
-						<div class="dropdown-item <?php echo $option ? 'active' : '' ?>"><i class="fa fa-check" ></i> <?php echo $k ?></div>
+						<div class="dropdown-item <?php echo $option ? 'active' : '' ?>"><i class="fa fa-check" ></i><?php echo $k ?></div>
 						<?php } ?>
 					</div>
 				</div>
 				<?php } ?>
+
+				<button class="submit pull-right" style="height: 40px; padding: 10px;font-size: 14px"><i class="fa fa-search" ></i> Search</button>
 			</div>
-		</div>
+		</form>
+		<hr style="margin: 20px 0" />
+		<div class="tags"></div>
 		<hr style="margin: 20px 0" />
 		<div class="search-result" style="min-height: 500px">
 
@@ -127,22 +153,87 @@ $searchObj = array(
 		}else{
 			echo 'No job avalaible';
 		}
-		?>
+		$totalPage =  $query->max_num_pages;
+
+		echo '<div class="paging-navigation" page="'.$paged.'">';
+		if($paged <= 1){
+			echo '<a class="next disabled" >Prev</a>';
+		}else{
+			echo '<a class="next" href="'. get_permalink() .'?paged='.($paged -1).'">Prev</a>';
+	
+		}
+		if( $paged -2 > 0){
+			echo '<a href="'. get_permalink() .'?paged='.($paged -2) .'" >' . ($paged - 2) . '</a>';
+		} 
+		if( $paged - 1 > 0){
+			echo '<a href="'. get_permalink() .'?paged='.($paged -1 ).'" >' . ($paged - 1) . '</a>';
+		} 
+		echo '<a href="'. get_permalink() .'?paged='.$paged.'"  class="current-page"  >' . ($paged) . '</a>';
+		if( $paged + 1 <= $totalPage){
+			echo '<a href="'. get_permalink() .'?paged='.($paged + 1) .'" >' . ($paged + 1) . '</a>';
+		} 
+		if( $paged + 2 <= $totalPage){
+			echo '<a href="'. get_permalink() .'?paged='.($paged + 2) .'" >' . ($paged + 2) . '</a>';
+		} 
+		if($totalPage <=  $paged){
+			echo '<a class="next disabled" >Next</a>';
+		}else{
+			echo '<a class="next"  href="'. get_permalink() .'?paged='.($paged + 1).'">Next</a>';
+			
+		}
+		echo '</div>';
+
+?>
 		</div>
 	</div>
 </main>
 
 <script>
+function setTag(){
+	var tags = []
+	jQuery('.dropdown-item').each(function(i){
+		if(jQuery(this).hasClass('active')){
+			tags.push(jQuery(this).text());
+		}
+	})
+	jQuery('.tags').html('');
+	tags.forEach(element => {
+		jQuery('.tags').append('<div class="tag">'+element+'</div>')
+
+	});
+	
+	console.log(tags);
+}
+
+	setTag();
 jQuery('.dropdown-item').click(function(){
 	if(jQuery(this).hasClass('active') ){
 		jQuery(this).removeClass('active');
 	}else{
 		jQuery(this).addClass('active');
 	}
+
+	setTag();
 	
 })
 </script>
 <style>
+.tags{
+	padding: 0 20px;
+}
+.tags .tag{
+	background: #0D87D0;
+	padding: 5px 20px;
+	display: inline-block;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	border-radius: 5px;
+	margin: 5px 10px;
+}
+.tags .tag i{
+	cursor: pointer;
+}
 .search-job{
 	background: white;
 	padding: 50px 20px;
@@ -169,6 +260,9 @@ jQuery('.dropdown-item').click(function(){
 	display: inline-block;
 	
 }
+.search-job .dropdown.active a{
+	/* font-weight: bold; */
+}
 .search-job .dropdown .dropdown-menu{
 	display: none;
 	position: absolute;
@@ -178,7 +272,7 @@ jQuery('.dropdown-item').click(function(){
 	padding: 10px;
 	box-shadow: 0px 0 5px rgba(0,0,0,0.2);
 	min-width: 300px;
-	max-height: 600px;
+	max-height: 400px;
 	overflow: auto;
 
 }
@@ -201,6 +295,7 @@ jQuery('.dropdown-item').click(function(){
 	font-size: 16px;
 	padding: 15px 10px;
 	color: #555;
+	text-transform: uppercase;
 }
 .search-job .dropdown .dropdown-menu .dropdown-item{
 	font-weight: bold;
