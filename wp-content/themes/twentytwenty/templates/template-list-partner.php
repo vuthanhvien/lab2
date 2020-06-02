@@ -162,7 +162,7 @@ get_header();
 		$desc = implode(' ', array_slice(explode(' ', $desc), 0, 15));
 		?>
 			<a href="/user/<?php  echo $user_id->ID ?>" class="partner">
-				<?php echo get_avatar($user_id->ID) ?>
+				 <?php echo get_avatar($user_id->ID) ?>
 				<p class="content"><?php echo $desc ?> [...]</p>
 				</a>
 		<?php

@@ -2324,7 +2324,7 @@ function _wp_upload_dir( $time = null ) {
 			/*
 			 * If ms-files rewriting is disabled (networks created post-3.5), it is fairly
 			 * straightforward: Append sites/%d if we're not on the main site (for post-MU
-			 * networks). (The extra directory prevent a four-digit ID from conflicting with
+			 * networks). (The extra directory prevents a four-digit ID from conflicting with
 			 * a year-based directory for the main site. But if a MU-era network has disabled
 			 * ms-files rewriting manually, they don't need the extra directory, as they never
 			 * had wp-content/uploads for the main site.)
@@ -6526,7 +6526,7 @@ function wp_delete_file_from_directory( $file, $directory ) {
 /**
  * Outputs a small JS snippet on preview tabs/windows to remove `window.name` on unload.
  *
- * This prevent reusing the same tab for a preview when the user has navigated away.
+ * This prevents reusing the same tab for a preview when the user has navigated away.
  *
  * @since 4.3.0
  *
@@ -6580,7 +6580,7 @@ function mysql_to_rfc3339( $date_string ) {
 /**
  * Attempts to raise the PHP memory limit for memory intensive processes.
  *
- * Only allows raising the existing limit and prevent lowering it.
+ * Only allows raising the existing limit and prevents lowering it.
  *
  * @since 4.6.0
  *
@@ -6874,7 +6874,7 @@ All at ###SITENAME###
 /**
  * Return an anonymized IPv4 or IPv6 address.
  *
- * @since 4.9.6 Abstracted from `WP_Community_event::get_unsafe_client_ip()`.
+ * @since 4.9.6 Abstracted from `WP_Community_Events::get_unsafe_client_ip()`.
  *
  * @param  string $ip_addr        The IPv4 or IPv6 address to be anonymized.
  * @param  bool   $ipv6_fallback  Optional. Whether to return the original IPv6 address if the needed functions
@@ -7401,5 +7401,3 @@ function is_php_version_compatible( $required ) {
 function wp_fuzzy_number_match( $expected, $actual, $precision = 1 ) {
 	return abs( (float) $expected - (float) $actual ) <= $precision;
 }
-
- 

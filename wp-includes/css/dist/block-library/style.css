@@ -329,7 +329,7 @@ section.wp-block-cover-image > h2,
   line-height: 1.25;
   z-index: 1;
   margin-bottom: 0;
-  
+  max-width: 610px;
   padding: 14px;
   text-align: center; }
 

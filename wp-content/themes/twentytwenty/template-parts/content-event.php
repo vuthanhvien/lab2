@@ -35,6 +35,11 @@ if( $fields['date_end_premium'] > date('Y-m-d')  ){
 	}
 }
 
+if(!$isPremimum && !$isPremimum){
+	$isView = true;
+}
+
+
 $vi = $GLOBALS['vi'];
 
 ?>

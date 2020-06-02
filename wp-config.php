@@ -1,4 +1,5 @@
 <?php
+define('WP_AUTO_UPDATE_CORE', 'minor');// This setting is required to make sure that WordPress updates can be properly managed in WordPress Toolkit. Remove this line if this WordPress website is not managed by WordPress Toolkit anymore.
 /**
  * Cấu hình cơ bản cho WordPress
  *
@@ -26,10 +27,10 @@ define('WP_ALLOW_MULTISITE', true );
 define( 'DB_NAME', 'min87586_dev' );
 
 /** Username của database */
-define( 'DB_USER', 'min87586_admin' );
+define( 'DB_USER', 'root' );
 
 /** Mật khẩu của database */
-define( 'DB_PASSWORD', '12345678@X' );
+define( 'DB_PASSWORD', '' );
 
 /** Hostname của database */
 define( 'DB_HOST', 'localhost' );
