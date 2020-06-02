@@ -38,42 +38,70 @@ the_post();
 			<?php
 ?>
 <div class="section-inner">
-	<?php
-	$param = array(
-		'paged'         => $paged, 
-		'order'         => 'asc',
+
+<h3 class="text-center">Featured Companies</h3>
+<p class="text-center">Browse through our featured companies of the week</p>
+<?php 
+
+	$paramFirst = array(
+		'paged'         => 0, 
+		'order'         => 'desc',
 		'post_status'   => 'publish',
-		'nopaging'		=> false,
 		'posts_per_page'=> 1,
 		'offset'       	=> 0,
 		'post_type'		=> 'company',
-		'orderby'		=> 'desc'
+		'orderby'		=> 'date'
+	);
+	$queryFirst = new WP_Query($paramFirst);
+	if ($queryFirst->have_posts()) {
+		echo '<div class="list-company">';
+		while ($queryFirst->have_posts()) { 
+			$queryFirst->the_post(); 
+
+	?>
+	<div class="company-first" style="background-image: url(<?php echo $img; ?>)">
+	<div class="company-logo"><img src="<?php echo get_field('logo') ?>" /></div>
+		<h3><?php the_title() ?></h3>
+		<h5><?php echo join(', ', get_field('location')) ?></h5>
+		<a class="button btn">View jobs</a>
+	</div>
+	<?php
+		}
+	}
+
+
+	$param = array(
+		'paged'         => 0, 
+		'order'         => 'desc',
+		'post_status'   => 'publish',
+		'posts_per_page'=> 6,
+		'offset'       	=> 1,
+		'post_type'		=> 'company',
+		'orderby'		=> 'date'
 	);
 	$query = new WP_Query($param);
 
-	?>
-	<h3 class="text-center">Featured Companies</h3>
-	<p class="text-center">Browse through our featured companies of the week</p>
-	<?php 
+	
 
 	if ($query->have_posts()) {
-		echo '<div class="list-post">';
+		echo '<div class="list-company">';
 		while ($query->have_posts()) { 
 			$query->the_post(); 
 
-			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content , $matches);
-  			$first_img = $matches [1] [0];
-			$img = get_the_post_thumbnail() ? get_the_post_thumbnail() :  '<img src="'.$first_img.'">' ;
+			$item .= '<div  class="company-detail">';
+			$item .= '<div class="company-detail-banner">'.get_the_post_thumbnail().'</div>';
 
-			$item = '';
-			$item .= '<div  class="post-event">';
-			$item .= $img;
-
-			$item .= '<div class="blur"></div>';
-			$item .= '<div class="partner-img"><img src="'.get_field('partner_logo').'" /></div>';
-			$item .= '<div class="post-event-content">';
-			$item .= '<h2 class="partner">'.get_field('partner_name').'</h2>'; 
-			$item .= '<a href="'.get_the_permalink().'"><h3 class="title">'.get_the_title().'</h3></a>';
+			$item .= '<div class="company-logo"><img src="'.get_field('logo').'" /></div>';
+			$item .= '<div class="company-content">';
+			$item .= '<h5 class="text-center">'.get_the_title().'</h5>'; 
+			$item .= '<p><i class="fa fa-tags" ></i>'.get_field('type').'</p>'; 
+			$item .= '<p><i class="fa fa-map-marker" ></i>'.join(', ', get_field('location')).'</p>'; 
+			$item .= '<p><i class="fa fa-users" ></i>'.get_field('total_employees').'</p>'; 
+			$item .= '<p><i class="fa fa-star" ></i>'.get_field('description').'</p>'; 
+			$item .= '</div>';
+			$item .= '<div class="company-action">';
+			$item .= '<button class="company-view-job">View jobs</button>';
+			$item .= '<button class="company-view-company">View company</button>';
 			$item .= '</div>';
 			$item .= '</div>';
 
@@ -89,49 +117,137 @@ the_post();
 </main><!-- #site-content -->
 
 <style>
-		.jobs-banner{
-			padding: 300px 0  200px;
-			background-size: cover;
-			background-position: center;
-			position: relative;
+.company-first{
+	margin: 50px 0;
+	padding: 100px 20px;
+}
+.company-first h5,
+.company-first h3{
+	color: white;
+	margin: 20px 0;
+}
+.company-first a{
+	height: 55px !important;
+}
+.company-detail-banner{
+	height: 200px;
+	overflow: hidden;
+}
+.company-content h5{
+	margin-top: 30px;
+}
+.company-content{
+	padding: 15px;
+}
+.company-content p{
+	font-weight: bold;
+	color: #555;
+}
+.company-content p i{
+	width: 30px;
+}
+.company-action{
 
-		}
-		.jobs-banner .blur{
-			position: absolute;
-			top: 0;
-			left:0;
-			width: 100%;
-			height: 100%;
-			background: rgba(0,0,0,0.5);
-		}
-		 .jobs-search{
-			position: relative;
-			z-index: 1;
-			background: white;
-			border-radius: 10px;
-			padding: 20px;
-		}
-		.jobs-search select,
-		.jobs-search input{
-			width: 40%;
-			height: 60px;
-			background: #ddd;
-			border: 1px solid #ccc;
-			padding-left: 20px;
-			border-radius: 5px;
-			font-weight:bold;
-			font-size: 16px;
-		}
-		.jobs-search button{
-			height: 60px;
-			border-radius: 5px;
-			width: 20%;
-			background: black;
-			font-size: 16px;
-			font-weight:bold;
-			text-align: center;
+}
+.company-view-company,
+.company-view-job{
+	border-radius: 0;
+	font-weight: bold;
+	color: white;
+	font-size: 16px;
+	width: 50%;
+	padding: 25px 0;
+}
+.company-view-job{
+	border-right: 1px solid #fff3;
+}
+button.company-view-company:hover,
+button.company-view-job:hover{
+	background-color: #f9a64b;
+}
+	.company-detail{
+		background: white;
+		display: inline-block;
+		width: calc((100% - 60px)/ 3);
+		vertical-align: top;
+		margin-right: 30px;
+		margin-bottom: 40px;
+		position: relative;
+		overflow: hidden;
+		border-radius: 10px;
+	}
 
-		}
+	.company-detail:nth-child(3n) {
+    margin-right: 0;
+}
+
+	.company-detail .company-logo{
+	    height: 100px;
+		width: 100px;
+		border-radius: 50px;
+		background: white;
+		z-index: 1;
+		position: relative;
+		margin: -50px auto -20px auto;
+		border: 1px solid #eee;
+		overflow: hidden;
+	}
+	.company-detail .company-logo img{
+		height: 100%;
+		width: 100%;
+		object-fit: contain;
+		object-position: center;
+	}
+	.jobs-banner{
+		padding: 300px 0  100px;
+		background-size: cover;
+		background-position: center;
+		position: relative;
+
+	}
+	.jobs-banner .blur{
+		position: absolute;
+		top: 0;
+		left:0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.5);
+	}
+		.jobs-search{
+		position: relative;
+		z-index: 1;
+		background: white;
+		border-radius: 10px;
+		padding: 60px 20px;
+	}
+	.jobs-search select,
+	.jobs-search input{
+		width: 40%;
+		height: 60px;
+		background: #eee;
+		border: 1px solid #ccc;
+		padding-left: 20px;
+		border-radius: 5px;
+		font-weight:bold;
+		font-size: 16px;
+		vertical-align: top;
+	}
+	.jobs-search select{
+		width: 20%;
+		margin: 0 20px;
+	}
+	.jobs-search button{
+		margin: 0 20px;
+		vertical-align: top;
+		height: 60px;
+		border-radius: 5px;
+		width: 20%;
+		background: black;
+		font-size: 16px;
+		font-weight:bold;
+		text-align: center;
+
+	}
 </style>
 
 <?php echo do_shortcode('[signup]'); ?>
