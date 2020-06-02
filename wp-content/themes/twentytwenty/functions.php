@@ -1349,7 +1349,7 @@ function create_custom_type_job()
             'revisions',
             'custom-fields'
         ), //Các tính năng được hỗ trợ trong post type
-        'taxonomies' => array( 'category', 'post_tag' ), //Các taxonomy được phép sử dụng để phân loại nội dung
+        // 'taxonomies' => array( 'category', 'post_tag' ), //Các taxonomy được phép sử dụng để phân loại nội dung
         'hierarchical' => false, //Cho phép phân cấp, nếu là false thì post type này giống như Post, true thì giống như Page
         'public' => true, //Kích hoạt post type
         'show_ui' => true, //Hiển thị khung quản trị như Post/Page

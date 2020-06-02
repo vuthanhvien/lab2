@@ -20,19 +20,16 @@ the_post();
 				<div class="jobs-banner text-center" style="background-image: url(<?php echo $img; ?>)">
 				<div class="blur" ></div>
 				<div class="section-inner">
-				<div class="jobs-search">
-					<input placeholder="Search" />
-					<select>
+				<form class="jobs-search" action="/jobs" method="get">
+					<input type="text"  name="search" required placeholder="Search" />
+					<select name="location" required>
 						<option>Hồ Chí Minh</option>
-						<option>Hồ Chí Minh</option>
-						<option>Hồ Chí Minh</option>
-						<option>Hồ Chí Minh</option>
-						<option>Hồ Chí Minh</option>
-						<option>Hồ Chí Minh</option>
-						<option>Hồ Chí Minh</option>
+						<option>Hà Nội</option>
+						<option>Đà Nẵng</option>
+						<option>Singapore</option>
 					</select>
-					<button>Search</button>
-				</div>
+					<button type="submit">Search</button>
+				</form>
 				</div>
 				</div>
 			<?php
@@ -59,12 +56,13 @@ the_post();
 			$queryFirst->the_post(); 
 
 	?>
-	<div class="company-first" style="background-image: url(<?php echo $img; ?>)">
-	<div class="company-logo"><img src="<?php echo get_field('logo') ?>" /></div>
-		<h3><?php the_title() ?></h3>
-		<h5><?php echo join(', ', get_field('location')) ?></h5>
-		<a class="button btn">View jobs</a>
-	</div>
+	<div class="company-first" style="background-image: url(<?php echo get_the_post_thumbnail_url(); ?>)">
+	<div class="blur" ></div>
+		<div class="company-logo"><img src="<?php echo get_field('logo') ?>" /></div>
+			<h3><?php the_title() ?></h3>
+			<h5><?php echo join(' | ', get_field('location')) ?></h5>
+			<a class="button btn">View jobs</a>
+		</div>
 	<?php
 		}
 	}
@@ -87,7 +85,7 @@ the_post();
 		echo '<div class="list-company">';
 		while ($query->have_posts()) { 
 			$query->the_post(); 
-
+			$item = '';
 			$item .= '<div  class="company-detail">';
 			$item .= '<div class="company-detail-banner">'.get_the_post_thumbnail().'</div>';
 
@@ -95,13 +93,13 @@ the_post();
 			$item .= '<div class="company-content">';
 			$item .= '<h5 class="text-center">'.get_the_title().'</h5>'; 
 			$item .= '<p><i class="fa fa-tags" ></i>'.get_field('type').'</p>'; 
-			$item .= '<p><i class="fa fa-map-marker" ></i>'.join(', ', get_field('location')).'</p>'; 
+			$item .= '<p><i class="fa fa-map-marker" ></i>'.join(' | ', get_field('location')).'</p>'; 
 			$item .= '<p><i class="fa fa-users" ></i>'.get_field('total_employees').'</p>'; 
 			$item .= '<p><i class="fa fa-star" ></i>'.get_field('description').'</p>'; 
 			$item .= '</div>';
 			$item .= '<div class="company-action">';
-			$item .= '<button class="company-view-job">View jobs</button>';
-			$item .= '<button class="company-view-company">View company</button>';
+			$item .= '<a class="company-view-job">View jobs</a>';
+			$item .= '<a href="'.get_permalink().'" class="company-view-company">View company</a>';
 			$item .= '</div>';
 			$item .= '</div>';
 
@@ -120,14 +118,33 @@ the_post();
 .company-first{
 	margin: 50px 0;
 	padding: 100px 20px;
+	position: relative;
 }
+
+.company-first .blur{
+		position: absolute;
+		top: 0;
+		left:0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.5);
+	}
+
+	.company-first  img{
+		z-index: 1;
+	position: relative;
+	}
 .company-first h5,
 .company-first h3{
 	color: white;
 	margin: 20px 0;
+	z-index: 1;
+	position: relative;
 }
 .company-first a{
 	height: 55px !important;
+	z-index: 1;
+	position: relative;
 }
 .company-detail-banner{
 	height: 200px;
@@ -154,15 +171,19 @@ the_post();
 	border-radius: 0;
 	font-weight: bold;
 	color: white;
-	font-size: 16px;
+	font-size: 18px;
 	width: 50%;
-	padding: 25px 0;
+	padding: 20px 0;
+	display: inline-block;
+	background-color: #0D87D0;
+	text-align: center;
+	text-transform: uppercase;
 }
 .company-view-job{
 	border-right: 1px solid #fff3;
 }
-button.company-view-company:hover,
-button.company-view-job:hover{
+a.company-view-company:hover,
+a.company-view-job:hover{
 	background-color: #f9a64b;
 }
 	.company-detail{
@@ -231,6 +252,7 @@ button.company-view-job:hover{
 		font-weight:bold;
 		font-size: 16px;
 		vertical-align: top;
+		display: inline-block;
 	}
 	.jobs-search select{
 		width: 20%;
