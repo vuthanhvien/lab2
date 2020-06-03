@@ -127,6 +127,7 @@ $queryFirst = new WP_Query(
 	<?php 
 		$totalPage =  $query->max_num_pages;
 
+
 		echo '<div class="paging-navigation" page="'.$paged.'">';
 		if($paged <= 1){
 			echo '<a class="next disabled" >Prev</a>';

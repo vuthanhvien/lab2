@@ -13,23 +13,13 @@ get_header();
 $search = $_GET['search'];
 $location = $_GET['location'];
 
-$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
-$param = array(
-	'paged'         => $paged, 
-	'order'         => 'desc',
-	'post_status'   => 'publish',
-	'posts_per_page'=> 20,
-	'offset'       	=> 0,
-	'post_type'		=> 'job',
-	'orderby'		=> 'date'
-);
-$query = new WP_Query($param);
+
 
 $searchObj = array(
 	'location' =>  array(
 		'Hà Nội' => false,
 		'Hồ Chí Minh' => false,
-		'Đà Nãng' => false,
+		'Đà Nẵng' => false,
 		'Singapore' => false,
 	),
 	'function' =>  array(
@@ -46,7 +36,7 @@ $searchObj = array(
 		'Customer Service' => false,
 		'Logistics & Operations' => false,
 	),
-	'year_of_exp' =>  array(
+	'experience' =>  array(
 		'0-1 year' => false,
 		'1-3 years' => false,
 		'3-5 years' => false,
@@ -122,7 +112,9 @@ foreach ($searchObj as $key => $type){
 					</div>
 					<?php } ?>
 
-				<button class="submit pull-right" style="height: 40px; padding: 10px;font-size: 14px"><i class="fa fa-search" ></i> Search</button>
+
+				<button class="submit pull-right" style="height: 40px; padding: 10px;font-size: 14px; background-color: #F8A54A !important ">&nbsp;&nbsp;<i class="fa fa-search" ></i> Search &nbsp;&nbsp;</button>
+				<a href="/jobs" style="padding: 10px" class="btn-sm pull-right" >Reset</a>
 			</div>
 		</form>
 		<hr style="margin: 20px 0" />
@@ -143,66 +135,134 @@ foreach ($searchObj as $key => $type){
 		<?php echo $haveChild ? '<hr style="margin: 20px 0" />' : ''  ?>
 		<div class="search-result" style="min-height: 500px">
 		<?php
+		
+
+		$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+
+		$get_params = $_GET;
+		$param = array(
+			'paged'         => $paged, 
+			'order'         => 'desc',
+			'post_status'   => 'publish',
+			'posts_per_page'=> 15,
+			'offset'       	=> 0,
+			'post_type'		=> 'job',
+			'orderby'		=> 'date',
+			'meta_query'	=> array(
+				'relation'		=> 'AND'
+			)
+		);
+		$arrayKey  = array(
+			'location',
+			'function',
+			'experience',
+			'industry',
+			'type',
+			'salary'
+		);
+
+		foreach($arrayKey as $key){
+
+			if($get_params[$key]){
+				$locations = explode(',', $get_params[$key]);
+				foreach($locations as $l){
+					array_push($param['meta_query'], array(
+						'key'		=> $key,
+						'value'		=> $l,
+						'compare'	=> 'LIKE'
+					));
+				}
+			}
+		}
+
+		if($search){
+			$param['s'] = $search;
+		}
+
+ 
+
+		$query = new WP_Query($param);
+
 
 		if ($query->have_posts()) {
 			while ($query->have_posts()) { 
 				$query->the_post(); 
-				$company = get_field('company');
-				var_dump($company);
+				$companyId = get_field('company');
+				$industry = get_field('industry') ? join(', ', get_field('industry')) : '';
+				$type = get_field('type') ? join(', ', get_field('type')) : '';
+				$function = get_field('function') ? join(', ', get_field('function')) : '';
 				?>
 				<div class="job-detail">
 					<div class="job-logo">
-					
-					
+						<img src="<?php echo get_field('logo',$companyId ) ?>" />
 					</div>
-					<div class="job-detail">
-						<h4><?php the_title() ?></h4>
-						<p>Company name</p>
-						<p><?php get_field('location') ?></p>
-						<p><?php get_field('') ?></p>
-						<p><?php get_field('skills') ?></p>
-					
+					<div class="job-text">
+						<a href="<?php the_permalink() ?>"><h4><?php the_title() ?></h4></a>
+						<p class="blue"><?php echo get_the_title($companyId) ?></p>
+						<p><?php echo join(', ', get_field('location')) ?></p>
+						<p class="blue"><?php echo  get_field('salary') ?></p>
+						<p class="mt-2">
+						<?php echo $function ?>,
+						<?php echo $type ?>,
+						<?php echo $industry ?>
+						</p>
 					</div>
+					<div class="job-time">
+						<p class="blue"><?php the_modified_date() ?></p>
+				</div>
 				</div>
 
 				<?php
-				print_r(get_field('company'));
 				echo '<br />';
+				wp_reset_postdata();
 
 			}
 			
 		}else{
-			echo 'No job avalaible';
+			echo '<div style="text-align:center; padding: 300px 0">No job avalaible</div>';
 		}
 		$totalPage =  $query->max_num_pages;
 
+		function build_http_query( $q ){
+			$query_array = array();
+			foreach( $q as $key => $key_value ){
+				$query_array[] = urlencode( $key ) . '=' . urlencode( $key_value );
+			}
+			return implode( '&', $query_array );
+		}
+		function get_permalink_page($page){
+			$queryPage = $_GET;
+			$queryPage['paged'] = $page;
+			return get_permalink().'?'. build_http_query($queryPage);
+		}
 		echo '<div class="paging-navigation" page="'.$paged.'">';
 		if($paged <= 1){
 			echo '<a class="next disabled" >Prev</a>';
 		}else{
-			echo '<a class="next" href="'. get_permalink() .'?paged='.($paged -1).'">Prev</a>';
+			echo '<a class="next" href="'. get_permalink_page($paged -1).'">Prev</a>';
 	
 		}
 		if( $paged -2 > 0){
-			echo '<a href="'. get_permalink() .'?paged='.($paged -2) .'" >' . ($paged - 2) . '</a>';
+			echo '<a href="'. get_permalink_page($paged -2) .'" >' . ($paged - 2) . '</a>';
 		} 
 		if( $paged - 1 > 0){
-			echo '<a href="'. get_permalink() .'?paged='.($paged -1 ).'" >' . ($paged - 1) . '</a>';
+			echo '<a href="'. get_permalink_page($paged -1 ).'" >' . ($paged - 1) . '</a>';
 		} 
-		echo '<a href="'. get_permalink() .'?paged='.$paged.'"  class="current-page"  >' . ($paged) . '</a>';
+		echo '<a href="'. get_permalink_page($paged).'"  class="current-page"  >' . ($paged) . '</a>';
 		if( $paged + 1 <= $totalPage){
-			echo '<a href="'. get_permalink() .'?paged='.($paged + 1) .'" >' . ($paged + 1) . '</a>';
+			echo '<a href="'. get_permalink_page($paged + 1) .'" >' . ($paged + 1) . '</a>';
 		} 
 		if( $paged + 2 <= $totalPage){
-			echo '<a href="'. get_permalink() .'?paged='.($paged + 2) .'" >' . ($paged + 2) . '</a>';
+			echo '<a href="'. get_permalink_page($paged + 2) .'" >' . ($paged + 2) . '</a>';
 		} 
 		if($totalPage <=  $paged){
 			echo '<a class="next disabled" >Next</a>';
 		}else{
-			echo '<a class="next"  href="'. get_permalink() .'?paged='.($paged + 1).'">Next</a>';
+			echo '<a class="next"  href="'. get_permalink_page($paged + 1).'">Next</a>';
 			
 		}
 		echo '</div>';
+
 
 ?>
 		</div>
@@ -239,6 +299,19 @@ jQuery('.dropdown-item').click(function(){
 	
 })
 
+jQuery('.dropdown-filter').keyup(function(){
+	var s = jQuery(this).val();
+	var parent = jQuery(this).parent();
+	parent.find('.dropdown-item').each(function(el){
+		var text = jQuery(this).text();
+		if(text.indexOf(s) > -1){
+			jQuery(this).removeClass('hide');
+		}else{
+			jQuery(this).addClass('hide');
+		}
+	})
+})
+
 jQuery('.tags .tag i').click(function(){
 	var parent  = jQuery(this).parent();
  	var type = jQuery(parent).data('type');
@@ -256,6 +329,47 @@ jQuery('.tags .tag i').click(function(){
 
 </script>
 <style>
+.job-detail{
+	/* display: flex; */
+	/* flex-direction: row; */
+	border-bottom: 1px solid #eee;
+	padding: 40px 0;
+
+}
+.job-logo {
+	width: 150px;
+	display: inline-block;
+	vertical-align: top;
+}
+.job-time {
+	width: 150px;
+	vertical-align: top;
+	display: inline-block;
+	font-size: 16px;
+	color: #888;
+	text-align: right;
+}
+.job-text {
+	width: calc( 100% - 350px);
+	vertical-align: top;
+	display: inline-block;
+	padding-left: 40px;
+}
+.job-text h4{
+	font-size: 18px;
+	color: #333;
+	margin: 10px 0;
+}
+
+.job-text p{
+	font-size: 16px;
+	color: #888;
+	/* font-weight: */
+}
+
+.job-text p.blue{
+	color: #0D87D0;
+}
 .tags{
 	padding: 0 20px;
 }
@@ -274,9 +388,9 @@ jQuery('.tags .tag i').click(function(){
 }
 .search-job{
 	background: white;
-	padding: 50px 20px;
-	margin-top: 100px;
-	margin-bottom: 100px;
+	padding: 50px 0 50px 50px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 .form-search {
 	padding: 0 100px;
@@ -309,8 +423,8 @@ jQuery('.tags .tag i').click(function(){
 	background: white;
 	padding: 10px;
 	box-shadow: 0px 0 5px rgba(0,0,0,0.2);
-	min-width: 300px;
-	max-height: 400px;
+	min-width:350px;
+	max-height: 500px;
 	overflow: auto;
 
 }
@@ -343,6 +457,9 @@ jQuery('.tags .tag i').click(function(){
 }
 .search-job .dropdown .dropdown-menu .dropdown-item.active{
 	opacity: 1;
+}
+.search-job .dropdown .dropdown-menu .dropdown-item.hide{
+	display: none;
 }
 
 .search-job .dropdown .dropdown-menu .dropdown-item.active i{

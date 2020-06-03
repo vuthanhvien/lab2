@@ -30,6 +30,9 @@ get_header();
 				<div class="blur" ></div>
 				<div class="section-inner">
 					<h3><?php the_title() ?></h3>
+					<p><?php echo join(', ', get_field('location')) ?></p>
+						<p><?php echo get_field('type') ?></p>
+						<p><?php echo get_field('total_employees') ?></p>
 					<a>VIEW JOBS</a>
 				</div>
 				</div>
@@ -64,14 +67,20 @@ get_header();
 			position: relative;
 			color: white;
 			z-index: 1;
-			margin-bottom: 70px;
+			margin-bottom: 20px;
+		}
+		.company-banner p{
+			position: relative;
+			z-index: 1;
+			font-size: 18px;
+			color: white;
+
 		}
 		.company-banner a{
 			position: relative;
 			z-index: 1;
-
+			margin-top: 50px;
 			font-weight: bold;
-
 			font-size: 18px;
 			background: black;
 			color: white;

@@ -51,20 +51,20 @@ the_post();
 	);
 	$queryFirst = new WP_Query($paramFirst);
 	if ($queryFirst->have_posts()) {
-		echo '<div class="list-company">';
 		while ($queryFirst->have_posts()) { 
 			$queryFirst->the_post(); 
 
-	?>
-	<div class="company-first" style="background-image: url(<?php echo get_the_post_thumbnail_url(); ?>)">
-	<div class="blur" ></div>
-		<div class="company-logo"><img src="<?php echo get_field('logo') ?>" /></div>
-			<h3><?php the_title() ?></h3>
-			<h5><?php echo join(' | ', get_field('location')) ?></h5>
-			<a class="button btn">View jobs</a>
-		</div>
-	<?php
+				?>
+				<div class="company-first" style="background-image: url(<?php echo get_the_post_thumbnail_url(); ?>)">
+				<div class="blur" ></div>
+					<div class="company-logo"><img src="<?php echo get_field('logo') ?>" /></div>
+						<h3><?php the_title() ?></h3>
+						<h5><?php echo join(' | ', get_field('location')) ?></h5>
+						<a href="<?php the_permalink() ?>" class="button btn">View company</a>
+					</div>
+				<?php
 		}
+		wp_reset_postdata();
 	}
 
 
@@ -95,10 +95,10 @@ the_post();
 			$item .= '<p><i class="fa fa-tags" ></i>'.get_field('type').'</p>'; 
 			$item .= '<p><i class="fa fa-map-marker" ></i>'.join(' | ', get_field('location')).'</p>'; 
 			$item .= '<p><i class="fa fa-users" ></i>'.get_field('total_employees').'</p>'; 
-			$item .= '<p><i class="fa fa-star" ></i>'.get_field('description').'</p>'; 
+			// $item .= '<p><i class="fa fa-star" ></i>'.get_field('description').'</p>'; 
 			$item .= '</div>';
 			$item .= '<div class="company-action">';
-			$item .= '<a class="company-view-job">View jobs</a>';
+			// $item .= '<a class="company-view-job">View jobs</a>';
 			$item .= '<a href="'.get_permalink().'" class="company-view-company">View company</a>';
 			$item .= '</div>';
 			$item .= '</div>';
@@ -168,11 +168,11 @@ the_post();
 }
 .company-view-company,
 .company-view-job{
-	border-radius: 0;
+	/* border-radius: 0; */
 	font-weight: bold;
 	color: white;
 	font-size: 18px;
-	width: 50%;
+	width: 100%;
 	padding: 20px 0;
 	display: inline-block;
 	background-color: #0D87D0;
