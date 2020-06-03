@@ -46,7 +46,7 @@ $searchObj = array(
 		'Customer Service' => false,
 		'Logistics & Operations' => false,
 	),
-	'year of exp' =>  array(
+	'year_of_exp' =>  array(
 		'0-1 year' => false,
 		'1-3 years' => false,
 		'3-5 years' => false,
@@ -73,14 +73,24 @@ $searchObj = array(
 	),
 	'salary' =>  array(
 		'Dynamic' => false,
-		'0-500' => false,
-		'500-1000' => false,
-		'1000-2000' => false,
-		'2000-3000' => false,
-		'3000+' => false,
+		'$0-$500' => false,
+		'$500-$1000' => false,
+		'$1000-$2000' => false,
+		'$2000-$3000' => false,
+		'$3000+' => false,
 	),
 );
-
+foreach ($searchObj as $key => $type){
+	foreach($type as $menu => $child){
+		if(isset($_GET[$key]) && $_GET[$key]){
+			$arrayCheck = explode(',', $_GET[$key]);
+			if(in_array($menu, $arrayCheck)){
+				$searchObj[$key][$menu]= true;
+			}
+		}
+	}
+}
+    
 
 
 
@@ -99,36 +109,47 @@ $searchObj = array(
 						if($option) {$isHave = true;}
 					}
 					?>
-					<input type="hidden" name="<?php echo $key ?>" />
-				<div class="dropdown <?php echo $isHave ? 'active' : '' ?> " id="dropdown-<?php echo $key ?>">
-					<a><?php echo $key ?> <i class="fa fa-chevron-down" style="font-size: 12px" ></i></a>
-					<div class="dropdown-menu">
-						<i style="position: absolute;  margin-top: 15px;  margin-left: 10px;"  class="fa fa-search"></i>
-						<input class="dropdown-filter"  placeholder="Filter"/>
-						<?php foreach ($obj as $k => $option){ ?>
-						<div class="dropdown-item <?php echo $option ? 'active' : '' ?>"><i class="fa fa-check" ></i><?php echo $k ?></div>
-						<?php } ?>
+					<input type="hidden" name="<?php echo $key ?>" id="input-<?php echo $key ?>" />
+					<div class="dropdown <?php echo $isHave ? 'active' : '' ?> " id="dropdown-<?php echo $key ?>">
+						<a><?php echo $key ?> <i class="fa fa-chevron-down" style="font-size: 12px" ></i></a>
+						<div class="dropdown-menu">
+							<i style="position: absolute;  margin-top: 15px;  margin-left: 10px;"  class="fa fa-search"></i>
+							<input class="dropdown-filter"  placeholder="Filter"/>
+							<?php foreach ($obj as $k => $option){ ?>
+							<div data-type="<?php echo $key ?>" class="dropdown-item <?php echo $option ? 'active' : '' ?>"><i class="fa fa-check" ></i><?php echo $k ?></div>
+							<?php } ?>
+						</div>
 					</div>
-				</div>
-				<?php } ?>
+					<?php } ?>
 
 				<button class="submit pull-right" style="height: 40px; padding: 10px;font-size: 14px"><i class="fa fa-search" ></i> Search</button>
 			</div>
 		</form>
 		<hr style="margin: 20px 0" />
-		<div class="tags"></div>
-		<hr style="margin: 20px 0" />
-		<div class="search-result" style="min-height: 500px">
+		<div class="tags">
 
+		<?php 
+			foreach ($searchObj as $key => $type){
+				foreach($type as $menu => $child){
+					if($child){
+						$haveChild = true;
+						echo '<div class="tag" data-type="'.$key.'">'.$menu.' <i class="fa fa-times"></i></div>';
+					}
+				}
+			}
+		?>
+		
+		</div>
+		<?php echo $haveChild ? '<hr style="margin: 20px 0" />' : ''  ?>
+		<div class="search-result" style="min-height: 500px">
 		<?php
 
 		if ($query->have_posts()) {
-
 			while ($query->have_posts()) { 
 				$query->the_post(); 
-
+				$company = get_field('company');
+				var_dump($company);
 				?>
-
 				<div class="job-detail">
 					<div class="job-logo">
 					
@@ -136,9 +157,9 @@ $searchObj = array(
 					</div>
 					<div class="job-detail">
 						<h4><?php the_title() ?></h4>
-						<p>Copany name</p>
+						<p>Company name</p>
 						<p><?php get_field('location') ?></p>
-						<p><?php get_field('	') ?></p>
+						<p><?php get_field('') ?></p>
 						<p><?php get_field('skills') ?></p>
 					
 					</div>
@@ -189,33 +210,50 @@ $searchObj = array(
 </main>
 
 <script>
-function setTag(){
-	var tags = []
+function setInput(){
+	var data = {};
 	jQuery('.dropdown-item').each(function(i){
+		var type = jQuery(this).data('type');
+		data[type] = data[type] || [];
 		if(jQuery(this).hasClass('active')){
-			tags.push(jQuery(this).text());
+			data[type].push(jQuery(this).text())
 		}
 	})
-	jQuery('.tags').html('');
-	tags.forEach(element => {
-		jQuery('.tags').append('<div class="tag">'+element+'</div>')
-
-	});
-	
-	console.log(tags);
+	Object.keys(data).forEach(function(key){
+		jQuery('#input-'+key).val(data[key].join(','));
+		if(data[key] && data[key].length){
+			jQuery('#dropdown-'+key).addClass('active')
+		}else{
+			jQuery('#dropdown-'+key).removeClass('active')
+		}
+	})
 }
-
-	setTag();
+setInput();
 jQuery('.dropdown-item').click(function(){
 	if(jQuery(this).hasClass('active') ){
 		jQuery(this).removeClass('active');
 	}else{
 		jQuery(this).addClass('active');
 	}
-
-	setTag();
+	setInput();
 	
 })
+
+jQuery('.tags .tag i').click(function(){
+	var parent  = jQuery(this).parent();
+ 	var type = jQuery(parent).data('type');
+	var text = jQuery(parent).text().trim();
+
+	var values = jQuery('#input-'+type).val();
+	values = values.split(',');
+	values = values.filter(function(a){
+		return a != text;
+	})
+	jQuery('#input-'+type).val(values.join(','));
+	jQuery('.dropdown-list button.submit').click();
+		
+})
+
 </script>
 <style>
 .tags{
@@ -261,7 +299,7 @@ jQuery('.dropdown-item').click(function(){
 	
 }
 .search-job .dropdown.active a{
-	/* font-weight: bold; */
+	font-weight: bold;
 }
 .search-job .dropdown .dropdown-menu{
 	display: none;
