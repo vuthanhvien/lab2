@@ -135,6 +135,12 @@ $vi = $GLOBALS['vi'];
 </article>
 
 <style>
+	.comment-respond .comment-reply-title{
+		display: none;
+	}
+	.book-comment #comments{
+		display: none;
+	}
 	.book-relative .post img{
 		height: 200px;
 		overflow: hidden;

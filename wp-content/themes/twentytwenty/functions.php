@@ -954,8 +954,8 @@ function create_shortcode_signup2($args , $content) {
 		$html  = '<div class="main-banner" style="background-image: url(/assets/night.jpg)"><div class="blur"></div>';
 		$html  .= '<div class="section-inner">';
 		$html  .= '<div class="main-banner-left">
-			<h4>"BOOKS & MAGAZINES"</h4>
-			<h3>"Best books recommended by leading experts and business leaders"</h3>
+			<h4 style="color: white; margin: 30px 0; font-size: 20px">"BOOKS & MAGAZINES"</h4>
+			<h3 style="color: white; margin: 0">"Best books recommended by leading experts and business leaders"</h3>
 		</div>';
 	$user = wp_get_current_user();
 	if(!$user->exists()){

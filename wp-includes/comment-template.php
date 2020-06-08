@@ -1668,7 +1668,7 @@ function get_comment_reply_link( $args = array(), $comment = null, $post = null 
 	 * @param array      $args    Comment reply link arguments. See get_comment_reply_link()
 	 *                            for more information on accepted arguments.
 	 * @param WP_Comment $comment The object of the comment being replied to.
-	 * @param WP_Post    $post    The WP_Post object.
+	 * @param WP_Post    $post    The WP_Post object.comm
 	 */
 	$args = apply_filters( 'comment_reply_link_args', $args, $comment, $post );
 

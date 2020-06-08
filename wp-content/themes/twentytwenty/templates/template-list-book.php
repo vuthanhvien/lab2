@@ -45,7 +45,7 @@ $queryFirst = new WP_Query(
 			?>
 			<div class="first-book-left"><?php  echo $img; ?></div>
 			<div class="first-book-right">
-				<h4>ESSENTIAL READS 2020</h4>
+				<h4  >ESSENTIAL READS 2020</h4>
 				<a href="<?php the_permalink() ?>" ><h3><?php the_title() ?></h3></a>
 				<p><?php the_excerpt() ?></p>
 				<p>By <b><?php the_author() ?></b> | <?php the_date() ?></p>
@@ -104,6 +104,7 @@ $queryFirst = new WP_Query(
 
 	<?php
 
+$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 
 $param = array(
 	'paged'         => $paged, 
@@ -111,7 +112,6 @@ $param = array(
 	'post_status'   => 'publish',
 	'nopaging'		=> false,
 	'posts_per_page'=> 15,
-	'offset'       	=> 0,
 	'post_type'		=> 'book',
 	'orderby'		=> 'comment_count'
 );
