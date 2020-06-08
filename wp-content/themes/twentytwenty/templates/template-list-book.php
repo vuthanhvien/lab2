@@ -84,7 +84,7 @@ $queryFirst = new WP_Query(
 			$item .= '<div  class="post-book">';
 			$item .= $img;
 			$item .= '<div class="post-book-content">';
-			$item .= '<a href="'.get_the_permalink().'"><h3 class="title">'.get_the_title().'</h3></a>';
+			$item .= '<a href="'.get_the_permalink().'"><h4 class="title">'.get_the_title().'</h4></a>';
 			$item .= '<p>'.get_the_excerpt().'</p>';
 			$item .= '</div>';
 			$item .= '</div>';
@@ -132,7 +132,7 @@ $query = new WP_Query($param);
 			$item .= '<div  class="post-book">';
 			$item .= $img;
 			$item .= '<div class="post-book-content">';
-			$item .= '<a href="'.get_the_permalink().'"><h3 class="title">'.get_the_title().'</h3></a>';
+			$item .= '<a href="'.get_the_permalink().'"><h4 class="title">'.get_the_title().'</h4></a>';
 			$item .= '<p>'.get_the_excerpt().'</p>';
 			$item .= '</div>';
 			$item .= '</div>';

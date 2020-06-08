@@ -3702,7 +3702,7 @@ header#site-header {
 }
 
 .book-section h3{
-    font-size: 24px;
+    font-size: 32px;
     color: black;
     text-decoration: underline;
 }
@@ -3712,6 +3712,17 @@ header#site-header {
     margin-right: 20px;
     display: inline-block;
     padding-bottom: 40px;
+    vertical-align: top;
+}
+.book-section .list-book .post-book h4{
+    font-size: 22px;
+    color: #333;
+}
+.book-section .list-book .post-book  img{
+    height: 350px;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
 }
 .book-section .list-book .post-book:nth-child(4n){
     margin-right: 0;

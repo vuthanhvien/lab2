@@ -35,7 +35,7 @@ if( $fields['date_end_premium'] > date('Y-m-d')  ){
 	}
 }
 
-if(!$isPremimum && !$isPremimum){
+if(!$isPremimum && !$isStandard){
 	$isView = true;
 }
 
