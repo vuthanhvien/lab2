@@ -796,7 +796,7 @@ function create_shortcode_posts($args , $content) {
 	}
 
 	$query = array(  
-        'post_type' => $post_type ? $post_type : array('news', 'library', 'podcast', 'event'),
+        'post_type' => $post_type ? $post_type : array('news', 'library', 'podcast', 'event', 'book'),
         'post_status' => 'publish',
 		'posts_per_page' => $limit ? $limit : 3,
 		'order'		=> $order ? $order : 'DESC',
@@ -940,6 +940,63 @@ add_shortcode( 'signup', 'create_shortcode_signup' );
 
 
 
+
+
+function create_shortcode_signup2($args , $content) {
+	$title= $GLOBALS['vi']  ? 'Get ticket now'  :  'Get ticket now'; 
+	$signUpBtn = $GLOBALS['vi']  ? 'ĐĂNG KÝ' : 'SIGN UP';
+	$SubscribeBtn = $GLOBALS['vi']  ? 'Subscribe' : 'Subscribe';
+	$nameTitle = $GLOBALS['vi']  ? 'Họ và tên' : 'Your name';
+	$emailTitle = $GLOBALS['vi']  ? 'Email' : 'Your email';
+	
+	$prefix = $GLOBALS['vi'] ? '/vi'  : '';
+	
+		$html  = '<div class="main-banner" style="background-image: url(/assets/night.jpg)"><div class="blur"></div>';
+		$html  .= '<div class="section-inner">';
+		$html  .= '<div class="main-banner-left">
+			<h4>"BOOKS & MAGAZINES"</h4>
+			<h3>"Best books recommended by leading experts and business leaders"</h3>
+		</div>';
+	$user = wp_get_current_user();
+	if(!$user->exists()){
+		$html  .= '<div class="main-banner-right">
+		<div class="form">
+			<h3>'.$title.'</h3>
+			<div>
+			<form action="'.$prefix.'/signup/" method="get">
+			<input type="text" name="user_name" minlength="6" placeholder="'.$nameTitle.'" required />
+			<input type="email" name="user_email" placeholder="'.$emailTitle.'" required />
+			<button type="submit">'.$signUpBtn.'</button>
+			</form>
+			</div>
+		</div>
+		</div>';
+	
+	}else{
+		$html  .= '<div class="main-banner-right">
+			<div class="form">
+			<h3>'.$title.'</h3>
+			<div>
+			<form action="'.$prefix.'/payment/" method="get">
+			<select name="type"" required />
+				<option value="standard" >Standard</option>
+				<option value="premium">Premium</option>
+			</select>
+			<button type="submit">'.$SubscribeBtn.'</button>
+			</form>
+			</div>
+		</div>
+	</div>';
+	}
+	
+	$html .= '</div>';
+	$html .= '</div>';
+		return $html;
+	}
+	add_shortcode( 'signup2', 'create_shortcode_signup2' );
+	
+	
+	
 
 
 

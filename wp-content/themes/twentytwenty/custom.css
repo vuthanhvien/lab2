@@ -3660,3 +3660,59 @@ header#site-header {
     color: white;
     background: #F8A54A;
 }
+
+.first-book{
+    padding-top: 100px;
+}
+
+.first-book-left{
+    display: inline-block;
+    width: 60%;
+    vertical-align: middle;
+   
+}
+.first-book-left img{
+    overflow: hidden;
+    height: 100%;
+    object-fit: cover;
+    object-position:  center;
+}
+
+.first-book-right{
+    display: inline-block;
+    width: 39%;
+    vertical-align: middle;
+    padding-left: 20px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.first-book h4{
+    font-size: 22px;
+    color: black;
+    text-decoration: underline;
+    margin: 0;
+}
+
+.book-section .first-book h3{
+    font-size: 40px;
+    margin: 20px 0;
+    color: black;
+    text-decoration: normal;
+    
+}
+
+.book-section h3{
+    font-size: 24px;
+    color: black;
+    text-decoration: underline;
+}
+
+.book-section .list-book .post-book{
+    width: calc((100% - 60px) / 4);
+    margin-right: 20px;
+    display: inline-block;
+    padding-bottom: 40px;
+}
+.book-section .list-book .post-book:nth-child(4n){
+    margin-right: 0;
+}

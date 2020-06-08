@@ -229,6 +229,11 @@ $prefix =  $vi ? '/vi' : '';
 	})
 
 
+	jQuery('#apply-job').click(function(){
+		jQuery('#wpcf7-f1476-o1').css('display', 'flex');
+	})
+
+
 	jQuery('.wpcf7').on('click', function(e) {
 		if (e.target !== this){return}
 			jQuery(this).hide();

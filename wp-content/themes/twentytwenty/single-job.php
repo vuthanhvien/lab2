@@ -62,7 +62,7 @@ $actual_link = urlencode($actual_link);
 							&nbsp;
 							&nbsp;
 							&nbsp;
-							<button style="padding: 15px 20px; font-size: 16px">Apply this job</button>
+							<button id="apply-job" style="padding: 15px 20px; font-size: 16px">Apply this job</button>
 						</div>
 					</div>
 				</div>
@@ -247,5 +247,8 @@ $actual_link = urlencode($actual_link);
 </main><!-- #site-content -->
 
 <?php get_template_part( 'template-parts/footer-menus-widgets' ); ?>
+
+
+<?php echo do_shortcode('[contact-form-7 id="1476" title="Candidate"]'); ?>
 
 <?php get_footer(); ?>
