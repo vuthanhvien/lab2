@@ -16,6 +16,10 @@ $name = get_user_meta($userId, 'first_name', true).' '. get_user_meta($userId, '
 $description = get_user_meta($userId, 'description', true);
 $title = get_user_meta($userId, 'title', true);
 
+$facebook = get_user_meta($userId, 'facebook', true);
+$twitter = get_user_meta($userId, 'twitter', true);
+
+
 
 get_header();
 ?>
@@ -37,8 +41,8 @@ get_header();
 				 <!-- <button class="btn">Follow</button> -->
 
 				 <div>
-					 <a><i class="fa fa-facebook"></i></a>
-					 <a><i class="fa fa-twitter"></i></a>
+				 	<?php echo $facebook ? '<a href="'.$facebook.'"><i class="fa fa-facebook"></i></a>' : '' ?>
+				 	<?php echo $twitter ? '<a href="'.$twitter.'"><i class="fa fa-twitter"></i></a>' : '' ?>
 				 </div>
 			 </div>
 		 </div>
