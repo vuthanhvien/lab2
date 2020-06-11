@@ -36,7 +36,7 @@ get_header();
 			 <div class="partner-content">
 				 <h2><?php echo $name ?></h2>
 				 <p><i><?php echo $title ?></i></p>
-				 <p><?php echo $company_name ?></p>
+				 <p><b><?php echo $company_name ?></b></p>
 				 <br />
 				 <p><?php get_field('total_follow') ?> <?php get_field('total_post') ?></p>
 				 <p><?php echo $description ?></p>
