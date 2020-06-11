@@ -1986,11 +1986,11 @@ body #site-footer {
     display: inline-block;
     width: 300px;
     vertical-align: top;
-    padding: 20px 30px;
+    padding: 20px;
     margin: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    height: 300px;
+    height: 320px;
     overflow: hidden;
 }
 .top-partner .partner:hover{
