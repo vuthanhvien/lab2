@@ -18,7 +18,8 @@ $title = get_user_meta($userId, 'title', true);
 
 $facebook = get_user_meta($userId, 'facebook', true);
 $twitter = get_user_meta($userId, 'twitter', true);
-
+$twitter = get_user_meta($userId, 'twitter', true);
+$linkedin = get_user_meta($userId, 'linkedin', true);
 
 
 get_header();
@@ -34,15 +35,15 @@ get_header();
 			 <div class="partner-content">
 				 <h2><?php echo $name ?></h2>
 				 <p><i><?php echo $title ?></i></p>
+				 <br />
 				 <p><?php get_field('total_follow') ?> <?php get_field('total_post') ?></p>
 				 <p><?php echo $description ?></p>
 			 </div>
 			 <div class="partner-action">
-				 <!-- <button class="btn">Follow</button> -->
-
 				 <div>
 				 	<?php echo $facebook ? '<a href="'.$facebook.'"><i class="fa fa-facebook"></i></a>' : '' ?>
 				 	<?php echo $twitter ? '<a href="'.$twitter.'"><i class="fa fa-twitter"></i></a>' : '' ?>
+				 	<?php echo $linkedin ? '<a href="'.$linkedin.'"><i class="fa fa-linkedin"></i></a>' : '' ?>
 				 </div>
 			 </div>
 		 </div>

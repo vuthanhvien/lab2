@@ -1993,13 +1993,21 @@ body #site-footer {
     height: 300px;
     overflow: hidden;
 }
-
+.top-partner .partner:hover{
+    border: 1px solid #0D87D0;
+}
 .top-partner .partner p {
     white-space: normal;
-    color: white;
     color: #2D323A;
 }
-
+.top-partner .partner p.content{
+    -webkit-line-clamp: 3;
+    position: relative;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+      height: 74px;
+}   
 .top-partner .partner img {
     margin: 10px auto;
     transition: all 0.2s ease-in-out;
@@ -2021,6 +2029,8 @@ body #site-footer {
     background: white;
     padding: 50px;
     margin-top: 40px;
+    align-items: center;
+    justify-content: center;
 }
 
 .partner-profile button.btn {
@@ -2031,10 +2041,11 @@ body #site-footer {
 }
 
 .partner-avatar img { 
-    width: 100px;
+    width: 100%;
 }
 
 .partner-avatar {
+    vertical-align: middle;
     padding: 0 10px;
     width: 160px;
 
