@@ -71,10 +71,10 @@ abstract class WPM_Object {
 
 		$config               = wpm_get_config();
 		$object_fields_config = apply_filters( "wpm_{$this->object_type}_fields_config", $config[ "{$this->object_type}_fields" ] );
-
 		if ( ! isset( $object_fields_config[ $meta_key ] ) ) {
 			return $value;
 		}
+		// var_dump($value);
 
 		$meta_config = apply_filters( "wpm_{$meta_key}_meta_config", $object_fields_config[ $meta_key ], false, $object_id );
 		$meta_config = apply_filters( "wpm_{$this->object_type}_meta_{$meta_key}_config", $meta_config, $object_id );
@@ -112,7 +112,6 @@ abstract class WPM_Object {
 				$values[] = $value;
 			}
 		}
-
 		if ( $values ) {
 			return $values;
 		}
@@ -221,6 +220,7 @@ abstract class WPM_Object {
 		}
 
 		foreach ( $meta_ids as $meta_id ) {
+			var_dump($meta_id );
 			/**
 			 * Fires immediately before updating metadata of a specific type.
 			 *

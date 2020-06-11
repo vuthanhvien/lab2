@@ -2004,7 +2004,7 @@ body #site-footer {
     margin: 10px auto;
     transition: all 0.2s ease-in-out;
     width: 80%;
-	height: 80px;
+	height: 120px;
 	object-fit: contain;
 	object-position: center
 }
@@ -2012,7 +2012,7 @@ body #site-footer {
 .top-partner .partner img:hover {
     margin: 0px auto;
     transition: all 0.2s ease-in-out;
-    height: 100px;
+    height: 140px;
 	width: 100%;
 }
 

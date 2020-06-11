@@ -149,21 +149,27 @@ get_header();
 <div class="partner-list">
 	<?php 
 	if($type == 'partner'){
-		$users = get_users( 'ordery=date&limit=10&role=author&meta_key=is_partner' );
+		$users = get_users( 'ordery=date&limit=10&role=author&meta_key=is_partner&meta_value=1' );
 	}
 	if($type == 'insiders'){
-		$users = get_users( 'ordery=date&limit=10&role=author&meta_key=is_insider' );
+		$users = get_users( 'ordery=date&limit=10&role=author&meta_key=is_insider&meta_value=1' );
 	}
 
 	foreach($users as $user_id){
 		$first_name =  get_user_meta(  $user_id->ID, 'first_name', true );
 		$last_name =  get_user_meta(  $user_id->ID, 'last_name', true );
+		$title =  get_user_meta(  $user_id->ID, 'title', true );
 		$desc = get_user_meta(  $user_id->ID, 'description', true );
 		$desc = implode(' ', array_slice(explode(' ', $desc), 0, 15));
+
+		$desc = get_user_meta(  $user_id->ID, 'description', true );
+
 		?>
 			<a href="/user/<?php  echo $user_id->ID ?>" class="partner">
 				 <?php echo get_avatar($user_id->ID) ?>
-				<p class="content"><?php echo $desc ?> [...]</p>
+				<p><b><?php echo $first_name ?></b> <p>
+				<p style="font-size: 12px"><i><?php echo $title ?></i> <p>
+				<p class="content"><?php echo $desc ?> <p>
 				</a>
 		<?php
 	}
