@@ -31,7 +31,9 @@
   "term_fields": {},
   "user_fields": {
     "description" : {},
-    "title": {}
+    "title": {},
+    "facebook": {},
+    "twitter": {}
   },
   "comment_fields": {},
   "admin_pages": [
