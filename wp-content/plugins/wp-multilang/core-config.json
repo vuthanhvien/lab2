@@ -15,8 +15,7 @@
     "attachment": {},
     "nav_menu_item": {
       "attr_title": {},
-      "title": {},
-      "company_name": {}
+      "title": {}
     },
     "any": {},
     "customize_changeset": null,
@@ -34,7 +33,10 @@
     "description" : {},
     "title": {},
     "facebook": {},
-    "twitter": {}
+    "twitter": {},
+    "company_name": {},
+    "linkedin": {}
+
   },
   "comment_fields": {},
   "admin_pages": [
