@@ -14,6 +14,7 @@ $userId = 	$paths[2];
 
 $name = get_user_meta($userId, 'first_name', true).' '. get_user_meta($userId, 'last_name', true);
 $description = get_user_meta($userId, 'description', true);
+$title = get_user_meta($userId, 'title', true);
 
 
 get_header();
@@ -28,7 +29,7 @@ get_header();
 			 </div>
 			 <div class="partner-content">
 				 <h2><?php echo $name ?></h2>
-				 <h4><?php echo $title ?></h4>
+				 <p><i><?php echo $title ?></i></p>
 				 <p><?php get_field('total_follow') ?> <?php get_field('total_post') ?></p>
 				 <p><?php echo $description ?></p>
 			 </div>
