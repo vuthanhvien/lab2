@@ -31,12 +31,10 @@
   "term_fields": {},
   "user_fields": {
     "description" : {},
-    "title": {},
+    "nickname": {},
     "facebook": {},
     "twitter": {},
-    "company_name": {},
     "linkedin": {}
-
   },
   "comment_fields": {},
   "admin_pages": [
@@ -46,7 +44,8 @@
     "widgets",
     "settings-network",
     "site-settings-network",
-    "user-edit"
+    "user-edit",
+    "users"
   ],
   "options": {
     "blogname": {},

@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Header file for the Twenty Twenty WordPress default theme.
@@ -66,13 +67,13 @@ $prefix = $vi ? '/vi' : '';
 						if($user->exists()){
 							?>
 								<a class="avatar-profile" href="<?php echo $prefix  ?>/profile"><?php echo get_avatar($user->ID); echo ' '; echo $user->user_login; ?> </a>
-								<a class="button" href="<?php echo $prefix  ?>/subscribe"><?php echo $vi ?  'Subscribe'  : 'Subscribe' ?></a>
+								<!-- <a class="button" href="<?php echo $prefix  ?>/subscribe"><?php echo $vi ?  'Subscribe'  : 'Subscribe' ?></a> -->
 							<?php
 
 						}else{
 							?>
 								<a class="button" href="<?php echo $prefix  ?>/login"><?php echo $vi ?  'Đăng nhập'  : 'Login' ?> </a>
-								<a class="button" href="<?php echo $prefix  ?>/subscribe"><?php echo $vi ?  'Subscribe'  : 'Subscribe' ?></a>
+								<!-- <a class="button" href="<?php echo $prefix  ?>/subscribe"><?php echo $vi ?  'Subscribe'  : 'Subscribe' ?></a> -->
 							<?php
 
 						}

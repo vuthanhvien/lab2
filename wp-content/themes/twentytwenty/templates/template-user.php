@@ -14,7 +14,7 @@ $userId = 	$paths[2];
 
 $name = get_user_meta($userId, 'first_name', true).' '. get_user_meta($userId, 'last_name', true);
 $description = get_user_meta($userId, 'description', true);
-$title = get_user_meta($userId, 'title', true);
+$title = get_user_meta($userId, 'nickname', true);
 $company_name = get_user_meta($userId, 'company_name', true);
 
 $facebook = get_user_meta($userId, 'facebook', true);

@@ -91,7 +91,7 @@ get_header();
     <br />
 
     <a class="profile-tab <?php echo $tab =='profile' ? 'active' : '' ?>" href="<?php echo $prefix ?>/profile/?tab=profile" ><?php echo $vi ? 'Thông tin cá nhân' : 'Profile' ?> </a>
-    <a class="profile-tab <?php echo $tab =='plan' ? 'active' : '' ?> " href="<?php echo $prefix ?>/profile/?tab=plan"><?php echo $vi ? 'Thông tin gói' : 'Subscription plan' ?></a>
+    <!-- <a class="profile-tab <?php echo $tab =='plan' ? 'active' : '' ?> " href="<?php echo $prefix ?>/profile/?tab=plan"><?php echo $vi ? 'Thông tin gói' : 'Subscription plan' ?></a> -->
 
     <?php if($tab == 'profile') { ?>
 

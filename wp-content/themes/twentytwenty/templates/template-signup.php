@@ -25,6 +25,7 @@ if (isset($_POST['user_registeration']))
     $username=$_POST['username'];
     $useremail=$_POST['useremail'];
     $password=$_POST['password'];
+    $phone=$_POST['phone'];
     
     
     if(empty( $username ) || empty( $useremail ) || empty($password))
@@ -79,7 +80,9 @@ if (isset($_POST['user_registeration']))
             'user_pass'     =>   $password,
             );
         $user = wp_insert_user( $userdata );
-    wp_redirect('/profile');
+        update_field( 'phone', $phone, 'user_'.$user->ID );
+
+        wp_redirect('/profile');
     }
 
 }
@@ -99,6 +102,7 @@ get_header();
         <input type="text" value="<?php echo $username; ?>" name="username" placeholder="Enter Your Username" class="text" required />
         <input type="text" value="<?php echo $useremail; ?>" name="useremail" class="text" placeholder="Enter Your Email" required /> 
         <input type="password" value="<?php echo $password; ?>" name="password" class="text" placeholder="Enter Your password" required />
+        <input type="text" value="<?php echo $phone; ?>" name="phone" class="text" placeholder="Enter Your phone" required />
         <button type="submit" id="wp-submit" name="user_registeration">SignUp</button>
         <!-- <input type="submit" name="user_registeration" value="SignUp" /> -->
     </form>

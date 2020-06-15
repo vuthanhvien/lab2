@@ -158,7 +158,7 @@ get_header();
 	foreach($users as $user_id){
 		$first_name =  get_user_meta(  $user_id->ID, 'first_name', true );
 		$last_name =  get_user_meta(  $user_id->ID, 'last_name', true );
-		$title =  get_user_meta(  $user_id->ID, 'title', true );
+		$title =  get_user_meta(  $user_id->ID, 'nickname', true );
 		$desc = get_user_meta(  $user_id->ID, 'description', true );
 		$desc = implode(' ', array_slice(explode(' ', $desc), 0, 15));
 
