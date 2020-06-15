@@ -167,7 +167,7 @@ get_header();
 		?>
 			<a href="/user/<?php  echo $user_id->ID ?>" class="partner">
 				 <?php echo get_avatar($user_id->ID) ?>
-				<p style="font-size: 16px"><b><?php echo $first_name ?></b> </p>
+				<p style="font-size: 16px"><b><?php echo $first_name ?> <?php echo $last_name ?> </b> </p>
 				<p style="font-size: 15px"><i><?php echo $title ?></i> </p>
 				<p style="font-size: 16px" class="content"><?php echo $desc ?> ... </p>
 				</a>
