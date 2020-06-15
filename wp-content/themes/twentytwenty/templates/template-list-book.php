@@ -49,29 +49,27 @@ $queryFirst = new WP_Query(
 				<a href="<?php the_permalink() ?>" ><h3><?php the_title() ?></h3></a>
 				<p><?php the_excerpt() ?></p>
 				<p>By <b><?php the_author() ?></b> | <?php the_date() ?></p>
+				</div>
 						<?php } }  ?>
 				</div>
-				</div>
-	<?php
 
-	$param = array(
-		'paged'         => 1, 
-		'order'         => 'desc',
-		'post_status'   => 'publish',
-		'nopaging'		=> false,
-		'posts_per_page'=> 4,
-		'offset'       	=> 0,
-		'post_type'		=> 'book',
-		'orderby'		=> 'date'
-	);
+				<?php
 
-	$query = new WP_Query($param);
+$param = array(
+	'paged'         => 1, 
+	'order'         => 'desc',
+	'post_status'   => 'publish',
+	'nopaging'		=> false,
+	'posts_per_page'=> 4,
+	'offset'       	=> 0,
+	'post_type'		=> 'book',
+	'orderby'		=> 'date'
+);
 
-	?>
+$query = new WP_Query($param);
 
-	<h3>LASTEST BOOK REVIEWS</h3>
-<?php
-
+echo '<h3>LASTEST BOOK REVIEWS</h3>';
+	
 	if ($query->have_posts()) {
 		echo '<div class="list-book">';
 		while ($query->have_posts()) { 

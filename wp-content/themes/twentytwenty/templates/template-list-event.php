@@ -18,7 +18,7 @@ $allEventStr = $GLOBALS['vi'] ? 'TẤT CẢ SỰ KIỆN' : 'ALL EVENT'  ;
 $discoverStr = $GLOBALS['vi'] ? 'TÌM HIỂU THÊM': 'DISCOVER MORE';
 
 $prefix = $GLOBALS['vi'] ? '/vi' : '';
-
+$post_type = $post->post_name;
 $queryFirst = new WP_Query( 
 	array(
 		'paged'         => 1, 
@@ -27,7 +27,7 @@ $queryFirst = new WP_Query(
 		'nopaging'		=> false,
 		'posts_per_page'=> 1,
 		'offset'       	=> 0,
-		'post_type'		=> 'event',
+		'post_type'		=> $post_type,
 		'orderby'		=> 'date',
 		'meta_key'		=> 'highlight',
 		'meta_value'	=> 1

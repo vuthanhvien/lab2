@@ -19,7 +19,6 @@ if ( post_password_required() ) {
 
 ?>
 
-
 <h4 class="comment-reply-title">
 			<?php
 			if ( ! have_comments() ) {

@@ -2370,7 +2370,7 @@ function comment_form( $args = array(), $post_id = null ) {
 				'<label for="comment">%s</label>',
 				_x( 'Comment', 'noun' )
 			),
-			'<textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>'
+			'<textarea id="comment" name="comment" placeholder="Add comment" cols="45" rows="3" maxlength="65525" required="required"></textarea>'
 		),
 		'must_log_in'          => sprintf(
 			'<p class="must-log-in">%s</p>',

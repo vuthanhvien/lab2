@@ -139,14 +139,21 @@ $vi = $GLOBALS['vi'];
 		display: none;
 	}
 	.book-comment #comments{
-		display: none;
+		/* display: none; */
 	}
 	.book-relative .post img{
+		width: 100%;
 		height: 200px;
 		overflow: hidden;
 		object-fit: cover;
 		object-position: center; 
 	}
+	.book-relative .post h5.title{
+		color: #333;
+		margin: 15px 0;
+		font-size: 20px;
+	}
+
 	.book-relative .post{
 		width: calc((100% - 60px) / 3);
 		margin-right: 30px;
