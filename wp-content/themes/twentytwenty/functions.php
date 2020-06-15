@@ -796,7 +796,7 @@ function create_shortcode_posts($args , $content) {
 	// }
 
 	$query = array(  
-        'post_type' => $post_type ? $post_type : array('news', 'library', 'podcast', 'event', 'book'),
+        'post_type' => $post_type ? $post_type : array('news', 'library', 'podcast', 'event', 'book', 'partner-program'),
         'post_status' => 'publish',
 		'posts_per_page' => $limit ? $limit : 3,
 		'order'		=> $order ? $order : 'DESC',

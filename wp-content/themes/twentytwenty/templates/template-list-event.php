@@ -13,12 +13,16 @@ get_header();
 
 $category = $post->post_name;
 
-$highlightStr = $GLOBALS['vi'] ?  'SỰ KIỆN NỔI BẬT' : 'HIGHLIGHED EVENT';
-$allEventStr = $GLOBALS['vi'] ? 'TẤT CẢ SỰ KIỆN' : 'ALL EVENT'  ;
-$discoverStr = $GLOBALS['vi'] ? 'TÌM HIỂU THÊM': 'DISCOVER MORE';
-
+if($category == 'event'){
+	$highlightStr = $GLOBALS['vi'] ?  'SỰ KIỆN NỔI BẬT' : 'HIGHLIGHED EVENT';
+	$allEventStr = $GLOBALS['vi'] ? 'TẤT CẢ SỰ KIỆN' : 'ALL EVENT'  ;
+	$discoverStr = $GLOBALS['vi'] ? 'TÌM HIỂU THÊM': 'DISCOVER MORE';
+}else{
+	$highlightStr = $GLOBALS['vi'] ?  'CHƯƠNG TRÌNH NỔI BẬT' : 'HIGHLIGHED PROGRAM';
+	$allEventStr = $GLOBALS['vi'] ? 'TẤT CẢ SỰ CHƯƠNG TRÌNH' : 'ALL PROGRAM'  ;
+	$discoverStr = $GLOBALS['vi'] ? 'TÌM HIỂU THÊM': 'DISCOVER MORE';
+}
 $prefix = $GLOBALS['vi'] ? '/vi' : '';
-$post_type = $post->post_name;
 $queryFirst = new WP_Query( 
 	array(
 		'paged'         => 1, 
@@ -27,7 +31,7 @@ $queryFirst = new WP_Query(
 		'nopaging'		=> false,
 		'posts_per_page'=> 1,
 		'offset'       	=> 0,
-		'post_type'		=> $post_type,
+		'post_type'		=> $category,
 		'orderby'		=> 'date',
 		'meta_key'		=> 'highlight',
 		'meta_value'	=> 1
@@ -87,9 +91,9 @@ $queryFirst = new WP_Query(
 	echo '<br />';
 
 	if($type == 'all'){
-		echo '<div class="tab-event"><a href="'.$prefix.'/event/?type=highlight" >'.$highlightStr.'</a><a href="'.$prefix.'/event/?type=all" class="active">'.$allEventStr.'</a></div>';
+		echo '<div class="tab-event"><a href="'.$prefix.'/'.$category.'/?type=highlight" >'.$highlightStr.'</a><a href="'.$prefix.'/'.$category.'/?type=all" class="active">'.$allEventStr.'</a></div>';
 	}else{
-		echo '<div class="tab-event"><a href="'.$prefix.'/event/?type=highlight" class="active">'.$highlightStr.'</a><a href="'.$prefix.'/event/?type=all">'.$allEventStr.'</a></div>';
+		echo '<div class="tab-event"><a href="'.$prefix.'/'.$category.'/?type=highlight" class="active">'.$highlightStr.'</a><a href="'.$prefix.'/'.$category.'/?type=all">'.$allEventStr.'</a></div>';
 	}
 
 	if ($query->have_posts()) {
