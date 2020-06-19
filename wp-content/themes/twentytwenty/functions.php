@@ -783,18 +783,10 @@ function create_shortcode_posts($args , $content) {
 	$author = $args['author'];
 	$isSlider = $args['isslider'];
 	$fields = explode(',', $fieldString);
-	// $allinsider = array();
-	// if($author == 'partner'){
-	// 	$allinsider = get_users( 'orderby=date&limit=1000&role=author&meta_key=is_partner' );
-	// }
-	// if($author == 'insider'){
-	// 	$allinsider = get_users( 'orderby=date&limit=1000&role=author&meta_key=is_insider' );
-	// }
-	// $authors = Array();
-	// foreach($allinsider as $insider){
-	// 	array_push($authors,$insider->ID);
-	// }
 
+	$ids = $args['ids'];
+	$ids = explode(',', $ids);
+ 
 	$query = array(  
         'post_type' => $post_type ? $post_type : array('news', 'library', 'podcast', 'event', 'book', 'partner-program'),
         'post_status' => 'publish',
@@ -802,10 +794,12 @@ function create_shortcode_posts($args , $content) {
 		'order'		=> $order ? $order : 'DESC',
 		'offset'	=>$offset ? $offset : 0,
 		'orderby'	=> $orderby ? $orderby : 'date',
-		// 'author__in' =>$authors
-
 	);
 	
+	if(count($ids) > 1 ){
+		$query['post__in'] = $ids;
+		$query[ 'post_type'] = array('news', 'library', 'podcast', 'event', 'book', 'partner-program');
+	}
 
 	$the_query = new WP_Query( $query ); 
 	
@@ -847,7 +841,8 @@ function create_shortcode_posts($args , $content) {
 				break;
 				case 'min-read': 
 				case 'time': 
-					$html .= '<p class="min-read">'. get_field('min-read').'  '.$minStr.'</p>'; 
+					$time = get_field('min-read') ? get_field('min-read') : '1';
+					$html .= '<p class="min-read">'. $time.'  '.$minStr.'</p>'; 
 				break;
 				case 'content': 
 					$html .= '<div class="content">'.get_the_excerpt().'</div>'; 
@@ -897,7 +892,7 @@ $prefix = $GLOBALS['vi'] ? '/vi'  : '';
 
 	$posts =  do_shortcode('[posts fields="img,title" limit="3"]');
 
-	$html  = '<div class="main-banner" style="background-image: url(/assets/night.jpg)"><div class="blur"></div>';
+	$html  = '<div class="main-banner" style="background-image: url(/assets/bg-home2.jpg)"><div class="blur"></div>';
 	$html  .= '<div class="section-inner">';
 	$html  .= '<div class="main-banner-left sliders-signup">'.$posts.'</div>';
 $user = wp_get_current_user();
@@ -916,20 +911,20 @@ if(!$user->exists()){
 	</div>';
 
 }else{
-	$html  .= '<div class="main-banner-right">
-		<div class="form">
-		<h3>'.$title.'</h3>
-		<div>
-		<form action="'.$prefix.'/payment/" method="get">
-		<select name="type"" required />
-			<option value="standard" >Standard</option>
-			<option value="premium">Premium</option>
-		</select>
-		<button type="submit">'.$SubscribeBtn.'</button>
-		</form>
-		</div>
-	</div>
-</div>';
+// 	$html  .= '<div class="main-banner-right">
+// 		<div class="form">
+// 		<h3>'.$title.'</h3>
+// 		<div>
+// 		<form action="'.$prefix.'/payment/" method="get">
+// 		<select name="type"" required />
+// 			<option value="standard" >Standard</option>
+// 			<option value="premium">Premium</option>
+// 		</select>
+// 		<button type="submit">'.$SubscribeBtn.'</button>
+// 		</form>
+// 		</div>
+// 	</div>
+// </div>';
 }
 
 $html .= '</div>';
@@ -948,13 +943,20 @@ function create_shortcode_signup2($args , $content) {
 	$SubscribeBtn = $GLOBALS['vi']  ? 'Subscribe' : 'Subscribe';
 	$nameTitle = $GLOBALS['vi']  ? 'Họ và tên' : 'Your name';
 	$emailTitle = $GLOBALS['vi']  ? 'Email' : 'Your email';
+
+	$img = $args['img'] ?  $args['img'] : '/assets/night.jpg';
 	
 	$prefix = $GLOBALS['vi'] ? '/vi'  : '';
 	
-		$html  = '<div class="main-banner" style="background-image: url(/assets/night.jpg)"><div class="blur"></div>';
+		$html  = '<div class="main-banner" style="background-image: url('.$img.')"><div class="blur"></div>';
 		$html  .= '<div class="section-inner">';
 		$html  .= '<div class="main-banner-left">
-			<h4 style="color: white; margin: 30px 0; font-size: 20px">"BOOKS & MAGAZINES"</h4>
+			<h4 style="color: white; margin: 30px 0; font-size: 20px"></h4>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
 			<h3 style="color: white; margin: 0">"Best books recommended by leading experts and business leaders"</h3>
 		</div>';
 	$user = wp_get_current_user();
@@ -973,20 +975,20 @@ function create_shortcode_signup2($args , $content) {
 		</div>';
 	
 	}else{
-		$html  .= '<div class="main-banner-right">
-			<div class="form">
-			<h3>'.$title.'</h3>
-			<div>
-			<form action="'.$prefix.'/payment/" method="get">
-			<select name="type"" required />
-				<option value="standard" >Standard</option>
-				<option value="premium">Premium</option>
-			</select>
-			<button type="submit">'.$SubscribeBtn.'</button>
-			</form>
-			</div>
-		</div>
-	</div>';
+		// $html  .= '<div class="main-banner-right">
+		// 			<div class="form">
+		// 			<h3>'.$title.'</h3>
+		// 			<div>
+		// 			<form action="'.$prefix.'/payment/" method="get">
+		// 			<select name="type"" required />
+		// 				<option value="standard" >Standard</option>
+		// 				<option value="premium">Premium</option>
+		// 			</select>
+		// 			<button type="submit">'.$SubscribeBtn.'</button>
+		// 			</form>
+		// 			</div>
+		// 		</div>
+		// 	</div>' ;
 	}
 	
 	$html .= '</div>';
@@ -1996,7 +1998,20 @@ function send_smtp_email( $phpmailer ) {
 	$phpmailer->SMTPAuth   = true;
 	$phpmailer->Port       = 465;
 	$phpmailer->Username   = "noreply@mindblix.com";
-	$phpmailer->Password   = "LoC!9nzaj&C+";
+	$phpmailer->Password   = "8h.TAFWi)SBY";
 	$phpmailer->SMTPSecure = true;
 }
 add_action( 'phpmailer_init', 'send_smtp_email' );
+
+
+// function getBetween($str, $start, $end){
+
+// 	$idS = strpos($str, $start);
+// 	$idE = strpos($str, $end); 
+// 	if($idS < $idE){
+// 		return substr($str, $idS + 5, $idE - $idS - 5  );
+// 	}else{
+// 		return $str;
+// 	}
+
+// }

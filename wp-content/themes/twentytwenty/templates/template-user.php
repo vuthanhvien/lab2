@@ -9,18 +9,19 @@
  */
 $currentUrl = $_SERVER['REQUEST_URI'];
 
-	$paths = explode( '/', $currentUrl);
+$paths = explode( '/', $currentUrl);
 $userId = 	$paths[2];
-
 $name = get_user_meta($userId, 'first_name', true).' '. get_user_meta($userId, 'last_name', true);
-$description = get_user_meta($userId, 'description', true);
-$title = get_user_meta($userId, 'nickname', true);
-$company_name = get_user_meta($userId, 'company_name', true);
 
-$facebook = get_user_meta($userId, 'facebook', true);
-$twitter = get_user_meta($userId, 'twitter', true);
-$twitter = get_user_meta($userId, 'twitter', true);
-$linkedin = get_user_meta($userId, 'linkedin', true);
+$title = get_field('title', 'user_'.$userId);
+$company_name = get_field('company_name', 'user_'.$userId);
+
+
+$description = get_user_meta($userId, 'description', true);
+
+$facebook = get_field('facebook', 'user_'.$userId);
+$twitter = get_field('twitter', 'user_'.$userId);
+$linkedin = get_field('linkedin', 'user_'.$userId);
 
 
 get_header();

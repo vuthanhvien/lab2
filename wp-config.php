@@ -27,10 +27,10 @@ define('WP_ALLOW_MULTISITE', true );
 define( 'DB_NAME', 'min87586_dev' );
 
 /** Username của database */
-define( 'DB_USER', 'root' );
+define( 'DB_USER', 'min87586_admin' );
 
 /** Mật khẩu của database */
-define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', '12345678@X' );
 
 /** Hostname của database */
 define( 'DB_HOST', 'localhost' );

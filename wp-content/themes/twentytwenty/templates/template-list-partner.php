@@ -7,7 +7,10 @@
  * @subpackage Twenty_Twenty
  * @since 1.0
  */
-$vi = $GLOBALS['vi'];
+// $vi = $GLOBALS['vi'];
+
+$vi = $_SERVER['HTTP_HOST'] == 'chienluocso.vn';
+
 
 get_header();
 	$type = $post->post_name;
@@ -149,24 +152,32 @@ get_header();
 <div class="partner-list">
 	<?php 
 	if($type == 'partner'){
-		$users = get_users( 'ordery=date&limit=10&role=author&meta_key=is_partner&meta_value=1' );
+		$users = get_field('user_list');
+		// $users = get_users( 'ordery=date&limit=10&role=author&meta_key=is_partner&meta_value=1' );
 	}
 	if($type == 'insiders'){
-		$users = get_users( 'ordery=date&limit=10&role=author&meta_key=is_insider&meta_value=1' );
+		$users = get_field('user_list');
+		// if($userList){
+		// 	$users = get_users( ['id_in'=> $userList ]);
+		// }else{
+		// 	$users = get_users( 'ordery=date&limit=10&role=author&meta_key=is_insider&meta_value=1' );
+		// }
 	}
 
 	foreach($users as $user_id){
-		$first_name =  get_user_meta(  $user_id->ID, 'first_name', true );
-		$last_name =  get_user_meta(  $user_id->ID, 'last_name', true );
-		$title =  get_user_meta(  $user_id->ID, 'nickname', true );
-		$desc = get_user_meta(  $user_id->ID, 'description', true );
+		$first_name =  get_user_meta(  $user_id, 'first_name', true );
+		$last_name =  get_user_meta(  $user_id, 'last_name', true );
+
+		$title = get_field('title', 'user_'.$user_id);
+
+		$desc = get_user_meta(  $user_id, 'description', true );
 		$desc = implode(' ', array_slice(explode(' ', $desc), 0, 15));
 
-		$desc = get_user_meta(  $user_id->ID, 'description', true );
+		$desc = get_user_meta(  $user_id, 'description', true );
 
 		?>
-			<a href="/user/<?php  echo $user_id->ID ?>" class="partner">
-				 <?php echo get_avatar($user_id->ID) ?>
+			<a href="/user/<?php  echo $user_id ?>" class="partner">
+				 <?php echo get_avatar($user_id) ?>
 				<p style="font-size: 16px"><b><?php echo $first_name ?> <?php echo $last_name ?> </b> </p>
 				<p style="font-size: 15px"><i><?php echo $title ?></i> </p>
 				<p style="font-size: 16px" class="content"><?php echo $desc ?> ... </p>
@@ -191,7 +202,7 @@ if($type == 'partner'){
 	</div>';
 }
 if($type == 'insiders'){
-	$t = $vi ? 'Trở thành insider' : 'Become a Insider';
+	$t = $vi ? 'Trở thành insider' : 'Become an Insider';
 	echo '<div class="text-center">
 		<button id="become-insider" class="btn">'.$t.' &nbsp; <i class="fa fa-long-arrow-right" ></i> </button>
 	</div>';

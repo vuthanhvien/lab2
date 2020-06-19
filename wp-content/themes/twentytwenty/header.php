@@ -10,12 +10,11 @@
  * @since 1.0.0
  */
 
-
 $user = wp_get_current_user();
 
 $vi = $GLOBALS['vi'];
 
-$prefix = $vi ? '/vi' : '';
+$prefix = '';
 
 
 ?><!DOCTYPE html>
@@ -51,11 +50,11 @@ $prefix = $vi ? '/vi' : '';
 		wp_body_open();
 
 		$currentPath = $_SERVER['REQUEST_URI'];
-		if($vi) {
-			$currentPath = substr($currentPath, 3); 
-		}else{
-			$currentPath = $currentPath;
-		}
+		// if($vi) {
+		// 	$currentPath = substr($currentPath, 3); 
+		// }else{
+		// 	$currentPath = $currentPath;
+		// }
 		?>
 
 			<div class="header-top">

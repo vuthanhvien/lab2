@@ -19,7 +19,8 @@
     },
     "any": {},
     "customize_changeset": null,
-    "revision": null
+    "revision": null,
+    "acf-field-group":null
   },
   "post_fields": {
     "_wp_attachment_image_alt": {}
@@ -30,11 +31,8 @@
   },
   "term_fields": {},
   "user_fields": {
-    "description" : {},
-    "nickname": {},
-    "facebook": {},
-    "twitter": {},
-    "linkedin": {}
+    "description": {},
+    "phone": null
   },
   "comment_fields": {},
   "admin_pages": [

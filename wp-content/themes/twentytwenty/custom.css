@@ -624,7 +624,7 @@ body #site-footer {
     height: 350px;
 }
 
-.main-banner .sliders-signup .post.post-3 .img {
+.main-banner .sliders-signup .post.post-1 .img {
     width: 90%;
     z-index: 3;
     height: 100%;
@@ -639,7 +639,7 @@ body #site-footer {
     padding-bottom: 5%;
 }
 
-.main-banner .sliders-signup .post.post-1 .img {
+.main-banner .sliders-signup .post.post-3 .img {
     width: 100%;
     /* height: 80%; */
     padding-top: 10%;
@@ -1428,7 +1428,7 @@ body #site-footer {
 }
 
 .post-text {
-    padding: 80px;
+    padding: 20px 80px;
 }
 
 .post-text hr {
@@ -1485,7 +1485,15 @@ body #site-footer {
     height: 100vh;
     position: absolute;
 }
-
+.post-comment {
+    padding: 0 30px;
+}
+.post-comment   .comments-inner ,
+.post-comment form#commentform .comment-form-comment,
+.post-comment form#commentform .form-submit,
+    .post-comment form#commentform{
+    max-width: 100%;
+}
 
 .post-next {}
 

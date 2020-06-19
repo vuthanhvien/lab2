@@ -142,15 +142,16 @@ $vi = $GLOBALS['vi'];
 		</div>
 
 		<div class="post-relate-outer">
-		<h3><?php echo $vi  ? 'Bài viết liên quan' : 'Related Articles' ?> </h3>
-
+		<h3><?php echo $vi  ? 'Bài viết liên quan' : 'Related Articles' ?> </h3> 
 		<div class="post-relate">
 			<div class="post-relate-left">
 			<?php 
-			echo do_shortcode('[posts limit="1" fields="img,category,title" type="'.$post_type.'"]'); ?>
+			$ids =  get_field('relative_posts');
+			$ids  = implode(',',$ids );
+			echo do_shortcode('[posts limit="1" ids="'.$ids.'" fields="img,category,title" type="'.$post_type.'"]'); ?>
 			</div>
 			<div class="post-relate-right">
-			<?php echo do_shortcode('[posts limit="4" fields="img,category,title" type="'.$post_type.'"]'); ?>
+			<?php echo do_shortcode('[posts limit="4"  ids="'.$ids.'" offset="1" fields="img,category,title" type="'.$post_type.'"]'); ?>
 			</div>
 		
 		</div>

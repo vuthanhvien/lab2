@@ -24,12 +24,11 @@ $queryFirst = new WP_Query(
 		'orderby'		=> 'date',
 	)
 );
-
-
+ 
 ?>
 
 <main id="site-content" role="main">
-	<?php echo do_shortcode('[signup2]'); ?>
+	<?php echo do_shortcode('[signup2 img="'.get_the_post_thumbnail_url().'"]'); ?>
 </div>
 <div class="section-inner book-section">
 
