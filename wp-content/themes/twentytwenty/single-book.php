@@ -57,12 +57,12 @@ $vi = $GLOBALS['vi'];
 	<div class="section-inner book-detail">
 		<h4>FULFILLING READING</h4>
 		<h3 class="book-title"><?php the_title() ?></h3>
-		<p>By <b><?php get_the_author_meta('display_name') ?></b> | <?php the_date() ?> <?php  echo get_field('minread')?> minute read </p>
+		<p>By <b><?php echo get_the_author_meta('display_name') ?></b> | <?php the_date() ?> |  <?php  echo get_field('min-read') ? get_field('min-read') : '5'?> minute read </p>
 		<br />
 		<?php   echo $img ?>
 		<br />
 		<br />
-		<div class="book-text">
+		<div class="post-text book-text">
 			<div>
 				<a target="_blank" href="https://twitter.com/intent/tweet?text=<?php echo $actual_link ?>" class="book-share">
 					<i class="fa fa-twitter"></i>
@@ -90,8 +90,8 @@ $vi = $GLOBALS['vi'];
 					<p>
 					<?php echo $vi ? 'Bạn không có quyền xem bài viết, hãy đăng nhập hoặc subscribe' : "You don't have permission to read  this article, please login or subscice" ?>
 						</p>
-						<a style="color: #0D87D0" class="btn" href="/login"><b><?php echo !$vi ? 'Go to login' : 'Đi tới đăng nhập' ?></b></a> - 
-						 <a style="color: #0D87D0"  class="btn" href="/Subscribe"><b><?php echo !$vi ? 'Go to login' : 'Đi tới đăng ký' ?> </b></a>
+						<a style="color: #0D87D0" class="btn" href="/login"><b><?php echo !$vi ? 'Go to login' : 'Đi tới đăng nhập' ?></b></a> 
+						 <!-- <a style="color: #0D87D0"  class="btn" href="/Subscribe"><b><?php echo !$vi ? 'Go to login' : 'Đi tới đăng ký' ?> </b></a> -->
 					</div>
 					<?php
 				 }

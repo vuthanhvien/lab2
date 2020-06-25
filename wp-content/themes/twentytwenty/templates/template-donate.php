@@ -1,7 +1,7 @@
 <?php
 /**
- * Template Name: Profile Template
- * Template Post Type: post, page
+ * Template Name: Donate Template
+ * Template Post Type:  page
  *
  * @package WordPress
  * @subpackage Twenty_Twenty

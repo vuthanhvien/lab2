@@ -10,12 +10,15 @@
  * @since 1.0.0
  */
 
+
+
+$vi = $_SERVER['HTTP_HOST'] == 'chienluocso.vn';
+
 $user = wp_get_current_user();
 
-$vi = $GLOBALS['vi'];
+// $vi = $GLOBALS['vi'];
 
 $prefix = '';
-
 
 ?><!DOCTYPE html>
 

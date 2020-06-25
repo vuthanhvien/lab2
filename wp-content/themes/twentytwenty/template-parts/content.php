@@ -98,6 +98,8 @@ $vi = $GLOBALS['vi'];
 					
 					the_content(); 
 
+					echo '<hr />';
+					the_tags();
 					?>
 
 				<hr>
@@ -114,7 +116,13 @@ $vi = $GLOBALS['vi'];
 
 					<div class="post-next">
 						<h3><?php echo $vi ? 'Bài viết tiếp theo' : 'Up Next' ?></h3>
-						<?php echo do_shortcode('[posts limit="4" fields="img,category,title" type="'.$post_type.'"]'); ?>
+						<?php 
+						
+							$ids =  get_field('next_posts');
+							$ids  = implode(',',$ids );
+							echo do_shortcode('[posts limit="4" ids="'.$ids.'" fields="img,category,title" type="'.$post_type.'"]');  
+						
+						?>
 					</div>
 					
 
@@ -127,8 +135,8 @@ $vi = $GLOBALS['vi'];
 					<p>
 					<?php echo $vi ? 'Bạn không có quyền xem bài viết, hãy đăng nhập hoặc subscribe' : "You don't have permission to read  this article, please login or subscice" ?>
 						</p>
-						<a style="color: #0D87D0" class="btn" href="/login"><b><?php echo !$vi ? 'Go to login' : 'Đi tới đăng nhập' ?></b></a> - 
-						 <a style="color: #0D87D0"  class="btn" href="/Subscribe"><b><?php echo !$vi ? 'Go to login' : 'Đi tới đăng ký' ?> </b></a>
+						<a style="color: #0D87D0" class="btn" href="/login"><b><?php echo !$vi ? 'Go to login' : 'Đi tới đăng nhập' ?></b></a>
+						 <!-- <a style="color: #0D87D0"  class="btn" href="/Subscribe"><b><?php echo !$vi ? 'Go to login' : 'Đi tới đăng ký' ?> </b></a> -->
 					</div>
 					<?php
 				 }?>
@@ -148,7 +156,7 @@ $vi = $GLOBALS['vi'];
 			<?php 
 			$ids =  get_field('relative_posts');
 			$ids  = implode(',',$ids );
-			echo do_shortcode('[posts limit="1" ids="'.$ids.'" fields="img,category,title" type="'.$post_type.'"]'); ?>
+				echo do_shortcode('[posts limit="1" ids="'.$ids.'" fields="img,category,title" type="'.$post_type.'"]'); ?>
 			</div>
 			<div class="post-relate-right">
 			<?php echo do_shortcode('[posts limit="4"  ids="'.$ids.'" offset="1" fields="img,category,title" type="'.$post_type.'"]'); ?>

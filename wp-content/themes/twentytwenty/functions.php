@@ -31,6 +31,9 @@
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
+
+global $vi;
+$vi = $_SERVER['HTTP_HOST'] == 'chienluocso.vn';
 function twentytwenty_theme_support() {
 
 	// Add default posts and comments RSS feed links to head.
@@ -788,7 +791,7 @@ function create_shortcode_posts($args , $content) {
 	$ids = explode(',', $ids);
  
 	$query = array(  
-        'post_type' => $post_type ? $post_type : array('news', 'library', 'podcast', 'event', 'book', 'partner-program'),
+        'post_type' => $post_type ? $post_type : array('news', 'library', 'podcast', 'event', 'book', 'partner-program', 'partner', 'insiders'),
         'post_status' => 'publish',
 		'posts_per_page' => $limit ? $limit : 3,
 		'order'		=> $order ? $order : 'DESC',
@@ -798,7 +801,7 @@ function create_shortcode_posts($args , $content) {
 	
 	if(count($ids) > 1 ){
 		$query['post__in'] = $ids;
-		$query[ 'post_type'] = array('news', 'library', 'podcast', 'event', 'book', 'partner-program');
+		$query[ 'post_type'] = array('news', 'library', 'podcast', 'event', 'book', 'partner-program', 'partner', 'insiders');
 	}
 
 	$the_query = new WP_Query( $query ); 
@@ -944,6 +947,8 @@ function create_shortcode_signup2($args , $content) {
 	$nameTitle = $GLOBALS['vi']  ? 'Họ và tên' : 'Your name';
 	$emailTitle = $GLOBALS['vi']  ? 'Email' : 'Your email';
 
+	$bookTitle =  $GLOBALS['vi'] ? 'Sách hay nhất được đề xuất bởi các chuyên gia hàng đầu và lãnh đạo doanh nghiệp'  : 'Best books recommended by leading experts and business leaders';
+
 	$img = $args['img'] ?  $args['img'] : '/assets/night.jpg';
 	
 	$prefix = $GLOBALS['vi'] ? '/vi'  : '';
@@ -957,7 +962,7 @@ function create_shortcode_signup2($args , $content) {
 			<br />
 			<br />
 			<br />
-			<h3 style="color: white; margin: 0">"Best books recommended by leading experts and business leaders"</h3>
+			<h3 style="color: white; margin: 0">'.$bookTitle.'</h3>
 		</div>';
 	$user = wp_get_current_user();
 	if(!$user->exists()){
@@ -1135,6 +1140,7 @@ function create_custom_type_event()
             'comments',
             'custom-fields'
         ), //Các tính năng được hỗ trợ trong post type
+        'taxonomies' => array( 'category', 'post_tag' ), //Các taxonomy được phép sử dụng để phân loại nội dung
         'hierarchical' => false, //Cho phép phân cấp, nếu là false thì post type này giống như Post, true thì giống như Page
         'public' => true, //Kích hoạt post type
         'show_ui' => true, //Hiển thị khung quản trị như Post/Page
@@ -1185,6 +1191,7 @@ function create_custom_type_partner_program()
             'comments',
             'custom-fields'
         ), //Các tính năng được hỗ trợ trong post type
+        'taxonomies' => array( 'category', 'post_tag' ), //Các taxonomy được phép sử dụng để phân loại nội dung
         'hierarchical' => false, //Cho phép phân cấp, nếu là false thì post type này giống như Post, true thì giống như Page
         'public' => true, //Kích hoạt post type
         'show_ui' => true, //Hiển thị khung quản trị như Post/Page
@@ -1402,7 +1409,7 @@ function create_custom_type_book()
             'revisions',
             'custom-fields'
         ), //Các tính năng được hỗ trợ trong post type
-        // 'taxonomies' => array( 'category', 'post_tag' ), //Các taxonomy được phép sử dụng để phân loại nội dung
+        'taxonomies' => array( 'category', 'post_tag' ), //Các taxonomy được phép sử dụng để phân loại nội dung
         'hierarchical' => false, //Cho phép phân cấp, nếu là false thì post type này giống như Post, true thì giống như Page
         'public' => true, //Kích hoạt post type
         'show_ui' => true, //Hiển thị khung quản trị như Post/Page
@@ -1513,7 +1520,7 @@ function create_custom_type_partner()
             'revisions',
             'custom-fields'
         ), //Các tính năng được hỗ trợ trong post type
-        'taxonomies' => array( 'category', 'partner_tag' ), //Các taxonomy được phép sử dụng để phân loại nội dung
+        'taxonomies' => array( 'category', 'post_tag' ), //Các taxonomy được phép sử dụng để phân loại nội dung
         'hierarchical' => false, //Cho phép phân cấp, nếu là false thì post type này giống như Post, true thì giống như Page
         'public' => true, //Kích hoạt post type
         'show_ui' => true, //Hiển thị khung quản trị như Post/Page

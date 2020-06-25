@@ -12,6 +12,7 @@ get_header();
 
 $prefix = $GLOBALS['vi'] ? '/vi' : '';
 
+
 $queryFirst = new WP_Query( 
 	array(
 		'paged'         => 1, 
@@ -44,7 +45,7 @@ $queryFirst = new WP_Query(
 			?>
 			<div class="first-book-left"><?php  echo $img; ?></div>
 			<div class="first-book-right">
-				<h4  >ESSENTIAL READS 2020</h4>
+				<h4 ><?php echo  $GLOBALS['vi'] ? 'CẦN ĐỌC TRONG NĂM 2020' : 'ESSENTIAL READS 2020' ?></h4>
 				<a href="<?php the_permalink() ?>" ><h3><?php the_title() ?></h3></a>
 				<p><?php the_excerpt() ?></p>
 				<p>By <b><?php the_author() ?></b> | <?php the_date() ?></p>
@@ -67,7 +68,7 @@ $param = array(
 
 $query = new WP_Query($param);
 
-echo '<h3>LASTEST BOOK REVIEWS</h3>';
+echo  $vi ?  '<h3>GẦN NHẤT</h3>' :  '<h3>LASTEST BOOK REVIEWS</h3>';
 	
 	if ($query->have_posts()) {
 		echo '<div class="list-book">';
@@ -96,10 +97,8 @@ echo '<h3>LASTEST BOOK REVIEWS</h3>';
 		echo '<div class="npost"><p>No post</p></div>';
 	}
  
-	?>
-	<h3>MOST POPUPLAR</h3>
-
-	<?php
+echo  $vi ?  '<h3>NỔI BẬT</h3>' :  '<h3>MOST POPUPLAR</h3>';
+	
 
 $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 
