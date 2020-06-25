@@ -52,7 +52,7 @@ get_header();
 		 </div>
 		 <div class="partner-bottom">
 		 <div class="partner-posts">
-			<?php echo do_shortcode('[posts fields="img,min-read,title,content,tag" author="'.$userId.'" limit="10"]') ?>
+			<?php echo do_shortcode('[posts fields="img,min-read,title,content,category" author="'.$userId.'" limit="10"]') ?>
 		 <div>
 		 <div class="partner-sidebar">
 			 <!-- <div class="news"></div> -->

@@ -68,7 +68,7 @@ get_header();
   			$first_img = $matches [1] [0];
 			$img = get_the_post_thumbnail() ? get_the_post_thumbnail() :  '<img src="'.$first_img.'">' ;
 			
-			$categoryName = get_field('tag') ? get_field('tag') : 'Execution';
+			// $categoryName = get_field('tag') ? get_field('tag') : 'Execution';
 			$item = '';
 			$item .= '<div class="post">';
 			$item .= '<div class="img">'.$img.'</div>';
@@ -78,7 +78,7 @@ get_header();
 						<span>'.get_the_author().'</span><span>|</span>
 						<span>'.get_the_date().'</span>
 						</div>';
-			$item .= '<div class="category">'.$categoryName.'</div>';
+			// $item .= '<div class="category">'.$categoryName.'</div>';
 			$item .= '</div>';
 
 			echo $item;
@@ -153,15 +153,9 @@ get_header();
 	<?php 
 	if($type == 'partner'){
 		$users = get_field('user_list');
-		// $users = get_users( 'ordery=date&limit=10&role=author&meta_key=is_partner&meta_value=1' );
 	}
 	if($type == 'insiders'){
 		$users = get_field('user_list');
-		// if($userList){
-		// 	$users = get_users( ['id_in'=> $userList ]);
-		// }else{
-		// 	$users = get_users( 'ordery=date&limit=10&role=author&meta_key=is_insider&meta_value=1' );
-		// }
 	}
 
 	foreach($users as $user_id){

@@ -1,110 +1,107 @@
 <?php
 /**
- * Template Name: List Template
- * Template Post Type: page
+ * The main template file
+ *
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package WordPress
  * @subpackage Twenty_Twenty
- * @since 1.0
+ * @since 1.0.0
  */
 
 get_header();
-$prefix = $GLOBALS['vi'] ? '/vi' : '';
-
-$vnEcomStr = $GLOBALS['vi'] ? 'NỀN KINH TẾ KỸ THUẬT SỐ VIỆT NAM' : 'VIETNAM DIGITAL ECONOMY';
-
 ?>
 
 <main id="site-content" role="main">
-<div class="list-banner">
-	<div class="section-inner" style="max-width: 1400px">
-		<?php
-		$post_type = $post->post_name;
-		echo $post->post_content;
-
-		echo '<div class="line" ></div>';
-
-		if($post_type == 'library'){
-			$tag = $_GET['tag'];
-			$category_parent = get_category_by_slug( 'library' );
-			$categories = get_categories(array('child_of' => $category_parent->term_taxonomy_id));
-
-			if($tag == 'vietnam-digital-economy' ){
-				$isActive = true;
-			}else{
-				$isActive = false;
-			}
-
-			?>
-			<div  class="tag-list">
-				<h5 style="padding: 0"><a <?php echo $isActive ? 'class="active"' : ''  ?>  href="<?php echo $prefix ?>/library/?tag=vietnam-digital-economy" ><?php echo $vnEcomStr ?> </a></h5>
-			</div>
-			<div  class="tag-list"> 
-			<h5 >
-				<?php
-				foreach($categories as $c) {
-					if($c->slug == $tag ){
-						$isActive = true;
-					}else{
-						$isActive = false;
-					}
-					echo '<a '.($isActive ? 'class="active"' : '' ).' href="'.$prefix.'/library/?tag='.$c->slug.'">'.$c->name.'</a>';
-					?>
-				<?php }  ?>
-			</h5>
-				</div>
-			<?php
-
-	 
 
 
-		}else if($post_type == 'news'){
-			$tag = $_GET['tag'];
-			$category_parent = get_category_by_slug( 'topic' );
-			$categories = get_categories(array('child_of' => $category_parent->term_taxonomy_id));
+	<?php
 
-			?>
-				<?php echo '<div class="tag-list">' ?>
-			<h5 style="padding-left: 0" >
-				<?php
-				foreach($categories as $c) {
-					if($c->slug == $tag ){
-						$isActive = true;
-					}else{
-						$isActive = false;
-					}
-					echo '<a '.($isActive ? 'class="active"' : '' ).' href="'.$prefix.'/news/?tag='.$c->slug.'">'.$c->name.'</a>';
-					?>
-				<?php }  ?>
-			</h5>
-				</div>
-			<?php
-		}else{
-			$tag = '';
+	$currentUrl = $_SERVER['REQUEST_URI'];
+	$archive_title    = '';
+	$archive_subtitle = '';
+
+
+	if ( is_search() ) {
+		global $wp_query;
+
+		$archive_title = sprintf(
+			'%1$s %2$s',
+			'<span class="color-accent">' . __( 'Search:', 'twentytwenty' ) . '</span>',
+			'&ldquo;' . get_search_query() . '&rdquo;'
+		);
+
+		if ( $wp_query->found_posts ) {
+			$archive_subtitle = sprintf(
+				/* translators: %s: Number of search results */
+				_n(
+					'We found %s result for your search.',
+					'We found %s results for your search.',
+					$wp_query->found_posts,
+					'twentytwenty'
+				),
+				number_format_i18n( $wp_query->found_posts )
+			);
+		} else {
+			$archive_subtitle = __( 'We could not find any results for your search. You can give it another try through the search form below.', 'twentytwenty' );
 		}
+	} elseif ( ! is_home() ) {
+		$archive_title    = get_the_archive_title();
+		$archive_subtitle = get_the_archive_description();
+		
+	}
+	if ( $archive_title || $archive_subtitle ) {
+
 		?>
-	</div>
-</div>
+
+		<header class="archive-header has-text-align-center header-footer-group">
+
+			<div class="archive-header-inner section-inner medium">
+
+				<?php if ( $archive_title ) { ?>
+					<h1 class="archive-title"><?php echo wp_kses_post( $archive_title ); ?></h1>
+				<?php } ?>
+
+				<?php if ( $archive_subtitle ) { ?>
+					<div class="archive-subtitle section-inner thin max-percentage intro-text"><?php echo wp_kses_post( wpautop( $archive_subtitle ) ); ?></div>
+				<?php } ?>
+
+			</div><!-- .archive-header-inner -->
+
+		</header><!-- .archive-header -->
+
+		<?php
+    }
+
+    ?>
+
 <div class="section-inner">
 	<?php
 
-	
+// echo $currentUrl;
 	echo '<br />';
-	echo '<br />';
+    echo '<br />';
 	$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
-
+	$tag = get_query_var( 'tag' );
+    // echo 	$tag;
 	$queryArr = array(
 		'paged'         => $paged, 
 		'order'         => 'desc',
 		'post_status'   => 'publish',
 		'nopaging'		=> false,
 		'posts_per_page'=> 15,
-		'post_type'		=> $post_type,
-		'orderby'		=> 'date',
+		'post_type'		=> array('news', 'library', 'podcast', 'event', 'book', 'partner-program', 'partner', 'insiders'),
+        'orderby'		=> 'date',
+        'tag'              => $tag
 	);
-	if($tag){
-		$queryArr['category_name'] = $tag;
-	}
+	// if($tag){
+	// 	$queryArr['category_name'] = $tag;
+	// }
 	$query = new WP_Query( $queryArr );
 
 
@@ -182,11 +179,12 @@ $vnEcomStr = $GLOBALS['vi'] ? 'NỀN KINH TẾ KỸ THUẬT SỐ VIỆT NAM' : '
 	 ?>
 
 </div>
-
+    <?php
+    get_template_part( 'template-parts/pagination' ); ?>
 
 </main><!-- #site-content -->
 
-
-<?php echo do_shortcode('[signup]'); ?>
 <?php get_template_part( 'template-parts/footer-menus-widgets' ); ?>
-<?php get_footer(); ?>
+
+<?php
+get_footer();

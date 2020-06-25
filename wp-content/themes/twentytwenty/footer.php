@@ -13,7 +13,7 @@
 
  $vi = $GLOBALS['vi'];
 
-$prefix =  $vi ? '/vi' : '';
+$prefix =  $vi ? '' : '';
 
 ?>
 			<footer id="site-footer">
@@ -22,7 +22,7 @@ $prefix =  $vi ? '/vi' : '';
 					Copyright © 2020 Digital Strategy Lab.  All Rights Reserved.
 				</p><!-- .footer-copyright -->
 				<p>
-                    <a href="<?php echo $prefix ?>/advertise"   ><?php echo $vi ? 'Quảng cáo' : 'Advertise' ?></a> |
+                    <!-- <a href="<?php echo $prefix ?>/advertise"   ><?php echo $vi ? 'Quảng cáo' : 'Advertise' ?></a> | -->
                     <a href="<?php echo $prefix ?>/terms-of-use"  ><?php echo $vi ? 'Điều khoản sử dụng' : 'Terms of Use' ?></a> |
 				<a href="<?php echo $prefix ?>/privacy"  ><?php echo $vi ? 'Chính sách bảo mật' : 'Privacy Policy' ?></a>
 					</p>

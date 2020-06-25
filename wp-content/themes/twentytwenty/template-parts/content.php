@@ -83,7 +83,18 @@ $vi = $GLOBALS['vi'];
 					<img  class="icon  post-count-comment" src="/assets/chat.png" />
 					<?php echo $post->comment_count ?>
 
-					<div class="post-tag"><?php echo get_field('tag') ? get_field('tag') : 'Execution' ?></div>
+					<?php 
+					
+					$tags  = get_the_category();
+					$tag = [];
+					foreach ($tags as &$t) {
+						array_push($tag, $t->name);
+					}
+						if($tag){
+							echo '<div class="post-tag">'. implode(', ', $tag).'</div>';
+						}
+						 ?>
+
 						
 				</div>
 				<div class="post-video">
@@ -97,10 +108,10 @@ $vi = $GLOBALS['vi'];
 				<?php if($isView){  
 					
 					the_content(); 
-
 					echo '<hr />';
-					the_tags();
 					?>
+					
+					<div class="tags-list"><?php the_tags('Tags: &nbsp ', ' ', ' ') ?> </div>
 
 				<hr>
 					<div class="post-action">

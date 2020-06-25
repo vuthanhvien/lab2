@@ -75,7 +75,7 @@ $queryFirst = new WP_Query(
 		'nopaging'		=> false,
 		'posts_per_page'=> 15,
 		'offset'       	=> 0,
-		'post_type'		=> $category,
+		'post_type'		=> 'event',
 		'orderby'		=> 'desc'
 	);
 

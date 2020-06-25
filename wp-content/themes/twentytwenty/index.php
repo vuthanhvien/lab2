@@ -56,6 +56,7 @@ get_header();
 		
 	}
 	if ( $archive_title || $archive_subtitle ) {
+
 		?>
 
 		<header class="archive-header has-text-align-center header-footer-group">
@@ -76,10 +77,12 @@ get_header();
 
 		<?php
 	}
-
 	if ( have_posts() ) {
 
+
 		$i = 0;
+
+		var_dump($i);
 
 		while ( have_posts() ) {
 			$i++;

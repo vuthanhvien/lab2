@@ -785,10 +785,15 @@ function create_shortcode_posts($args , $content) {
 	$parentclassname = $args['parentclassname'];
 	$author = $args['author'];
 	$isSlider = $args['isslider'];
+
+	$category_name = $args['category'];
+
+
 	$fields = explode(',', $fieldString);
 
 	$ids = $args['ids'];
 	$ids = explode(',', $ids);
+
  
 	$query = array(  
         'post_type' => $post_type ? $post_type : array('news', 'library', 'podcast', 'event', 'book', 'partner-program', 'partner', 'insiders'),
@@ -797,7 +802,16 @@ function create_shortcode_posts($args , $content) {
 		'order'		=> $order ? $order : 'DESC',
 		'offset'	=>$offset ? $offset : 0,
 		'orderby'	=> $orderby ? $orderby : 'date',
+		
 	);
+
+	if($category_name){
+		$query['category_name'] = $category_name;
+	}
+
+	if($author){
+		$query['author'] = $author;
+	}
 	
 	if(count($ids) > 1 ){
 		$query['post__in'] = $ids;
@@ -808,7 +822,7 @@ function create_shortcode_posts($args , $content) {
 	
 	$html = '';
 
-	$minStr = $GLOBALS['vi']  ? 'phút đọc' : 'min read';
+	$minStr = $GLOBALS['vi']  ? 'lượt xem' : 'views';
 
 	if ( $the_query->have_posts() ) :
 		$index = 1;
@@ -851,8 +865,14 @@ function create_shortcode_posts($args , $content) {
 					$html .= '<div class="content">'.get_the_excerpt().'</div>'; 
 				break;
 				case 'category': 
-					$tag = get_field('tag')? get_field('tag') : 'Execution';
-					$html .= '<div class="category">'.$tag.'</div>'; 
+					// $tag = get_field('tag')? get_field('tag') : 'Execution';
+					$tags  = get_the_category();
+					$tag = [];
+					foreach ($tags as &$t) {
+						array_push($tag, $t->name);
+					}
+
+					$html .= '<div class="category">'.implode(', ', $tag).'</div>'; 
 				break;
 				case 'author': 
 					$html .= '<div class="author">'.get_avatar( get_the_author_meta( 'ID' )).'<span>'.get_the_author_meta('display_name').'</span></div>'; 
@@ -965,21 +985,21 @@ function create_shortcode_signup2($args , $content) {
 			<h3 style="color: white; margin: 0">'.$bookTitle.'</h3>
 		</div>';
 	$user = wp_get_current_user();
-	if(!$user->exists()){
-		$html  .= '<div class="main-banner-right">
-		<div class="form">
-			<h3>'.$title.'</h3>
-			<div>
-			<form action="'.$prefix.'/signup/" method="get">
-			<input type="text" name="user_name" minlength="6" placeholder="'.$nameTitle.'" required />
-			<input type="email" name="user_email" placeholder="'.$emailTitle.'" required />
-			<button type="submit">'.$signUpBtn.'</button>
-			</form>
-			</div>
-		</div>
-		</div>';
+	// if(!$user->exists()){
+	// 	$html  .= '<div class="main-banner-right">
+	// 	<div class="form">
+	// 		<h3>'.$title.'</h3>
+	// 		<div>
+	// 		<form action="'.$prefix.'/signup/" method="get">
+	// 		<input type="text" name="user_name" minlength="6" placeholder="'.$nameTitle.'" required />
+	// 		<input type="email" name="user_email" placeholder="'.$emailTitle.'" required />
+	// 		<button type="submit">'.$signUpBtn.'</button>
+	// 		</form>
+	// 		</div>
+	// 	</div>
+	// 	</div>';
 	
-	}else{
+	// }else{
 		// $html  .= '<div class="main-banner-right">
 		// 			<div class="form">
 		// 			<h3>'.$title.'</h3>
@@ -994,7 +1014,7 @@ function create_shortcode_signup2($args , $content) {
 		// 			</div>
 		// 		</div>
 		// 	</div>' ;
-	}
+	// }
 	
 	$html .= '</div>';
 	$html .= '</div>';
@@ -2011,14 +2031,34 @@ function send_smtp_email( $phpmailer ) {
 add_action( 'phpmailer_init', 'send_smtp_email' );
 
 
-// function getBetween($str, $start, $end){
+function insider_list(){
+	$users = get_field('user_list', 23);
+	$html = '<div class="top-partner">
+	<h3 class="text-center" style="margin: 0">Insiders</h3>
+	<div class="partner-list-wrap">
+	<div class="partner-list">';
+	foreach($users as $user_id){
+		$first_name =  get_user_meta(  $user_id, 'first_name', true );
+		$last_name =  get_user_meta(  $user_id, 'last_name', true );
 
-// 	$idS = strpos($str, $start);
-// 	$idE = strpos($str, $end); 
-// 	if($idS < $idE){
-// 		return substr($str, $idS + 5, $idE - $idS - 5  );
-// 	}else{
-// 		return $str;
-// 	}
+		$title = get_field('title', 'user_'.$user_id);
 
-// }
+		$desc = get_user_meta(  $user_id, 'description', true );
+		$desc = implode(' ', array_slice(explode(' ', $desc), 0, 15));
+
+		$desc = get_user_meta(  $user_id, 'description', true );
+
+			$html .= '<a href="/user/'.$user_id.'" class="partner">';
+			$html .= get_avatar($user_id);
+
+			$html .= '<p style="font-size: 16px"><b>'.$first_name . ' ' . $last_name .' </b> </p>';
+			$html .= '<p style="font-size: 15px"><i>'.$title .'</i> </p>';
+			$html .= '<p style="font-size: 16px" class="content">'.$desc .'... </p>';
+			$html .= '</a>';
+	}
+	return $html.'</div></div></div>';
+ 
+
+}
+add_shortcode( 'insiders', 'insider_list' );
+

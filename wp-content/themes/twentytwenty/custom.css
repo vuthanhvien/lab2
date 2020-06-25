@@ -190,7 +190,7 @@ a .title:hover {
 }
 
 #site-header .header-inner {
-    background-color: #0D87D0 !important;
+    background-color: white !important;
     height: 110px;
     padding: 0;
     margin: 0;
@@ -198,6 +198,17 @@ a .title:hover {
 
 }
 
+#post-2 .top-partner{
+    background: #0593fb;
+}
+
+#post-2 .top-partner .partner{
+    background: white;
+}
+#post-2 .top-partner h3{
+    color: white;
+    margin-bottom: 30px!important;
+}
 #site-header .header-left {
     display: inline-block;
     vertical-align: middle;
@@ -213,10 +224,13 @@ a .title:hover {
 
 #site-header .primary-menu a {
     font-size: 18px;
-    color: white;
+    color: #444;
     font-weight: bold;
     margin: 0 10px;
     padding: 0px;
+}
+#site-header .primary-menu a:hover{
+    color: #1A77F8;
 }
 
 #site-header .header-inner {
@@ -786,7 +800,7 @@ body #site-footer {
 }
 
 #post-2 h4 {
-    font-size: 44px;
+    font-size: 31px;
     margin-bottom: 0px;
     white-space: nowrap;
 }
@@ -806,18 +820,18 @@ body #site-footer {
 
 }
 
-#post-2 .section-list .news>p,
-#post-2 .section-list .library>p,
-#post-2 .section-list .podcast>p {
+#post-2 .section-list .news>h4,
+#post-2 .section-list .library>h4,
+#post-2 .section-list .podcast>h4 {
     border-bottom: 1px solid #ccc;
     padding-bottom: 40px;
     margin-bottom: 40px;
     position: relative;
 }
 
-#post-2 .section-list .news>p::after,
-#post-2 .section-list .library>p::after,
-#post-2 .section-list .podcast>p::after {
+#post-2 .section-list .news>h4::after,
+#post-2 .section-list .library>h4::after,
+#post-2 .section-list .podcast>h4::after {
     content: '';
     position: absolute;
     height: 1px;
@@ -1016,8 +1030,8 @@ body #site-footer {
 }
 
 #section-insiders {
-    background: #0D87D0;
-    padding: 100px 0;
+    background: #585858;
+    padding: 50px 0 30px 0;
 }
 
 #section-insiders h4 {
@@ -1034,7 +1048,7 @@ body #site-footer {
     margin: 0 auto;
     position: relative;
 }
-
+/* 
 #section-insiders .wp-block-group__inner-container::before,
 #section-insiders .wp-block-group__inner-container::after {
     content: '';
@@ -1056,7 +1070,7 @@ body #site-footer {
     background-image: url(/assets/insider-r.png);
 
 
-}
+} */
 
 
 #section-insiders .post {
@@ -2838,6 +2852,18 @@ font-size: 16px;
 .book-text{
     padding: 0;
 }
+
+.tags-list a{
+    display: inline-block;
+    background: #0D87D0;
+    padding: 7px 10px;
+    font-size: 14px;
+    color: white;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    /* pointer-events: none; */
+}
 @media (max-width: 992px) {
 
     #section-insiders .wp-block-group__inner-container::before,
@@ -3837,3 +3863,16 @@ font-size: 16px;
         width: 100%;
     }
 }
+
+
+.homepage-banner .wp-block-cover__inner-container{
+    max-width: 1170px!important;
+    width: 100%;
+}
+/* 
+.homepage-banner  h3{
+    font-size: 30px;
+    max-width: 900px;
+    width: 100%;
+    margin: 0!important;
+} */
