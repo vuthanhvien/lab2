@@ -140,7 +140,6 @@ $prefix =  $vi ? '' : '';
 			var p_width = jQuery('.partner-list').get()[0].scrollWidth;
 			var e_width = jQuery('.partner-list-wrap').width();
 			var html = '<div class="dots">'
-			console.log(p_width , e_width)
 			for(var i = 1; i<=  Math.ceil(p_width / e_width)  ; i++ ){
 				var p = i;
 				if(i == 1){
@@ -161,20 +160,18 @@ $prefix =  $vi ? '' : '';
 				var sl = jQuery(this).parent().parent();
 				sl.find('.partner-list').animate( { scrollLeft: (p - 1) *  sl.width() }, 100);
 				jQuery(this).addClass('active')
-				console.log('p_' + p);
 			});
 
 			jQuery('.partner-list-wrap').on('click', '.next', function() {
 				jQuery('.partner-list-wrap .dot').removeClass('active');
 				console.log( )
-				if(jQuery('.partner-list').scrollLeft() >=  p_width - e_width -100 ){
+				if(jQuery('.partner-list').scrollLeft() >=  p_width - e_width - 100 ){
 					jQuery('.partner-list').animate( { scrollLeft: 0}, 100);
 				}else{
 					jQuery('.partner-list').animate( { scrollLeft: '+='+e_width}, 100);
 				}
 
 				var dot = Math.ceil((jQuery('.partner-list').scrollLeft() + e_width) / e_width) 
-				console.log(dot);
 				
 				jQuery('.partner-list-wrap .dot-'+dot).addClass('active');
 

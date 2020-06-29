@@ -135,7 +135,9 @@ $vnEcomStr = $GLOBALS['vi'] ? 'NỀN KINH TẾ KỸ THUẬT SỐ VIỆT NAM' : '
 						<span>'.get_the_author().'</span><span>|</span>
 						<span>'.get_the_date().'</span>
 						</div>';
-			$item .= '<div class="category">'.implode(', ', $tag).'</div>';
+			if($tags){
+				$item .= '<div class="category">'.implode(', ', $tag).'</div>';
+			}
 			$item .= '</div>';
 
 			echo $item;

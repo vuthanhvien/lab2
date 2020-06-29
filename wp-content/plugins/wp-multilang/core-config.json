@@ -27,7 +27,7 @@
   },
   "taxonomies": {
     "category" : {},
-    "post_tag" : {}
+    "post_tag" : null
   },
   "term_fields": {},
   "user_fields": {

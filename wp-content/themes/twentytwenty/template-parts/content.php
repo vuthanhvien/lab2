@@ -112,6 +112,20 @@ $vi = $GLOBALS['vi'];
 					?>
 					
 					<div class="tags-list"><?php the_tags('Tags: &nbsp ', ' ', ' ') ?> </div>
+					<hr />
+					<div class="author-detail">
+					<div class="author-avatar">
+						<?php  echo get_avatar( get_the_author_meta( 'ID' ), 200)?>
+
+					</div>
+					<div class="author-des">
+						<a href="/user/<?php  echo get_the_author_meta('ID') ?>">
+						<h3 class="author-des-name"><? echo get_the_author_meta('display_name') ?></h3>
+				</a>
+						<p><? echo get_the_author_meta('description') ?></p>
+						<a class="btn btn-cta" href="/donate">Donate for DSL</a>
+					</div>
+					</div>
 
 				<hr>
 					<div class="post-action">

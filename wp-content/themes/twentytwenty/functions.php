@@ -851,7 +851,7 @@ function create_shortcode_posts($args , $content) {
 					$html .= '<div class="index">0'.$index.'</div>'; 
 				break;
 				case 'img': 
-					$html .= '<div class="img">'.$featured_img_url.'</div>'; 
+					$html .= '<a style="display: block; height: 100%; width: 100%;padding: 0" href="'.get_the_permalink().'"><div class="img">'.$featured_img_url.'</div></a>'; 
 				break;
 				case 'title': 
 					$html .= '<a  href="'.get_the_permalink().'"><h5 class="title">'. get_the_title().'</h5></a>'; 
@@ -871,8 +871,7 @@ function create_shortcode_posts($args , $content) {
 					foreach ($tags as &$t) {
 						array_push($tag, $t->name);
 					}
-
-					$html .= '<div class="category">'.implode(', ', $tag).'</div>'; 
+					if($tags){ $html .= '<div class="category">'.implode(', ', $tag).'</div>'; }
 				break;
 				case 'author': 
 					$html .= '<div class="author">'.get_avatar( get_the_author_meta( 'ID' )).'<span>'.get_the_author_meta('display_name').'</span></div>'; 
@@ -2034,7 +2033,7 @@ add_action( 'phpmailer_init', 'send_smtp_email' );
 function insider_list(){
 	$users = get_field('user_list', 23);
 	$html = '<div class="top-partner">
-	<h3 class="text-center" style="margin: 0">Insiders</h3>
+	<h4 class="text-left" >Insiders</h4>
 	<div class="partner-list-wrap">
 	<div class="partner-list">';
 	foreach($users as $user_id){
@@ -2062,3 +2061,44 @@ function insider_list(){
 }
 add_shortcode( 'insiders', 'insider_list' );
 
+
+
+
+function lastest_post(){
+	$recent = wp_get_recent_posts(array("numberposts"=>1, "post_type"=>array('news', 'library', 'podcast', 'event', 'book', 'partner-program', 'partner', 'insiders')), 'OBJECT'); 
+	$idPost = $recent[0]->ID;
+	$vi = $_SERVER['HTTP_HOST'] == 'chienluocso.vn';
+
+	$title = $vi ? 'Tiếp tục đọc' : 'What to Read Next';
+
+	$html = '<div class="lastest-post">';
+	$html .= '<div class="lastest-main">';
+	$html .= do_shortcode('[posts limit="1" ids="'.$idPost.'" fields="img,category,title" type="'.$post_type.'"]');  
+	$html .= '</div>';
+
+	$html .= '<div class="lastest-next">';
+	$html .= '<p class="lastest-next-text">'.$title.'</p>';
+
+
+	$ids =  get_field('next_posts', $idPost);
+	$ids  = implode(',',$ids );
+	$html .= do_shortcode('[posts limit="4" ids="'.$ids.'" fields="index,title" type="'.$post_type.'"]');  
+
+	$html .= '</div>';
+
+
+	$html .= '</div>';
+	 
+ 
+	return $html ;
+}
+add_shortcode( 'lastest', 'lastest_post' );
+
+
+add_filter( 'wpseo_opengraph_url', 'my_opengraph_url' );
+
+function my_opengraph_url( $url ) {
+	$currentURL = $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	return $currentURL;
+        // return str_replace( 'https://', 'http://', $url );
+}

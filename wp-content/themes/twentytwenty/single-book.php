@@ -50,14 +50,14 @@ $img = get_the_post_thumbnail() ? get_the_post_thumbnail() :  '<img src="'.$firs
 $vi = $GLOBALS['vi'];
 ?>
 
-<main id="site-content" class="book" role="main" style="background: white">
+<main id="site-content" class="book" role="main">
 	 
 
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 	<div class="section-inner book-detail">
 		<h4>FULFILLING READING</h4>
 		<h3 class="book-title"><?php the_title() ?></h3>
-		<p>By <b><?php echo get_the_author_meta('display_name') ?></b> | <?php the_date() ?> |  <?php  echo get_field('min-read') ? get_field('min-read') : '5'?> minute read </p>
+		<p>By <b><?php echo get_the_author_meta('display_name') ?></b> | <?php the_date() ?> |  <?php  echo get_field('min-read') ? get_field('min-read') : '5'?> views </p>
 		<br />
 		<?php   echo $img ?>
 		<br />
@@ -81,8 +81,16 @@ $vi = $GLOBALS['vi'];
 			</div>
 				<hr>
 			<div class="book-content">
-				<?php if($isView){   echo $post->post_content;  ?>
+				<?php if($isView){   
+					echo $post->post_content;  
+					if( get_field('link_order')){
+					?>
+
+					<div class="text-center">
+						<a href="<?php echo get_field('link_order') ?>" class="button btn btn-cta" target="_blank">ORDER NOW</a>
+					</div>
 				<?php
+					}
 				}else{
 					the_excerpt();
 					?>
