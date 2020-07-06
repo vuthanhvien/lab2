@@ -242,6 +242,15 @@ $prefix =  $vi ? '' : '';
 	// jQuery(child).append(jQuery('<div style="text-align:center; margin: 30px"><a href="<?php echo  $prefix ?>/subscribe" target="_blank" class="button btn" style="padding: 22px 60px"><?php echo $vi ? 'Subscribe ngay' : 'Subscribe now' ?></a></div>'))
 	jQuery('#menu-item-451 > a').html('More &nbsp; <i class="fa fa-sort-desc"></i>')
 
+
+	jQuery('#post-1678 .action .has-text-align-left.tmp a').removeAttr("href");
+	jQuery('#post-1678 .action .has-text-align-left.tmp a').click(function(){
+		jQuery('#wpcf7-f2334-p1678-o1').css('display', 'flex');
+	
+	})
+
+
+
 	</script>
 </html>
 

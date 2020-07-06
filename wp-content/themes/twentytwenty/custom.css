@@ -4058,3 +4058,132 @@ font-size: 16px;
     width: 100%;
     margin: 0!important;
 } */
+
+
+#post-1678 {
+   
+    background: white;
+}
+#post-1678 .thin > *{
+    max-width: 1170px;
+    margin: 0 auto;
+}
+#post-1678 .thin > .wpcf7,
+    #post-1678 .thin > .main-banner{
+	max-width: 100%;
+}
+#post-1678 .banner a{
+	display: inline-block;
+	margin-right: 10px;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: 1px solid #0D87D0;
+	font-weight:bold;
+	color: #0D87D0;
+	margin-top: 15px;
+}
+#post-1678 .banner a:first-child{
+	background: #0D87D0;
+	color: white;
+}
+
+#post-1678 .banner  h3{
+	margin: 10px 0 25px 0;
+	position: relative;
+}
+#post-1678 .banner  h3:before{
+	position: absolute;
+	content: '';
+	height: 4px;
+	width: 100px;
+	background: #0D87D0;
+	left:0;
+	bottom: -20px;
+}
+#post-1678 .banner p {
+	font-size: 18px;
+}
+
+#post-1678 .w50{
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+#post-1678  em{
+    margin-bottom: 30px;
+    display: block;
+}
+
+#post-1678 .about-title{
+	font-style: italic;
+	font-size: 36px;
+	position: relative;
+	width: auto;
+	margin: 30px auto 0 auto;
+}
+
+#post-1678 .about-title:before{
+	       content: '"';
+    position: absolute;
+    margin-left: -62px;
+    top: -20px;
+    font-size: 40px;
+    background: #0D87D0;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+}
+
+#post-1678 .detail{
+	margin-top: 80px;
+}
+
+#post-1678 .detail h4{
+	font-size: 24px;
+	position: relative;
+	margin-bottom: 30px;
+}
+
+#post-1678 .detail h4:before{
+	position: absolute;
+	content: '';
+	height: 3px;
+	width: 80px;
+	background: #F9A64B;
+	left:0;
+	top: -20px;
+}
+
+#post-1678 .detail p {
+	/* font-weight: 600; */
+}
+#post-1678 .key-value {
+	margin-top: 80px;
+}
+
+#post-1678 .key-value h4{
+	font-size: 30px;
+	color: #0D87D0;
+	margin-top: 30px;
+}
+
+
+#post-1678 .action{
+	margin-top: 50px;
+}
+
+
+#post-1678 .action .tmp {
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+#post-1678 .action .tmp a{
+	background: #0D87D0; 
+	padding: 10px 20px; 
+	border-radius: 20px; 
+	margin: 20px;
+	color: white; 
+	font-weight: bold;
+}
