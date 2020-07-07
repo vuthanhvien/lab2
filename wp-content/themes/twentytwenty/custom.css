@@ -4061,12 +4061,14 @@ font-size: 16px;
 
 
 #post-1678 {
-   
+    z-index: 1;
+    position: relative;
     background: white;
 }
 #post-1678 .thin > *{
     max-width: 1170px;
     margin: 0 auto;
+   
 }
 #post-1678 .thin > .wpcf7,
     #post-1678 .thin > .main-banner{
@@ -4160,9 +4162,23 @@ font-size: 16px;
 	/* font-weight: 600; */
 }
 #post-1678 .key-value {
-	margin-top: 80px;
+    margin-top: 80px;
 }
 
+#post-1678 .key-value:before{
+    background-image: url(/assets/bg-about.png);
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    height: 1301px;
+    left: 0;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    margin-top: -502px;
+    background-position: center;
+}
 #post-1678 .key-value h4{
 	font-size: 30px;
 	color: #0D87D0;
@@ -4186,4 +4202,7 @@ font-size: 16px;
 	margin: 20px;
 	color: white; 
 	font-weight: bold;
+}
+#post-1678 .btn-cta a {
+    padding: 20px 60px ;
 }
